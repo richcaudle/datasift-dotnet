@@ -1,0 +1,139 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataSiftTests" GeneratedClassName="MockAPIResponses">
+  <Profiles />
+  <Settings>
+    <Setting Name="Validate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "created_at":"2011-05-12 11:18:07",
+    "dpu":"0.1"
+}</Value>
+    </Setting>
+    <Setting Name="Compile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "hash": "9fe133a7ee1bd2757f1e26bd78342458",
+    "created_at": "2011-05-12 11:18:07",
+    "dpu": "0.1"
+}</Value>
+    </Setting>
+    <Setting Name="Usage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+   "start": "Mon, 07 Nov 2011 11:15:00 +0000",
+   "end": "Mon, 07 Nov 2011 12:15:00 +0000",
+   "streams": {
+       "693f5134c73a62ed85ef271040bf266b": {
+            "licenses": {
+                "facebook":365,
+                "twitter":18062
+            },
+            "seconds": 3600
+       },
+       "14af4134c73a62ed65ef1f1040bf321e": {
+            "licenses": {
+                "facebook":344,
+                "twitter":26062
+            },
+            "seconds": 3900
+       }
+   }
+}</Value>
+    </Setting>
+    <Setting Name="DPU" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+   "dpu": 0.2,
+   "detail": {
+       "contains": {
+           "count": 2,
+           "dpu": 0.2,
+           "targets": {
+               "interaction.content": {
+                   "count": 1,
+                   "dpu": 0.1
+               },
+               "interaction.title": {
+                   "count": 1,
+                   "dpu": 0.1
+               }
+           }
+       }
+   }
+}</Value>
+    </Setting>
+    <Setting Name="Balance" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+   "balance": {
+     "plan": "Platinum",
+     "cost": 0,
+     "remaining_dpus": 249993.7
+   }
+}</Value>
+    </Setting>
+    <Setting Name="HistoricsGet" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "data": [
+        {
+            "id": "6b42f539793a02bfd68c",
+            "definition_id": "6beacf0faeb77c974ab801733ed2c597",
+            "name": "twitter",
+            "start": 1274742000,
+            "end": 1339110000,
+            "created_at": 1339147632,
+            "status": "init",
+            "progress": 0,
+            "sources": [
+                "facebook",
+                "twitter"
+            ],
+            "sample": 100
+        },
+        {
+            "id": "fdf6652ac82206358eab",
+            "definition_id": "93558e17de15072fa126370c37c5bd8f",
+            "name": "test",
+            "start": 1337040000,
+            "end": 1337126400,
+            "created_at": 1337161927,
+            "status": "succeeded",
+            "progress": 100,
+            "sources": [
+                ""
+            ],
+            "sample": 100
+        }
+    ],
+    "count": 79
+}</Value>
+    </Setting>
+    <Setting Name="HistoricsPrepare" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "dpus": 234.6916666667,
+    "id": "4ef7c852a96d6352764f",
+    "availability": {
+        "start": 1341673200,
+        "end": 1341759600,
+        "sources": {
+            "twitter": {
+                "status": 99,
+                "versions": [
+                    3
+                ],
+                "augmentations": {
+                    "klout": 50,
+                    "links": 100
+                }
+            },
+            "facebook": {
+                "status": 99,
+                "versions": [
+                    2,
+                    3
+                ],
+                "augmentations": {
+                    "links": 95
+                }
+            }
+        }
+    }
+}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
