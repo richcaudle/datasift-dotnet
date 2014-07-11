@@ -186,5 +186,259 @@ namespace DataSiftTests {
                 return ((string)(this["HistoricsPrepare"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""9e97d9ac115e58fcb7ab"",
+    ""definition_id"": ""e4d0b9bb266e8f3f2de405f6c1a2de23"",
+    ""name"": ""historics-get-test"",
+    ""start"": 1325376001,
+    ""end"": 1325894401,
+    ""created_at"": 1363271961,
+    ""status"": ""running"",
+    ""progress"": 15,
+    ""sources"": [
+        ""twitter""
+    ],
+    ""sample"": 100,
+    ""chunks"": [
+        {
+            ""status"": ""succeeded"",
+            ""progress"": 100,
+            ""start_time"": 1325376001,
+            ""end_time"": 1325462400
+        },
+        {
+            ""status"": ""running"",
+            ""progress"": 5,
+            ""start_time"": 1325462400,
+            ""end_time"": 1325548800
+        },
+        {
+            ""status"": ""init"",
+            ""progress"": 0,
+            ""start_time"": 1325548800,
+            ""end_time"": 1325635200
+        },
+        {
+            ""status"": ""init"",
+            ""progress"": 0,
+            ""start_time"": 1325635200,
+            ""end_time"": 1325721600
+        },
+        {
+            ""status"": ""init"",
+            ""progress"": 0,
+            ""start_time"": 1325721600,
+            ""end_time"": 1325808000
+        },
+        {
+            ""status"": ""init"",
+            ""progress"": 0,
+            ""start_time"": 1325808000,
+            ""end_time"": 1325894400
+        },
+        {
+            ""status"": ""init"",
+            ""progress"": 0,
+            ""start_time"": 1325894400,
+            ""end_time"": 1325894401
+        }
+    ]
+}")]
+        public string HistoricsGetById {
+            get {
+                return ((string)(this["HistoricsGetById"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""data"": [
+        {
+            ""id"": ""6b42f539793a02bfd68c"",
+            ""definition_id"": ""6beacf0faeb77c974ab801733ed2c597"",
+            ""name"": ""twitter"",
+            ""start"": 1274742000,
+            ""end"": 1339110000,
+            ""created_at"": 1339147632,
+            ""status"": ""init"",
+            ""progress"": 0,
+            ""sources"": [
+                ""facebook"",
+                ""twitter""
+            ],
+            ""sample"": 100
+        }
+    ],
+    ""count"": 79
+}")]
+        public string HistoricsGetMax1 {
+            get {
+                return ((string)(this["HistoricsGetMax1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n    \"id\": \"9e97d9ac115e58fcb7ab\",\r\n    \"definition_id\": \"cdd0b9bb266e8f3f2de40" +
+            "5f6c1a2b23e\",\r\n    \"name\": \"job-estimation-test\",\r\n    \"start\": 1325376001,\r\n   " +
+            " \"end\": 1325894401,\r\n    \"created_at\": 1363271961,\r\n    \"status\": \"running\",\r\n  " +
+            "  \"progress\": 15,\r\n    \"sources\": [\r\n        \"twitter\"\r\n    ],\r\n    \"sample\": 10" +
+            "0,\r\n    \"volume_info\": {\r\n        \"twitter\": 1448591013\r\n    },\r\n    \"chunks\": [" +
+            "\r\n        {\r\n            \"status\": \"succeeded\",\r\n            \"progress\": 100,\r\n " +
+            "           \"start_time\": 1325376001,\r\n            \"end_time\": 1325462400,\r\n     " +
+            "       \"estimated_completion\": 1363274434\r\n        },\r\n        {\r\n            \"s" +
+            "tatus\": \"running\",\r\n            \"progress\": 5,\r\n            \"start_time\": 132546" +
+            "2400,\r\n            \"end_time\": 1325548800,\r\n            \"estimated_completion\": " +
+            "1363277434\r\n        },\r\n        {\r\n            \"status\": \"init\",\r\n            \"p" +
+            "rogress\": 0,\r\n            \"start_time\": 1325548800,\r\n            \"end_time\": 132" +
+            "5635200,\r\n            \"estimated_completion\": 1363285834\r\n        },\r\n        {\r" +
+            "\n            \"status\": \"init\",\r\n            \"progress\": 0,\r\n            \"start_t" +
+            "ime\": 1325635200,\r\n            \"end_time\": 1325721600,\r\n            \"estimated_c" +
+            "ompletion\": 1363279834\r\n        },\r\n        {\r\n            \"status\": \"init\",\r\n  " +
+            "          \"progress\": 0,\r\n            \"start_time\": 1325721600,\r\n            \"en" +
+            "d_time\": 1325808000,\r\n            \"estimated_completion\": 1363282234\r\n        }," +
+            "\r\n        {\r\n            \"status\": \"init\",\r\n            \"progress\": 0,\r\n        " +
+            "    \"start_time\": 1325808000,\r\n            \"end_time\": 1325894400,\r\n            " +
+            "\"estimated_completion\": 1363284034\r\n        },\r\n        {\r\n            \"status\":" +
+            " \"init\",\r\n            \"progress\": 0,\r\n            \"start_time\": 1325894400,\r\n   " +
+            "         \"end_time\": 1325894401,\r\n            \"estimated_completion\": 1363287634" +
+            "\r\n        }\r\n    ],\r\n    \"estimated_completion\": 1363287634\r\n}")]
+        public string HistoricsGetWithCompletion {
+            get {
+                return ((string)(this["HistoricsGetWithCompletion"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"[
+    {
+        ""start"": ""1325376000"",
+        ""end"": 1325462400,
+        ""sources"": {
+            ""twitter"": {
+                ""augmentations"": {
+                    ""demographic"": 100,
+                    ""klout"": 100,
+                    ""language"": 100,
+                    ""links"": 100,
+                    ""salience"": 100,
+                    ""trends"": 100
+                },
+                ""versions"": [
+                    ""1""
+                ],
+                ""status"": 100
+            }
+        }
+    },
+    {
+        ""start"": ""1325462400"",
+        ""end"": 1325548800,
+        ""sources"": {
+            ""twitter"": {
+                ""augmentations"": {
+                    ""demographic"": 100,
+                    ""klout"": 100,
+                    ""language"": 100,
+                    ""links"": 100,
+                    ""salience"": 100,
+                    ""trends"": 100
+                },
+                ""versions"": [
+                    ""1""
+                ],
+                ""status"": 100
+            }
+        }
+    }
+]")]
+        public string HistoricsStatus {
+            get {
+                return ((string)(this["HistoricsStatus"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""count"": 2,
+    ""subscriptions"": [
+        {
+            ""id"": ""d668655cfe5f93741ddcd30bb309a8c7"",
+            ""output_type"": ""dynamodb"",
+            ""name"": ""mypushsubscription1"",
+            ""created_at"": 1365430066,
+            ""hash"": ""42d388f8b1db997faaf7dab487f11290"",
+            ""hash_type"": ""stream"",
+            ""output_params"": {
+                ""table"": ""datasift-dynamodb"",
+                ""region"": ""dynamodb.eu-west-1.amazonaws.com""
+            },
+            ""status"": ""active"",
+            ""last_request"": null,
+            ""last_success"": null,
+            ""remaining_bytes"": null,
+            ""lost_data"": false,
+            ""start"": 0,
+            ""end"": 0
+        },
+        {
+            ""id"": ""d468655cfe5f93741ddcd30bb309a8c7"",
+            ""output_type"": ""dynamodb"",
+            ""name"": ""mypushsubscription2"",
+            ""created_at"": 1365430066,
+            ""hash"": ""42d388f8b1db997faaf7dab487f11290"",
+            ""hash_type"": ""stream"",
+            ""output_params"": {
+                ""table"": ""datasift-dynamodb"",
+                ""region"": ""dynamodb.eu-west-1.amazonaws.com""
+            },
+            ""status"": ""active"",
+            ""last_request"": null,
+            ""last_success"": null,
+            ""remaining_bytes"": null,
+            ""lost_data"": false,
+            ""start"": 0,
+            ""end"": 0
+        }
+    ]
+}")]
+        public string PushGet {
+            get {
+                return ((string)(this["PushGet"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""d468655cfe5f93741ddcd30bb309a8c7"",
+    ""output_type"": ""dynamodb"",
+    ""name"": ""mypushsubscription1"",
+    ""created_at"": 1365430066,
+    ""hash"": ""42d388f8b1db997faaf7dab487f11290"",
+    ""hash_type"": ""stream"",
+    ""output_params"": {
+        ""table"": ""datasift-dynamodb"",
+        ""region"": ""dynamodb.eu-west-1.amazonaws.com""
+    },
+    ""status"": ""active"",
+    ""last_request"": null,
+    ""last_success"": null,
+    ""remaining_bytes"": null,
+    ""lost_data"": false,
+    ""start"": 0,
+    ""end"": 0
+}")]
+        public string PushGetById {
+            get {
+                return ((string)(this["PushGetById"]));
+            }
+        }
     }
 }

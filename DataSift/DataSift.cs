@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using DataSift.Rest;
 using RestSharp;
 using DataSift.Enum;
+using System.Diagnostics.Contracts;
+using System.Text.RegularExpressions;
 
 namespace DataSift
 {
@@ -15,6 +17,7 @@ namespace DataSift
         private string _apikey;
         private GetRequestDelegate _getRequest;
         private Historics _historics;
+        private Push _push;
         public delegate IRestAPIRequest GetRequestDelegate(string username, string apikey);
 
         public DataSift(string username, string apikey, GetRequestDelegate requestCreator = null)
@@ -49,31 +52,50 @@ namespace DataSift
             }
         }
 
+        public Push Push
+        {
+            get
+            {
+                if (_push == null) _push = new Push(this);
+                return _push;
+            }
+        }
+
         #endregion
 
         #region Core API Endpoints
 
-        public dynamic Validate(string csdl)
+        public RestAPIResponse Validate(string csdl)
         {
+            Contract.Requires<ArgumentNullException>(csdl != null);
+            Contract.Requires<ArgumentException>(csdl.Trim().Length > 0);
+
             return GetRequest().Request("validate", new { csdl = csdl }, Method.POST);
         }
 
-        public dynamic Compile(string csdl)
+        public RestAPIResponse Compile(string csdl)
         {
+            Contract.Requires<ArgumentNullException>(csdl != null);
+            Contract.Requires<ArgumentException>(csdl.Trim().Length > 0);
+
             return GetRequest().Request("compile", new { csdl = csdl }, Method.POST);
         }
 
-        public dynamic Usage(UsagePeriod? period = null)
+        public RestAPIResponse Usage(UsagePeriod? period = null)
         {
             return GetRequest().Request("usage", new { period = period.ToString().ToLower() });
         }
 
-        public dynamic DPU(string hash)
+        public RestAPIResponse DPU(string hash)
         {
+            Contract.Requires<ArgumentNullException>(hash != null);
+            Contract.Requires<ArgumentException>(hash.Trim().Length > 0);
+            Contract.Requires<ArgumentException>(new Regex(@"[a-z0-9]{32}").IsMatch(hash), "Hash should be a 32 character string of lower-case letters and numbers");
+
             return GetRequest().Request("dpu", new { hash = hash });
         }
 
-        public dynamic Balance()
+        public RestAPIResponse Balance()
         {
             return GetRequest().Request("balance");
         }

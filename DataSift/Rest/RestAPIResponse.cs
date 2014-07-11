@@ -10,6 +10,8 @@ namespace DataSift.Rest
     {
         public dynamic Data { get; set; }
         public RateLimitInfo RateLimit { get; set; }
+
+        public System.Net.HttpStatusCode StatusCode { get; set; }
     }
 
     public class RateLimitInfo
