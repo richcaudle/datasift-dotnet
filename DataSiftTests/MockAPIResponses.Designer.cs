@@ -440,5 +440,553 @@ namespace DataSiftTests {
                 return ((string)(this["PushGetById"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""subscriptions"": [
+        {
+            ""id"": ""3a5c2546136a037d4b2df0b8b8836f3e"",
+            ""output_type"": ""pull"",
+            ""name"": ""Example historics subscription"",
+            ""created_at"": 1405333439,
+            ""user_id"": 27360,
+            ""hash"": ""6cd38099f4c1e0f1ac31"",
+            ""hash_type"": ""historic"",
+            ""output_params"": [],
+            ""status"": ""active"",
+            ""last_request"": null,
+            ""last_success"": null,
+            ""remaining_bytes"": null,
+            ""lost_data"": false,
+            ""start"": 1405333439,
+            ""end"": null
+        }
+    ],
+    ""count"": 1
+}")]
+        public string PushGetByHistoricsId {
+            get {
+                return ((string)(this["PushGetByHistoricsId"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""subscriptions"": [
+        {
+            ""id"": ""03b9f2e18503afd6d0c0d3bf76c14224"",
+            ""output_type"": ""pull"",
+            ""name"": ""Example pull subscription"",
+            ""created_at"": 1405333664,
+            ""user_id"": 27360,
+            ""hash"": ""13e9347e7da32f19fcdb08e297019d2e"",
+            ""hash_type"": ""stream"",
+            ""output_params"": [],
+            ""status"": ""finishing"",
+            ""last_request"": 1405333669,
+            ""last_success"": 1405333669,
+            ""remaining_bytes"": null,
+            ""lost_data"": false,
+            ""start"": 1405333664,
+            ""end"": 1405333670
+        }
+    ],
+    ""count"": 1
+}")]
+        public string PushGetByHash {
+            get {
+                return ((string)(this["PushGetByHash"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""subscriptions"": [
+        {
+            ""id"": ""3a5c2546136a037d4b2df0b8b8836f3e"",
+            ""output_type"": ""pull"",
+            ""name"": ""Example historics subscription"",
+            ""created_at"": 1405333439,
+            ""user_id"": 27360,
+            ""hash"": ""6cd38099f4c1e0f1ac31"",
+            ""hash_type"": ""historic"",
+            ""output_params"": [],
+            ""status"": ""active"",
+            ""last_request"": null,
+            ""last_success"": null,
+            ""remaining_bytes"": null,
+            ""lost_data"": false,
+            ""start"": 1405333439,
+            ""end"": null
+        }
+    ],
+    ""count"": 2
+}")]
+        public string PushGetPage {
+            get {
+                return ((string)(this["PushGetPage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""d468655cfe5f93741ddcd30bb309a8c7"",
+    ""output_type"": ""pull"",
+    ""name"": ""New subscription"",
+    ""created_at"": 1365430066,
+    ""user_id"": 12635,
+    ""hash"": ""42d388f8b1db997faaf7dab487f11290"",
+    ""hash_type"": ""stream"",
+    ""status"": ""active"",
+    ""last_request"": null,
+    ""last_success"": null,
+    ""remaining_bytes"": null,
+    ""lost_data"": false,
+    ""start"": 0,
+    ""end"": 0
+}")]
+        public string PushCreate {
+            get {
+                return ((string)(this["PushCreate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""d468655cfe5f93741ddcd30bb309a8c7"",
+    ""output_type"": ""dynamodb"",
+    ""name"": ""mypushsubscription"",
+    ""created_at"": 1365430066,
+    ""user_id"": 12635,
+    ""hash"": ""0dddb9bb2f6e8f3f2de405f6c1a2b21e"",
+    ""hash_type"": ""stream"",
+    ""output_params"": {
+        ""region"": ""dynamodb.eu-west-1.amazonaws.com"",
+        ""bucket"": ""datasift-s3"",
+        ""directory"": ""interactions"",
+        ""acl"": ""private"",
+        ""delivery_frequency"": 60,
+        ""max_size"": 102400,
+        ""file_prefix"": ""Datasift""
+    },
+    ""status"": ""finishing"",
+    ""last_request"": 1365438298,
+    ""last_success"": 1365435315,
+    ""remaining_bytes"": null,
+    ""lost_data"": false,
+    ""start"": null,
+    ""end"": null
+}")]
+        public string PushStop {
+            get {
+                return ((string)(this["PushStop"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""d468655cfe5f93741ddcd30bb309a8c7"",
+    ""output_type"": ""dynamodb"",
+    ""name"": ""mypushsubscription"",
+    ""created_at"": 1365430066,
+    ""user_id"": 12635,
+    ""hash"": ""0dddb9bb2f6e8f3f2de405f6c1a2b21e"",
+    ""hash_type"": ""stream"",
+    ""output_params"": {
+        ""region"": ""dynamodb.eu-west-1.amazonaws.com"",
+        ""bucket"": ""datasift-s3"",
+        ""directory"": ""interactions"",
+        ""acl"": ""private"",
+        ""delivery_frequency"": 60,
+        ""max_size"": 102400,
+        ""file_prefix"": ""Datasift""
+    },
+    ""status"": ""paused"",
+    ""last_request"": 1365438298,
+    ""last_success"": 1365435315,
+    ""remaining_bytes"": null,
+    ""lost_data"": false,
+    ""start"": null,
+    ""end"": null
+}")]
+        public string PushPause {
+            get {
+                return ((string)(this["PushPause"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""d468655cfe5f93741ddcd30bb309a8c7"",
+    ""output_type"": ""dynamodb"",
+    ""name"": ""mypushsubscription"",
+    ""created_at"": 1365430066,
+    ""user_id"": 12635,
+    ""hash"": ""0dddb9bb2f6e8f3f2de405f6c1a2b21e"",
+    ""hash_type"": ""stream"",
+    ""output_params"": {
+        ""region"": ""dynamodb.eu-west-1.amazonaws.com"",
+        ""bucket"": ""datasift-s3"",
+        ""directory"": ""interactions"",
+        ""acl"": ""private"",
+        ""delivery_frequency"": 60,
+        ""max_size"": 102400,
+        ""file_prefix"": ""Datasift""
+    },
+    ""status"": ""active"",
+    ""last_request"": 1365438298,
+    ""last_success"": 1365435315,
+    ""remaining_bytes"": null,
+    ""lost_data"": false,
+    ""start"": null,
+    ""end"": null
+}")]
+        public string PushResume {
+            get {
+                return ((string)(this["PushResume"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""success"": true,
+    ""count"": 8740,
+    ""log_entries"": [
+        {
+            ""subscription_id"": ""4b7ce39a5292b96ccd98f69324b0dc99"",
+            ""success"": true,
+            ""request_time"": 1344859261,
+            ""message"": ""The delivery has completed""
+        },
+        {
+            ""subscription_id"": ""13ba92f6784da5e60b82f532f43c7d17"",
+            ""success"": false,
+            ""request_time"": 1344855061,
+            ""message"": ""The delivery was paused for too long""
+        },
+        {
+            ""subscription_id"": ""4e097f46ef0dd2e8e3f25f84dddda775"",
+            ""success"": false,
+            ""request_time"": 1344630221,
+            ""message"": ""Stopped due to too many failed delivery attempts""
+        },
+        {
+            ""subscription_id"": ""4e097f46ef0dd2e8e3f25f84dddda775"",
+            ""success"": false,
+            ""request_time"": 1344630221,
+            ""message"": ""The endpoint returned a 500 internal server error""
+        }
+    ]
+}")]
+        public string PushLog {
+            get {
+                return ((string)(this["PushLog"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""success"": true,
+    ""count"": 8740,
+    ""log_entries"": [
+        {
+            ""request_time"": 1342436365,
+            ""success"": true,
+            ""subscription_id"": ""d468655cfe5f93741ddcd30bb309a8c7""
+        },
+        {
+            ""request_time"": 1342436361,
+            ""success"": true,
+            ""subscription_id"": ""d468655cfe5f93741ddcd30bb309a8c7""
+        },
+        {
+            ""request_time"": 1342436255,
+            ""success"": true,
+            ""subscription_id"": ""d468655cfe5f93741ddcd30bb309a8c7""
+        }
+    ]
+}")]
+        public string PushLogById {
+            get {
+                return ((string)(this["PushLogById"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""success"": true,
+    ""count"": 182,
+    ""log_entries"": [
+        {
+            ""request_time"": 1405337430,
+            ""success"": true,
+            ""subscription_id"": ""03b9f2e18503afd6d0c0d3bf76c14224"",
+            ""message"": ""No requests were made for this subscription in over 1 hour(s) ago""
+        },
+        {
+            ""request_time"": 1405337430,
+            ""success"": true,
+            ""subscription_id"": ""03b9f2e18503afd6d0c0d3bf76c14224"",
+            ""message"": ""The status has changed to: finished""
+        },
+        {
+            ""request_time"": 1405333670,
+            ""success"": true,
+            ""subscription_id"": ""03b9f2e18503afd6d0c0d3bf76c14224"",
+            ""message"": ""The status has changed to: finishing""
+        },
+        {
+            ""request_time"": 1404300353,
+            ""success"": true,
+            ""subscription_id"": ""ce3c55c2acf55e82fb665d4a7201fbaf"",
+            ""message"": ""The status has changed to: deleted""
+        },
+        {
+            ""request_time"": 1404212291,
+            ""success"": true,
+            ""subscription_id"": ""645c959027328905713cdd64eb35f10d"",
+            ""message"": ""The status has changed to: deleted""
+        }
+    ]
+}")]
+        public string PushLogPage {
+            get {
+                return ((string)(this["PushLogPage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""f4d4caee9acfd27faf88843d8d6191b1"",
+    ""output_type"": ""dynamodb"",
+    ""name"": ""new name"",
+    ""created_at"": 1365430066,
+    ""user_id"": 12635,
+    ""hash"": ""edd0b9fb266e8f3f2de40bf6c1a2bf3e"",
+    ""hash_type"": ""stream"",
+    ""output_params"": {
+        ""table"": ""datasift-dynamodb"",
+        ""region"": ""dynamodb.us-west-1.amazonaws.com""
+    },
+    ""status"": ""active"",
+    ""last_request"": 1365437678,
+    ""last_success"": 1365435315,
+    ""remaining_bytes"": 14945919,
+    ""lost_data"": false,
+    ""start"": null,
+    ""end"": null
+}")]
+        public string PushUpdate {
+            get {
+                return ((string)(this["PushUpdate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n    \"id\": \"93186020677f1881aab7cddb28fa805c\",\r\n    \"hash\": \"c426dd575d435e5bc6" +
+            "8a6edf125026c4\",\r\n    \"hash_type\": \"stream\",\r\n    \"count\": 2,\r\n    \"delivered_at" +
+            "\": \"Fri, 17 Aug 2012 14:23:00 +0000\",\r\n    \"interactions\": [\r\n        {\r\n       " +
+            "     \"interaction\": {\r\n                \"source\": \"web\",\r\n                \"author" +
+            "\": {\r\n                    \"username\": \"johndoe\",\r\n                    \"name\": \"J" +
+            "ohn Doe\",\r\n                    \"id\": 10750902,\r\n                    \"avatar\": \"h" +
+            "ttp://a0.twimg.com/profile_images/1111111111/example.jpeg\",\r\n                   " +
+            " \"link\": \"http://twitter.com/johndoe\"\r\n                },\r\n                \"type" +
+            "\": \"twitter\",\r\n                \"created_at\": \"Fri, 17 Aug 2012 14:13:08 +0000\",\r" +
+            "\n                \"content\": \"I like ice cream!\",\r\n                \"id\": \"1e1e875" +
+            "ab43fa233e074337458bc1dca\",\r\n                \"link\": \"http://twitter.com/johndoe" +
+            "/statuses/111111111111111111\",\r\n                \"geo\": {\r\n                    \"l" +
+            "atitude\": 42.376104,\r\n                    \"longitude\": -71.237189\r\n             " +
+            "   }\r\n            },\r\n            \"twitter\": {\r\n                \"created_at\": \"F" +
+            "ri, 17 Aug 2012 14:13:08 +0000\",\r\n                \"domains\": [\r\n                " +
+            "    \"4sq.com\"\r\n                ],\r\n                \"geo\": {\r\n                   " +
+            " \"latitude\": 42.376104,\r\n                    \"longitude\": -71.237189\r\n          " +
+            "      },\r\n                \"id\": \"111111111111111111\",\r\n                \"links\": " +
+            "[\r\n                    \"http://4sq.com/NLM3gD\"\r\n                ],\r\n            " +
+            "    \"mentions\": [\r\n                    \"beyonce\",\r\n                    \"ladygaga" +
+            "\"\r\n                ],\r\n                \"place\": {\r\n                    \"id\": \"90" +
+            "ad0a08b3333d6d\",\r\n                    \"url\": \"http://api.twitter.com/1/geo/id/ex" +
+            "ample.json\",\r\n                    \"place_type\": \"poi\",\r\n                    \"cou" +
+            "ntry\": \"United States\",\r\n                    \"country_code\": \"US\",\r\n            " +
+            "        \"full_name\": \"Cafe On the Common, Waltham\",\r\n                    \"name\":" +
+            " \"Cafe On the Common\"\r\n                },\r\n                \"source\": \"<a href=\\\"" +
+            "http://example.com\\\" rel=\\\"nofollow\\\">example</a>\",\r\n                \"text\": \"I " +
+            "like ice cream\",\r\n                \"user\": {\r\n                    \"name\": \"John D" +
+            "oe\",\r\n                    \"url\": \"http://about.me/John Doe\",\r\n                  " +
+            "  \"description\": \"all my tweets...\",\r\n                    \"location\": \"London\",\r" +
+            "\n                    \"statuses_count\": 9689,\r\n                    \"followers_cou" +
+            "nt\": 2054,\r\n                    \"friends_count\": 2016,\r\n                    \"scr" +
+            "een_name\": \"johndoe\",\r\n                    \"lang\": \"en\",\r\n                    \"t" +
+            "ime_zone\": \"Eastern Time (US & Canada)\",\r\n                    \"utc_offset\": -180" +
+            "00,\r\n                    \"listed_count\": 118,\r\n                    \"id\": 1111111" +
+            "1,\r\n                    \"id_str\": \"11111111\",\r\n                    \"geo_enabled\"" +
+            ": true,\r\n                    \"created_at\": \"Fri, 30 Nov 2007 21:26:38 +0000\"\r\n  " +
+            "              }\r\n            }\r\n        },\r\n        {\r\n            \"demographic\"" +
+            ": {\r\n                \"gender\": \"mostly_male\"\r\n            },\r\n            \"inter" +
+            "action\": {\r\n                \"source\": \"example\",\r\n                \"author\": {\r\n " +
+            "                   \"username\": \"JohnDoe\",\r\n                    \"name\": \"John Doe" +
+            "\",\r\n                    \"id\": 11111111,\r\n                    \"avatar\": \"http://a" +
+            "0.twimg.com/profile_images/1111111111/example.jpg\",\r\n                    \"link\":" +
+            " \"http://twitter.com/JohnDoe\"\r\n                },\r\n                \"type\": \"twit" +
+            "ter\",\r\n                \"created_at\": \"Fri, 17 Aug 2012 14:13:09 +0000\",\r\n       " +
+            "         \"content\": \"I love ice cream!\",\r\n                \"id\": \"1a1a1a1a1a1a1a1" +
+            "a1a1a1a1a1a1a1a1a\",\r\n                \"link\": \"http://twitter.com/JohnDoe/statuse" +
+            "s/111111111111111111\",\r\n                \"geo\": {\r\n                    \"latitude\"" +
+            ": 41.48454863,\r\n                    \"longitude\": -72.79693173\r\n                }" +
+            "\r\n            },\r\n            \"twitter\": {\r\n                \"created_at\": \"Fri, " +
+            "17 Aug 2012 14:13:09 +0000\",\r\n                \"domains\": [\r\n                    " +
+            "\"4sq.com\"\r\n                ],\r\n                \"geo\": {\r\n                    \"la" +
+            "titude\": 41.48454863,\r\n                    \"longitude\": -72.79693173\r\n          " +
+            "      },\r\n                \"id\": \"111111111111111111\",\r\n                \"links\": " +
+            "[\r\n                    \"http://4sq.com/NMH47L\"\r\n                ],\r\n            " +
+            "    \"place\": {\r\n                    \"id\": \"e5ac52573b5f3333\",\r\n                 " +
+            "   \"url\": \"http://api.twitter.com/1/geo/id/1a1a1a1a1a1a1a1a.json\",\r\n            " +
+            "        \"place_type\": \"poi\",\r\n                    \"country\": \"United States\",\r\n " +
+            "                   \"country_code\": \"US\",\r\n                    \"full_name\": \"Will" +
+            "ow Farm\",\r\n                    \"name\": \"Willow Farm\"\r\n                },\r\n      " +
+            "          \"source\": \"<a href=\\\"http://example.com\\\" rel=\\\"nofollow\\\">example</a>" +
+            "\",\r\n                \"text\": \"I love ice cream\",\r\n                \"user\": {\r\n    " +
+            "                \"name\": \"John Doe\",\r\n                    \"description\": \"Man of " +
+            "mystery\\n\",\r\n                    \"location\": \"Main street\",\r\n                   " +
+            " \"statuses_count\": 10073,\r\n                    \"followers_count\": 444,\r\n        " +
+            "            \"friends_count\": 533,\r\n                    \"screen_name\": \"John Doe\"" +
+            ",\r\n                    \"lang\": \"en\",\r\n                    \"time_zone\": \"Quito\",\r" +
+            "\n                    \"utc_offset\": -18000,\r\n                    \"listed_count\": " +
+            "9,\r\n                    \"id\": 11111111,\r\n                    \"id_str\": \"11111111" +
+            "\",\r\n                    \"geo_enabled\": true,\r\n                    \"created_at\": " +
+            "\"Sun, 26 Apr 2009 23:38:45 +0000\"\r\n                }\r\n            }\r\n        }\r\n" +
+            "    ]\r\n}")]
+        public string PullJsonMetaFormat {
+            get {
+                return ((string)(this["PullJsonMetaFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("[\r\n    {\r\n        \"interaction\": {\r\n            \"source\": \"web\",\r\n            \"au" +
+            "thor\": {\r\n                \"username\": \"johndoe\",\r\n                \"name\": \"John " +
+            "Doe\",\r\n                \"id\": 10750902,\r\n                \"avatar\": \"http://a0.twi" +
+            "mg.com/profile_images/1111111111/example.jpeg\",\r\n                \"link\": \"http:/" +
+            "/twitter.com/johndoe\"\r\n            },\r\n            \"type\": \"twitter\",\r\n         " +
+            "   \"created_at\": \"Fri, 17 Aug 2012 14:13:08 +0000\",\r\n            \"content\": \"I l" +
+            "ike ice cream!\",\r\n            \"id\": \"1e1e875ab43fa233e074337458bc1dca\",\r\n       " +
+            "     \"link\": \"http://twitter.com/johndoe/statuses/111111111111111111\",\r\n        " +
+            "    \"geo\": {\r\n                \"latitude\": 42.376104,\r\n                \"longitude" +
+            "\": -71.237189\r\n            }\r\n        },\r\n        \"twitter\": {\r\n            \"cre" +
+            "ated_at\": \"Fri, 17 Aug 2012 14:13:08 +0000\",\r\n            \"domains\": [\r\n        " +
+            "        \"4sq.com\"\r\n            ],\r\n            \"geo\": {\r\n                \"latitu" +
+            "de\": 42.376104,\r\n                \"longitude\": -71.237189\r\n            },\r\n      " +
+            "      \"id\": \"111111111111111111\",\r\n            \"links\": [\r\n                \"http" +
+            "://4sq.com/NLM3gD\"\r\n            ],\r\n            \"mentions\": [\r\n                \"" +
+            "beyonce\",\r\n                \"ladygaga\"\r\n            ],\r\n            \"place\": {\r\n " +
+            "               \"id\": \"90ad0a08b3333d6d\",\r\n                \"url\": \"http://api.twi" +
+            "tter.com/1/geo/id/example.json\",\r\n                \"place_type\": \"poi\",\r\n        " +
+            "        \"country\": \"United States\",\r\n                \"country_code\": \"US\",\r\n    " +
+            "            \"full_name\": \"Cafe On the Common, Waltham\",\r\n                \"name\":" +
+            " \"Cafe On the Common\"\r\n            },\r\n            \"source\": \"<a href=\\\"http://e" +
+            "xample.com\\\" rel=\\\"nofollow\\\">example</a>\",\r\n            \"text\": \"I like ice cre" +
+            "am\",\r\n            \"user\": {\r\n                \"name\": \"John Doe\",\r\n              " +
+            "  \"url\": \"http://about.me/John Doe\",\r\n                \"description\": \"all my twe" +
+            "ets...\",\r\n                \"location\": \"London\",\r\n                \"statuses_count" +
+            "\": 9689,\r\n                \"followers_count\": 2054,\r\n                \"friends_cou" +
+            "nt\": 2016,\r\n                \"screen_name\": \"johndoe\",\r\n                \"lang\": \"" +
+            "en\",\r\n                \"time_zone\": \"Eastern Time (US & Canada)\",\r\n              " +
+            "  \"utc_offset\": -18000,\r\n                \"listed_count\": 118,\r\n                \"" +
+            "id\": 11111111,\r\n                \"id_str\": \"11111111\",\r\n                \"geo_enab" +
+            "led\": true,\r\n                \"created_at\": \"Fri, 30 Nov 2007 21:26:38 +0000\"\r\n  " +
+            "          }\r\n        }\r\n    },\r\n    {\r\n        \"demographic\": {\r\n            \"ge" +
+            "nder\": \"mostly_male\"\r\n        },\r\n        \"interaction\": {\r\n            \"source\"" +
+            ": \"web\",\r\n            \"author\": {\r\n                \"username\": \"JohnDoe\",\r\n     " +
+            "           \"name\": \"John Doe\",\r\n                \"id\": 11111111,\r\n               " +
+            " \"avatar\": \"http://a0.twimg.com/profile_images/1111111111/example.jpg\",\r\n       " +
+            "         \"link\": \"http://twitter.com/JohnDoe\"\r\n            },\r\n            \"type" +
+            "\": \"twitter\",\r\n            \"created_at\": \"Fri, 17 Aug 2012 14:13:09 +0000\",\r\n   " +
+            "         \"content\": \"I love ice cream!\",\r\n            \"id\": \"1a1a1a1a1a1a1a1a1a1" +
+            "a1a1a1a1a1a1a\",\r\n            \"link\": \"http://twitter.com/JohnDoe/statuses/111111" +
+            "111111111111\",\r\n            \"geo\": {\r\n                \"latitude\": 41.48454863,\r\n" +
+            "                \"longitude\": -72.79693173\r\n            }\r\n        },\r\n        \"t" +
+            "witter\": {\r\n            \"created_at\": \"Fri, 17 Aug 2012 14:13:09 +0000\",\r\n      " +
+            "      \"domains\": [\r\n                \"4sq.com\"\r\n            ],\r\n            \"geo\"" +
+            ": {\r\n                \"latitude\": 41.48454863,\r\n                \"longitude\": -72." +
+            "79693173\r\n            },\r\n            \"id\": \"111111111111111111\",\r\n            \"" +
+            "links\": [\r\n                \"http://4sq.com/NMH47L\"\r\n            ],\r\n            " +
+            "\"place\": {\r\n                \"id\": \"e5ac52573b5f3333\",\r\n                \"url\": \"h" +
+            "ttp://api.twitter.com/1/geo/id/1a1a1a1a1a1a1a1a.json\",\r\n                \"place_t" +
+            "ype\": \"poi\",\r\n                \"country\": \"United States\",\r\n                \"coun" +
+            "try_code\": \"US\",\r\n                \"full_name\": \"Willow Farm\",\r\n                \"" +
+            "name\": \"Willow Farm\"\r\n            },\r\n            \"source\": \"<a href=\\\"http://ex" +
+            "ample.com\\\" rel=\\\"nofollow\\\">example</a>\",\r\n            \"text\": \"I love ice crea" +
+            "m\",\r\n            \"user\": {\r\n                \"name\": \"John Doe\",\r\n               " +
+            " \"description\": \"Man of mystery\\n\",\r\n                \"location\": \"Main street\",\r" +
+            "\n                \"statuses_count\": 10073,\r\n                \"followers_count\": 44" +
+            "4,\r\n                \"friends_count\": 533,\r\n                \"screen_name\": \"John " +
+            "Doe\",\r\n                \"lang\": \"en\",\r\n                \"time_zone\": \"Quito\",\r\n   " +
+            "             \"utc_offset\": -18000,\r\n                \"listed_count\": 9,\r\n        " +
+            "        \"id\": 11111111,\r\n                \"id_str\": \"11111111\",\r\n                " +
+            "\"geo_enabled\": true,\r\n                \"created_at\": \"Sun, 26 Apr 2009 23:38:45 +" +
+            "0000\"\r\n            }\r\n        }\r\n    }\r\n]")]
+        public string PullJsonArrayFormat {
+            get {
+                return ((string)(this["PullJsonArrayFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{ \"interaction\": { \"source\": \"web\", \"author\": { \"username\": \"johndoe\", \"name\": \"J" +
+            "ohn Doe\", \"id\": 10750902, \"avatar\": \"http://a0.twimg.com/profile_images/11111111" +
+            "11/example.jpeg\", \"link\": \"http://twitter.com/johndoe\" }, \"type\": \"twitter\", \"cr" +
+            "eated_at\": \"Fri, 17 Aug 2012 14:13:08 +0000\", \"content\": \"I like ice cream!\", \"i" +
+            "d\": \"1e1e875ab43fa233e074337458bc1dca\", \"link\": \"http://twitter.com/johndoe/stat" +
+            "uses/111111111111111111\", \"geo\": { \"latitude\": 42.376104, \"longitude\": -71.23718" +
+            "9 } }, \"twitter\": { \"created_at\": \"Fri, 17 Aug 2012 14:13:08 +0000\", \"domains\": " +
+            "[ \"4sq.com\" ], \"geo\": { \"latitude\": 42.376104, \"longitude\": -71.237189 }, \"id\": " +
+            "\"111111111111111111\", \"links\": [ \"http://4sq.com/NLM3gD\" ], \"mentions\": [ \"beyon" +
+            "ce\", \"ladygaga\" ], \"place\": { \"id\": \"90ad0a08b3333d6d\", \"url\": \"http://api.twitt" +
+            "er.com/1/geo/id/example.json\", \"place_type\": \"poi\", \"country\": \"United States\", " +
+            "\"country_code\": \"US\", \"full_name\": \"Cafe On the Common, Waltham\", \"name\": \"Cafe " +
+            "On the Common\" }, \"source\": \"<a href=\\\"http://example.com\\\" rel=\\\"nofollow\\\">exa" +
+            "mple</a>\", \"text\": \"I like ice cream\", \"user\": { \"name\": \"John Doe\", \"url\": \"htt" +
+            "p://about.me/John Doe\", \"description\": \"all my tweets...\", \"location\": \"London\"," +
+            " \"statuses_count\": 9689, \"followers_count\": 2054, \"friends_count\": 2016, \"screen" +
+            "_name\": \"johndoe\", \"lang\": \"en\", \"time_zone\": \"Eastern Time (US & Canada)\", \"utc" +
+            "_offset\": -18000, \"listed_count\": 118, \"id\": 11111111, \"id_str\": \"11111111\", \"ge" +
+            "o_enabled\": true, \"created_at\": \"Fri, 30 Nov 2007 21:26:38 +0000\" } } }\r\n{ \"demo" +
+            "graphic\": { \"gender\": \"mostly_male\" }, \"interaction\": { \"source\": \"web\", \"author" +
+            "\": { \"username\": \"JohnDoe\", \"name\": \"John Doe\", \"id\": 11111111, \"avatar\": \"http:" +
+            "//a0.twimg.com/profile_images/1111111111/example.jpg\", \"link\": \"http://twitter.c" +
+            "om/JohnDoe\" }, \"type\": \"twitter\", \"created_at\": \"Fri, 17 Aug 2012 14:13:09 +0000" +
+            "\", \"content\": \"I love ice cream!\", \"id\": \"1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a\", \"li" +
+            "nk\": \"http://twitter.com/JohnDoe/statuses/111111111111111111\", \"geo\": { \"latitud" +
+            "e\": 41.48454863, \"longitude\": -72.79693173 } }, \"twitter\": { \"created_at\": \"Fri," +
+            " 17 Aug 2012 14:13:09 +0000\", \"domains\": [ \"4sq.com\" ], \"geo\": { \"latitude\": 41." +
+            "48454863, \"longitude\": -72.79693173 }, \"id\": \"111111111111111111\", \"links\": [ \"h" +
+            "ttp://4sq.com/NMH47L\" ], \"place\": { \"id\": \"e5ac52573b5f3333\", \"url\": \"http://api" +
+            ".twitter.com/1/geo/id/1a1a1a1a1a1a1a1a.json\", \"place_type\": \"poi\", \"country\": \"U" +
+            "nited States\", \"country_code\": \"US\", \"full_name\": \"Willow Farm\", \"name\": \"Willow" +
+            " Farm\" }, \"source\": \"<a href=\\\"http://example.com\\\" rel=\\\"nofollow\\\">example</a>" +
+            "\", \"text\": \"I love ice cream\", \"user\": { \"name\": \"John Doe\", \"description\": \"Man" +
+            " of mystery\\n\", \"location\": \"Main street\", \"statuses_count\": 10073, \"followers_c" +
+            "ount\": 444, \"friends_count\": 533, \"screen_name\": \"John Doe\", \"lang\": \"en\", \"time" +
+            "_zone\": \"Quito\", \"utc_offset\": -18000, \"listed_count\": 9, \"id\": 11111111, \"id_st" +
+            "r\": \"11111111\", \"geo_enabled\": true, \"created_at\": \"Sun, 26 Apr 2009 23:38:45 +0" +
+            "000\" } } }")]
+        public string PullJsonNewLineFormat {
+            get {
+                return ((string)(this["PullJsonNewLineFormat"]));
+            }
+        }
     }
 }

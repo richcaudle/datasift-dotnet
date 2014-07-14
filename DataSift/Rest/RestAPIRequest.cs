@@ -32,13 +32,23 @@ namespace DataSift.Rest
         public RestAPIResponse Request(string endpoint, dynamic parameters = null, RestSharp.Method method = Method.GET)
         {
             var request = new RestRequest(endpoint, method);
+            RestAPIResponse result = null;
+
             if (parameters != null) request.Parameters.AddRange(APIHelpers.ParseParameters(parameters));
 
             IRestResponse response = _client.Execute(request);
 
-            var result = new RestAPIResponse() { RateLimit = APIHelpers.ParseReturnedHeaders(response.Headers), StatusCode = response.StatusCode };
-            result.Data = APIHelpers.DeserializeResponse(response.Content);
-
+            if(endpoint == "pull")
+            {
+                result = new PullAPIResponse() { RateLimit = APIHelpers.ParseRateLimitHeaders(response.Headers), StatusCode = response.StatusCode, PullDetails = APIHelpers.ParsePullDetailHeaders(response.Headers) };
+                result.Data = APIHelpers.DeserializeResponse(response.Content, ((PullAPIResponse)result).PullDetails.Format);
+            }
+            else
+            {
+                result = new RestAPIResponse() { RateLimit = APIHelpers.ParseRateLimitHeaders(response.Headers), StatusCode = response.StatusCode };
+                result.Data = APIHelpers.DeserializeResponse(response.Content);
+            }
+            
             switch((int)response.StatusCode)
             {
                 // Ok status codes

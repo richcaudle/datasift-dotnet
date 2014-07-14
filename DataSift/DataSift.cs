@@ -100,6 +100,18 @@ namespace DataSift
             return GetRequest().Request("balance");
         }
 
+        public PullAPIResponse Pull(string id, int? size = null, string cursor = null)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>(id.Trim().Length > 0);
+            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((size.HasValue) ? size > 0: true);
+            Contract.Requires<ArgumentException>((cursor != null) ? cursor.Trim().Length > 0 : true);
+            Contract.Requires<ArgumentException>((cursor != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(cursor) : true, "Cursor should be a 32 character string of lower-case letters and numbers");
+
+            return (PullAPIResponse)GetRequest().Request("pull", new { id = id, size = size, cursor = cursor });
+        }
+
         #endregion
 
     }

@@ -15,24 +15,53 @@ namespace DataSift
 {
     public class APIHelpers
     {
-        public static dynamic DeserializeResponse(string data)
+        public static dynamic DeserializeResponse(string data, string format = null)
         {
             // Empty responses
             if (String.IsNullOrWhiteSpace(data)) return null;
             if (data.Trim() == "[]") return null;
 
+            var converter = new ExpandoObjectConverter();
             data = data.Trim();
 
-            if(data.StartsWith("["))
+            if(format != null)
             {
-                var converter = new ExpandoObjectConverter();
-                return JsonConvert.DeserializeObject<List<ExpandoObject>>(data, converter);
+                // Data response (such as from Pull requests)
+                switch(format)
+                {
+                    case "json_meta":
+                        return JsonConvert.DeserializeObject<ExpandoObject>(data, converter);
+                    case "json_array":
+                        return JsonConvert.DeserializeObject<List<ExpandoObject>>(data, converter);
+                    case "json_new_line":
+
+                        var items = new List<ExpandoObject>();
+
+                        foreach(var line in data.Split('\n'))
+                        {
+                            items.Add(JsonConvert.DeserializeObject<ExpandoObject>(line, converter));
+                        }
+                        return items;
+
+                    default:
+                        throw new ArgumentException("Unrecognised serialization format for data", "format");
+                }
+
             }
-            else 
+            else
             {
-                var converter = new ExpandoObjectConverter();
-                return JsonConvert.DeserializeObject<ExpandoObject>(data, converter);
+                // Standard API responses
+
+                if (data.StartsWith("["))
+                {
+                    return JsonConvert.DeserializeObject<List<ExpandoObject>>(data, converter);
+                }
+                else
+                {
+                    return JsonConvert.DeserializeObject<ExpandoObject>(data, converter);
+                }
             }
+            
         }
 
         public static bool HasAttr(dynamic expando, string key)
@@ -40,7 +69,7 @@ namespace DataSift
             return ((IDictionary<string, object>)expando).ContainsKey(key);
         }
 
-        public static RateLimitInfo ParseReturnedHeaders(IList<Parameter> headers)
+        public static RateLimitInfo ParseRateLimitHeaders(IList<Parameter> headers)
         {
             var result = new RateLimitInfo();
 
@@ -63,6 +92,29 @@ namespace DataSift
             return result;
         }
 
+        public static PullInfo ParsePullDetailHeaders(IList<Parameter> headers)
+        {
+            var result = new PullInfo();
+
+            foreach (var header in headers)
+            {
+                switch (header.Name)
+                {
+                    case "X-DataSift-Format":
+                        result.Format = (string)header.Value;
+                        break;
+                    case "X-DataSift-Cursor-Current":
+                        result.CursorCurrent = (string)header.Value;
+                        break;
+                    case "X-DataSift-Cursor-Next":
+                        result.CursorNext = (string)header.Value;
+                        break;
+                }
+            }
+
+            return result;
+        }
+
         public static List<Parameter> ParseParameters(dynamic parameters)
         {
             List<Parameter> result = new List<Parameter>();
@@ -74,12 +126,12 @@ namespace DataSift
                 {
                     if (val.GetType().IsEnum)
                         val = GetEnumDescription(val);
-
-                    if (val.GetType().IsArray)
+                    else if (val.GetType().IsArray)
                         val = String.Join(",", val);
-
-                    if (prop.PropertyType == typeof(DateTimeOffset))
+                    else if (prop.PropertyType == typeof(DateTimeOffset))
                         val = ToUnixTime(val);
+                    else if (val.GetType().IsGenericType)
+                        val = JsonConvert.SerializeObject(val);
 
                     result.Add(new Parameter()
                     {

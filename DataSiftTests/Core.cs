@@ -124,5 +124,75 @@ namespace DataSiftTests
 
         #endregion
 
+        #region Pull
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Pull_Null_Id_Fails()
+        {
+            Client.Pull(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Pull_Empty_Id_Fails()
+        {
+            Client.Pull("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Pull_Bad_Format_Id_Fails()
+        {
+            Client.Pull("pull");
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Pull_Size_Less_Than_One_Fails()
+        {
+            Client.Pull("08b923395b6ce8bfa4d96f57f863a1c3", size: 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Pull_Empty_Cursor_Fails()
+        {
+            Client.Pull("08b923395b6ce8bfa4d96f57f863a1c3", cursor: "");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Pull_Bad_Format_Cursor_Fails()
+        {
+            Client.Pull("08b923395b6ce8bfa4d96f57f863a1c3", cursor: "cursor");
+        }
+
+        [TestMethod]
+        public void Pull_Correct_Args__JsonMetaFormat_Succeeds()
+        {
+            var response = Client.Pull("08b923395b6ce8bfa4d96f57jsonmeta", size: 100000, cursor: "3b29a57fa62474d2c3cd4ca55510c4fe");
+            Assert.AreEqual("johndoe", response.Data.interactions[0].interaction.author.username);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [TestMethod]
+        public void Pull_Correct_Args__JsonArrayFormat_Succeeds()
+        {
+            var response = Client.Pull("08b923395b6ce8bfa4d96f5jsonarray", size: 100000, cursor: "3b29a57fa62474d2c3cd4ca55510c4fe");
+            Assert.AreEqual("johndoe", response.Data[0].interaction.author.username);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [TestMethod]
+        public void Pull_Correct_Args__JsonNewlineFormat_Succeeds()
+        {
+            var response = Client.Pull("08b923395b6ce8bfa4d96jsonnewline", size: 100000, cursor: "3b29a57fa62474d2c3cd4ca55510c4fe");
+            Assert.AreEqual("johndoe", response.Data[0].interaction.author.username);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+
+        #endregion
     }
 }

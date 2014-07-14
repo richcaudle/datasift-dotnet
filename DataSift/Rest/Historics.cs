@@ -53,9 +53,23 @@ namespace DataSift.Rest
             return _client.GetRequest().Request("historics/delete", new { id = id }, Method.DELETE); 
         }
 
-        public RestAPIResponse Start() { return null; }
+        public RestAPIResponse Start(string id)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>(id.Trim().Length > 0);
+            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{20}").IsMatch(id) : true, "ID should be a 20 character string of lower-case letters and numbers");
 
-        public RestAPIResponse Stop() { return null; }
+            return _client.GetRequest().Request("historics/start", new { id = id }, Method.PUT); 
+        }
+
+        public RestAPIResponse Stop(string id)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>(id.Trim().Length > 0);
+            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{20}").IsMatch(id) : true, "ID should be a 20 character string of lower-case letters and numbers");
+
+            return _client.GetRequest().Request("historics/stop", new { id = id }, Method.PUT); 
+        }
 
         public RestAPIResponse Update(string id, string name) 
         {
@@ -80,9 +94,23 @@ namespace DataSift.Rest
             return _client.GetRequest().Request("historics/status", new { start = start, end = end, sources = sources });
         }
 
-        public RestAPIResponse Pause() { return null; }
+        public RestAPIResponse Pause(string id)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>(id.Trim().Length > 0);
+            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{20}").IsMatch(id) : true, "ID should be a 20 character string of lower-case letters and numbers");
 
-        public RestAPIResponse Resume() { return null; }
+            return _client.GetRequest().Request("historics/pause", new { id = id }, Method.PUT); 
+        }
+
+        public RestAPIResponse Resume(string id)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>(id.Trim().Length > 0);
+            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{20}").IsMatch(id) : true, "ID should be a 20 character string of lower-case letters and numbers");
+
+            return _client.GetRequest().Request("historics/resume", new { id = id }, Method.PUT); 
+        }
 
     }
 }

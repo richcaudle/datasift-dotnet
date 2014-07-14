@@ -255,5 +255,133 @@ namespace DataSiftTests
          
         #endregion
 
+        #region Start
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Start_Null_Id_Fails()
+        {
+            Client.Historics.Start(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Start_Empty_Id_Fails()
+        {
+            Client.Historics.Start("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Start_Bad_Format_Id_Fails()
+        {
+            Client.Historics.Stop("start");
+        }
+
+        [TestMethod]
+        public void Start_Correct_Args_Succeeds()
+        {
+            var response = Client.Historics.Start("2490313575797478a5c3");
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
+        #endregion
+
+        #region Stop
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Stop_Null_Id_Fails()
+        {
+            Client.Historics.Stop(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Stop_Empty_Id_Fails()
+        {
+            Client.Historics.Stop("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Stop_Bad_Format_Id_Fails()
+        {
+            Client.Historics.Stop("stop");
+        }
+
+        [TestMethod]
+        public void Stop_Correct_Args_Succeeds()
+        {
+            var response = Client.Historics.Stop("2490313575797478a5c3");
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
+        #endregion
+
+        #region Pause
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Pause_Null_Id_Fails()
+        {
+            Client.Historics.Pause(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Pause_Empty_Id_Fails()
+        {
+            Client.Historics.Pause("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Pause_Bad_Format_Id_Fails()
+        {
+            Client.Historics.Pause("delete");
+        }
+
+        [TestMethod]
+        public void Pause_Correct_Args_Succeeds()
+        {
+            var response = Client.Historics.Pause("2490313575797478a5c3");
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
+        #endregion
+
+        #region Resume
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Resume_Null_Id_Fails()
+        {
+            Client.Historics.Resume(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Resume_Empty_Id_Fails()
+        {
+            Client.Historics.Resume("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Resume_Bad_Format_Id_Fails()
+        {
+            Client.Historics.Resume("delete");
+        }
+
+        [TestMethod]
+        public void Resume_Correct_Args_Succeeds()
+        {
+            var response = Client.Historics.Resume("2490313575797478a5c3");
+            Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
+        #endregion
+
     }
 }

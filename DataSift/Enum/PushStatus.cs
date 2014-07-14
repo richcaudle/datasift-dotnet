@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataSift.Enum
 {
-    public enum OrderBy
+    public enum PushStatus
     {
-        [Description("updated_at")]
-        UpdatedAt,
-        [Description("created_at")]
-        CreatedAt
+        Active,
+        Paused,
+        [Description("waiting_for_start")]
+        WaitingForStart
     }
 }
