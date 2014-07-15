@@ -31,6 +31,9 @@ namespace DataSift.Rest
 
         public RestAPIResponse Prepare(string hash, DateTimeOffset start, DateTimeOffset end, string name, string[] sources, Sample? sample = null)
         {
+            Contract.Requires<ArgumentNullException>(name != null);
+            Contract.Requires<ArgumentException>(name.Trim().Length > 0);
+
             Contract.Requires<ArgumentNullException>(hash != null);
             Contract.Requires<ArgumentException>(hash.Trim().Length > 0);
             Contract.Requires<ArgumentException>(new Regex(@"[a-z0-9]{32}").IsMatch(hash), "Hash should be a 32 character string of lower-case letters and numbers");

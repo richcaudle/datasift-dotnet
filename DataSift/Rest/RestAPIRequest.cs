@@ -34,7 +34,7 @@ namespace DataSift.Rest
             var request = new RestRequest(endpoint, method);
             RestAPIResponse result = null;
 
-            if (parameters != null) request.Parameters.AddRange(APIHelpers.ParseParameters(parameters));
+            if (parameters != null) request.Parameters.AddRange(APIHelpers.ParseParameters(endpoint, parameters));
 
             IRestResponse response = _client.Execute(request);
 
@@ -69,7 +69,7 @@ namespace DataSift.Rest
                 case 416:
                 case 500:
                 case 503:
-                    throw new RestAPIException(result, (APIHelpers.HasAttr(result.Data, "error")) ? result.Data.error : "The request failed, please see the Data & StatusCode properties for more details.");
+                     throw new RestAPIException(result, (APIHelpers.HasAttr(result.Data, "error")) ? result.Data.error : "The request failed, please see the Data & StatusCode properties for more details.");
             }
             
             return result;

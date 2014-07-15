@@ -78,6 +78,20 @@ namespace DataSiftTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        public void Prepare_Null_Name_Fails()
+        {
+            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), null, new string[] { "twitter" });
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Prepare_Empty_Name_Fails()
+        {
+            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "", new string[] { "twitter" });
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void Prepare_Null_Hash_Fails()
         {
             Client.Historics.Prepare(null, DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "Library test", new string[] { "twitter" });

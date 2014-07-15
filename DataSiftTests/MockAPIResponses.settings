@@ -971,5 +971,590 @@
       <Value Profile="(Default)">{ "interaction": { "source": "web", "author": { "username": "johndoe", "name": "John Doe", "id": 10750902, "avatar": "http://a0.twimg.com/profile_images/1111111111/example.jpeg", "link": "http://twitter.com/johndoe" }, "type": "twitter", "created_at": "Fri, 17 Aug 2012 14:13:08 +0000", "content": "I like ice cream!", "id": "1e1e875ab43fa233e074337458bc1dca", "link": "http://twitter.com/johndoe/statuses/111111111111111111", "geo": { "latitude": 42.376104, "longitude": -71.237189 } }, "twitter": { "created_at": "Fri, 17 Aug 2012 14:13:08 +0000", "domains": [ "4sq.com" ], "geo": { "latitude": 42.376104, "longitude": -71.237189 }, "id": "111111111111111111", "links": [ "http://4sq.com/NLM3gD" ], "mentions": [ "beyonce", "ladygaga" ], "place": { "id": "90ad0a08b3333d6d", "url": "http://api.twitter.com/1/geo/id/example.json", "place_type": "poi", "country": "United States", "country_code": "US", "full_name": "Cafe On the Common, Waltham", "name": "Cafe On the Common" }, "source": "&lt;a href=\"http://example.com\" rel=\"nofollow\"&gt;example&lt;/a&gt;", "text": "I like ice cream", "user": { "name": "John Doe", "url": "http://about.me/John Doe", "description": "all my tweets...", "location": "London", "statuses_count": 9689, "followers_count": 2054, "friends_count": 2016, "screen_name": "johndoe", "lang": "en", "time_zone": "Eastern Time (US &amp; Canada)", "utc_offset": -18000, "listed_count": 118, "id": 11111111, "id_str": "11111111", "geo_enabled": true, "created_at": "Fri, 30 Nov 2007 21:26:38 +0000" } } }
 { "demographic": { "gender": "mostly_male" }, "interaction": { "source": "web", "author": { "username": "JohnDoe", "name": "John Doe", "id": 11111111, "avatar": "http://a0.twimg.com/profile_images/1111111111/example.jpg", "link": "http://twitter.com/JohnDoe" }, "type": "twitter", "created_at": "Fri, 17 Aug 2012 14:13:09 +0000", "content": "I love ice cream!", "id": "1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a", "link": "http://twitter.com/JohnDoe/statuses/111111111111111111", "geo": { "latitude": 41.48454863, "longitude": -72.79693173 } }, "twitter": { "created_at": "Fri, 17 Aug 2012 14:13:09 +0000", "domains": [ "4sq.com" ], "geo": { "latitude": 41.48454863, "longitude": -72.79693173 }, "id": "111111111111111111", "links": [ "http://4sq.com/NMH47L" ], "place": { "id": "e5ac52573b5f3333", "url": "http://api.twitter.com/1/geo/id/1a1a1a1a1a1a1a1a.json", "place_type": "poi", "country": "United States", "country_code": "US", "full_name": "Willow Farm", "name": "Willow Farm" }, "source": "&lt;a href=\"http://example.com\" rel=\"nofollow\"&gt;example&lt;/a&gt;", "text": "I love ice cream", "user": { "name": "John Doe", "description": "Man of mystery\n", "location": "Main street", "statuses_count": 10073, "followers_count": 444, "friends_count": 533, "screen_name": "John Doe", "lang": "en", "time_zone": "Quito", "utc_offset": -18000, "listed_count": 9, "id": 11111111, "id_str": "11111111", "geo_enabled": true, "created_at": "Sun, 26 Apr 2009 23:38:45 +0000" } } }</Value>
     </Setting>
+    <Setting Name="HistoricsPreviewRunning" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "id": "8d38093ce3a78fbbba6f",
+    "progress": 5,
+    "status": "running",
+    "feeds": "twitter",
+    "sample": 1,
+    "end": 1359936000,
+    "created_at": 1362409489,
+    "start": 1359849600,
+    "user": "12919",
+    "parameters": "interaction.content,wordCount,10",
+    "hash": "93558e17de15072fa126370c37c5bd8f"
+}</Value>
+    </Setting>
+    <Setting Name="HistoricsPreviewFinished" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "id": "c59ce40e865f1704b233",
+    "progress": 100,
+    "status": "succeeded",
+    "feeds": "twitter",
+    "sample": 1,
+    "end": 1359936000,
+    "created_at": 1362500299,
+    "start": 1359849600,
+    "user": "12919",
+    "parameters": "interaction.author.link,targetVol,hour;twitter.user.lang,freqDist,10;twitter.user.followers_count,numStats,hour;interaction.content,wordCount,10",
+    "hash": "93558e17de15072fa126370c37c5bd8f",
+    "data": [
+        {
+            "target": "interaction.author.link",
+            "analysis": "targetVol",
+            "output": {
+                "2013/02/03 21:00:00": 483,
+                "2013/02/03 20:00:00": 455,
+                "2013/02/03 16:00:00": 371,
+                "2013/02/03 07:00:00": 212,
+                "2013/02/03 23:00:00": 3727,
+                "2013/02/03 14:00:00": 272,
+                "2013/02/03 19:00:00": 453,
+                "2013/02/03 13:00:00": 218,
+                "2013/02/03 15:00:00": 328,
+                "2013/02/03 08:00:00": 181,
+                "2013/02/03 11:00:00": 149,
+                "2013/02/03 10:00:00": 158,
+                "2013/02/03 12:00:00": 183,
+                "2013/02/03 09:00:00": 162,
+                "2013/02/03 22:00:00": 543,
+                "2013/02/03 18:00:00": 437,
+                "2013/02/03 06:00:00": 261,
+                "2013/02/03 17:00:00": 396
+            },
+            "interval": "hour"
+        },
+        {
+            "target": "twitter.user.lang",
+            "analysis": "freqDist",
+            "output": {
+                "fr": 30,
+                "pt": 37,
+                "it": 7,
+                "nl": 10,
+                "de": 12,
+                "ru": 8,
+                "id": 26,
+                "en": 5450,
+                "es": 544,
+                "ja": 8
+            },
+            "threshold": 10
+        },
+        {
+            "target": "twitter.user.followers_count",
+            "analysis": "numStats",
+            "output": {
+                "2013/02/03 21:00:00": {
+                    "min": 1,
+                    "max": 50239,
+                    "count": 287,
+                    "sum": 267468
+                },
+                "2013/02/03 20:00:00": {
+                    "min": 1,
+                    "max": 115771,
+                    "count": 264,
+                    "sum": 462205
+                },
+                "2013/02/03 16:00:00": {
+                    "min": 1,
+                    "max": 24212,
+                    "count": 258,
+                    "sum": 217525
+                },
+                "2013/02/03 07:00:00": {
+                    "min": 1,
+                    "max": 7295,
+                    "count": 158,
+                    "sum": 76463
+                },
+                "2013/02/03 23:00:00": {
+                    "min": 1,
+                    "max": 3017366,
+                    "count": 2458,
+                    "sum": 6667940
+                },
+                "2013/02/03 14:00:00": {
+                    "min": 1,
+                    "max": 84525,
+                    "count": 192,
+                    "sum": 238159
+                },
+                "2013/02/03 19:00:00": {
+                    "min": 1,
+                    "max": 4299615,
+                    "count": 290,
+                    "sum": 4621461
+                },
+                "2013/02/03 13:00:00": {
+                    "min": 1,
+                    "max": 1002323,
+                    "count": 168,
+                    "sum": 1410864
+                },
+                "2013/02/03 15:00:00": {
+                    "min": 1,
+                    "max": 4299885,
+                    "count": 250,
+                    "sum": 8931897
+                },
+                "2013/02/03 08:00:00": {
+                    "min": 1,
+                    "max": 667865,
+                    "count": 128,
+                    "sum": 929846
+                },
+                "2013/02/03 11:00:00": {
+                    "min": 1,
+                    "max": 15981,
+                    "count": 118,
+                    "sum": 90075
+                },
+                "2013/02/03 10:00:00": {
+                    "min": 1,
+                    "max": 146451,
+                    "count": 119,
+                    "sum": 227252
+                },
+                "2013/02/03 12:00:00": {
+                    "min": 1,
+                    "max": 102826,
+                    "count": 131,
+                    "sum": 296061
+                },
+                "2013/02/03 09:00:00": {
+                    "min": 1,
+                    "max": 146454,
+                    "count": 125,
+                    "sum": 365938
+                },
+                "2013/02/03 22:00:00": {
+                    "min": 1,
+                    "max": 52317,
+                    "count": 350,
+                    "sum": 329469
+                },
+                "2013/02/03 18:00:00": {
+                    "min": 1,
+                    "max": 4299653,
+                    "count": 292,
+                    "sum": 5310219
+                },
+                "2013/02/03 06:00:00": {
+                    "min": 1,
+                    "max": 34646,
+                    "count": 196,
+                    "sum": 196230
+                },
+                "2013/02/03 17:00:00": {
+                    "min": 1,
+                    "max": 198732,
+                    "count": 270,
+                    "sum": 437504
+                }
+            },
+            "interval": "hour"
+        },
+        {
+            "target": "interaction.content",
+            "analysis": "wordCount",
+            "output": {
+                "blackberry": 561,
+                "super": 433,
+                "disney": 1009,
+                "audi": 352,
+                "commercial": 1670,
+                "doritos": 763,
+                "godaddy": 439,
+                "taylor": 603,
+                "bowl": 421,
+                "swift": 592
+            },
+            "threshold": 10
+        }
+    ]
+}</Value>
+    </Setting>
+    <Setting Name="HistoricsPreviewCreate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "id": "3ddb72ca02389dbf3b46",
+    "created_at": 1364303060
+}</Value>
+    </Setting>
+    <Setting Name="SourceGet" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "count": 2,
+    "page": 1,
+    "pages": 1,
+    "per_page": 20,
+    "sources": [
+        {
+            "name": "",
+            "source_type": "facebook_page",
+            "status": "running",
+            "parameters": [],
+            "auth": [
+                {
+                    "identity_id": "7b1be3a398e646bbb3c7a5cb9717ba45",
+                    "source_id": "49fa6dcb175b4a8ca8cbedb8d9015ed0",
+                    "status": "valid",
+                    "parameters": {
+                        "value": "363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2"
+                    },
+                    "expires_at": 1388556000
+                }
+            ],
+            "resources": [
+                {
+                    "resource_id": "30bc448896de44b88604ac223cb7f26f",
+                    "source_id": "49fa6dcb175b4a8ca8cbedb8d9015ed0",
+                    "status": "valid",
+                    "parameters": {
+                        "url": "http://www.facebook.com/theguardian",
+                        "title": "The Guardian",
+                        "id": 10513336322
+                    }
+                },
+                {
+                    "resource_id": "d43024171340458fb6f124967fd126c1",
+                    "source_id": "49fa6dcb175b4a8ca8cbedb8d9015ed0",
+                    "status": "valid",
+                    "parameters": {
+                        "url": "http://www.giffgaff.com",
+                        "title": "giffgaffmobile",
+                        "id": 287613300716
+                    }
+                }
+            ],
+            "created_at": 1370266044,
+            "id": "48fa6dcb175b4a8ca8cbedb8d9015ed0"
+        },
+        {
+            "name": "",
+            "source_type": "facebook_page",
+            "status": "running",
+            "parameters": [],
+            "auth": [
+                {
+                    "identity_id": "0047a9e7f4bb4931b65e7e9bd299ddd1",
+                    "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+                    "status": "valid",
+                    "parameters": {
+                        "value": "363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2"
+                    },
+                    "expires_at": 1388556000
+                }
+            ],
+            "resources": [
+                {
+                    "resource_id": "d6590d550db94266af6f53884dd65ca4",
+                    "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+                    "status": "valid",
+                    "parameters": {
+                        "url": "http://www.facebook.com/therollingstones",
+                        "title": "The Rolling Stones",
+                        "id": 8305888286
+                    }
+                }
+            ],
+            "created_at": 1370266045,
+            "id": "fa2e72e3a7ae40c2a6e86e96381d8165"
+        }
+    ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceGetById" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "name": "",
+    "source_type": "facebook_page",
+    "status": "running",
+    "parameters": [],
+    "auth": [
+        {
+            "identity_id": "0047a9e7f4bb4931b65e7e9bd299ddd1",
+            "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+            "status": "valid",
+            "parameters": {
+                "value": "363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2"
+            },
+            "expires_at": 1388556000
+        }
+    ],
+    "resources": [
+        {
+            "resource_id": "d6590d550db94266af6f53884dd65ca4",
+            "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+            "status": "valid",
+            "parameters": {
+                "url": "http://www.facebook.com/therollingstones",
+                "title": "The Rolling Stones",
+                "id": 8305888286
+            }
+        }
+    ],
+    "created_at": 1370266044,
+    "id": "fa2e72e3a7ae40c2a6e86e96381d8165"
+}</Value>
+    </Setting>
+    <Setting Name="SourceGetPage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "count": 2,
+    "page": 1,
+    "pages": 2,
+    "per_page": 1,
+    "sources": [
+        {
+            "name": "",
+            "source_type": "facebook_page",
+            "status": "running",
+            "parameters": [],
+            "auth": [
+                {
+                    "identity_id": "7b1be3a398e646bbb3c7a5cb9717ba45",
+                    "source_id": "49fa6dcb175b4a8ca8cbedb8d9015ed0",
+                    "status": "valid",
+                    "parameters": {
+                        "value": "363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2"
+                    },
+                    "expires_at": 1388556000
+                }
+            ],
+            "resources": [
+                {
+                    "resource_id": "30bc448896de44b88604ac223cb7f26f",
+                    "source_id": "49fa6dcb175b4a8ca8cbedb8d9015ed0",
+                    "status": "valid",
+                    "parameters": {
+                        "url": "http://www.facebook.com/theguardian",
+                        "title": "The Guardian",
+                        "id": 10513336322
+                    }
+                },
+                {
+                    "resource_id": "d43024171340458fb6f124967fd126c1",
+                    "source_id": "49fa6dcb175b4a8ca8cbedb8d9015ed0",
+                    "status": "valid",
+                    "parameters": {
+                        "url": "http://www.giffgaff.com",
+                        "title": "giffgaffmobile",
+                        "id": 287613300716
+                    }
+                }
+            ],
+            "created_at": 1370266044,
+            "id": "48fa6dcb175b4a8ca8cbedb8d9015ed0"
+        }
+    ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceCreate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id": "da4f8df71a0f43698acf9240b5ad668f",
+  "name": "news_source",
+  "source_type": "facebook_page",
+  "created_at": 1391707662,
+  "status": "stopped",
+  "parameters": {
+    "posts_by_others": false,
+    "likes": true,
+    "comments": true
+  },
+  "resources": [
+    {
+      "parameters": {
+        "title": "The Guardian",
+        "url": "http://www.facebook.com/theguardian",
+        "id": "10513336322"
+      },
+      "resource_id": "7e8099d7f34f466e8bee01852243e16b"
+    },
+    {
+      "parameters": {
+        "title": "The Sun",
+        "url": "http://www.facebook.com/thesun",
+        "id": "161385360554578"
+      },
+      "resource_id": "b801b1f3a6934cf29e02d092bff9b7f1"
+    }
+  ],
+  "auth": [
+    {
+      "expires_at": 2112112110,
+      "parameters": {
+        "value": "EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+      },
+      "identity_id": "d38e5598142746e19689ddee65ddca55"
+    }
+  ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceStart" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "name": "",
+    "source_type_id": "facebook_page",
+    "status": "active",
+    "parameters": [],
+    "identities": [
+        {
+            "identity_id": "0047a9e7f4bb4931b65e7e9bd299ddd1",
+            "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+            "status": "valid",
+            "parameters": {
+                "value": "363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2"
+            },
+            "expires_at": 1388556000
+        }
+    ],
+    "resources": [
+        {
+            "resource_id": "d6590d550db94266af6f53884dd65ca4",
+            "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+            "status": "valid",
+            "parameters": {
+                "url": "http://www.facebook.com/therollingstones",
+                "title": "The Rolling Stones",
+                "id": 8305888286
+            }
+        }
+    ],
+    "id": "fa2e72e3a7ae40c2a6e86e96381d8165"
+}</Value>
+    </Setting>
+    <Setting Name="SourceStop" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "name": "",
+    "source_type_id": "facebook_page",
+    "status": "paused",
+    "parameters": [],
+    "identities": [
+        {
+            "identity_id": "0047a9e7f4bb4931b65e7e9bd299ddd1",
+            "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+            "status": "valid",
+            "parameters": {
+                "value": "363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2"
+            },
+            "expires_at": 1388556000
+        }
+    ],
+    "resources": [
+        {
+            "resource_id": "d6590d550db94266af6f53884dd65ca4",
+            "source_id": "fd2e72e3a7ae40c2a6e86e96381d8165",
+            "status": "valid",
+            "parameters": {
+                "url": "http://www.facebook.com/therollingstones",
+                "title": "The Rolling Stones",
+                "id": 8305888286
+            }
+        }
+    ],
+    "id": "fa2e72e3a7ae40c2a6e86e96381d8165"
+}</Value>
+    </Setting>
+    <Setting Name="SourceUpdate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id": "da4f8df71a0f43698acf9240b5ad668f",
+  "name": "news_source",
+  "source_type": "facebook_page",
+  "created_at": 1391707662,
+  "status": "running",
+  "parameters": {
+    "posts_by_others": true,
+    "likes": false,
+    "comments": false
+  },
+  "resources": [
+    {
+      "parameters": {
+        "title": "The Guardian",
+        "url": "http://www.facebook.com/theguardian",
+        "id": "10513336322"
+      },
+      "resource_id": "7e8099d7f34f466e8bee01852243e16b"
+    },
+    {
+      "parameters": {
+        "title": "The Sun",
+        "url": "http://www.facebook.com/thesun",
+        "id": "161385360554578"
+      },
+      "resource_id": "b801b1f3a6934cf29e02d092bff9b7f1"
+    }
+  ],
+  "auth": [
+    {
+      "expires_at": 2112112110,
+      "parameters": {
+        "value": "EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+      },
+      "identity_id": "d38e5598142746e19689ddee65ddca55"
+    }
+  ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceLog" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "count": 20,
+    "page": 1,
+    "pages": 1,
+    "per_page": 20,
+    "log_entries": [
+        {
+            "id": 835176,
+            "event_time": 1372133607,
+            "success": false,
+            "message": "OAuthException(4): (#4) Application request limit reached"
+        },
+        {
+            "id": 835158,
+            "event_time": 1372133599,
+            "success": false,
+            "message": "OAuthException(4): (#4) Application request limit reached"
+        }
+    ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceLogPage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "count": 20,
+    "page": 1,
+    "pages": 20,
+    "per_page": 1,
+    "log_entries": [
+        {
+            "id": 835176,
+            "event_time": 1372133607,
+            "success": false,
+            "message": "OAuthException(4): (#4) Application request limit reached"
+        }
+    ]
+}</Value>
+    </Setting>
+    <Setting Name="ListGet" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id1": "List 1",
+  "id2": "List 2"
+}</Value>
+    </Setting>
+    <Setting Name="ListCreate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+    "id": "0x08fa577f_7528_44ce_9671_692f2e3fd25e"
+}</Value>
+    </Setting>
+    <Setting Name="ListExists" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "keyword1": true,
+  "keyword2": false,
+  "keyword3": false
+}</Value>
+    </Setting>
+    <Setting Name="ListReplaceStart" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id": "123456"
+}</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

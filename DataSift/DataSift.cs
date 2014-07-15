@@ -17,7 +17,10 @@ namespace DataSift
         private string _apikey;
         private GetRequestDelegate _getRequest;
         private Historics _historics;
+        private HistoricsPreview _historicsPreview;
+        private Source _source;
         private Push _push;
+        private List _list;
         public delegate IRestAPIRequest GetRequestDelegate(string username, string apikey);
 
         public DataSift(string username, string apikey, GetRequestDelegate requestCreator = null)
@@ -43,6 +46,23 @@ namespace DataSift
 
         #region Properties
 
+        public Source Source
+        {
+            get
+            {
+                if (_source == null) _source = new Source(this);
+                return _source;
+            }
+        }
+        public List List
+        {
+            get
+            {
+                if (_list == null) _list = new List(this);
+                return _list;
+            }
+        }
+
         public Historics Historics
         {
             get
@@ -58,6 +78,15 @@ namespace DataSift
             {
                 if (_push == null) _push = new Push(this);
                 return _push;
+            }
+        }
+
+        public HistoricsPreview HistoricsPreview
+        {
+            get
+            {
+                if (_historicsPreview == null) _historicsPreview = new HistoricsPreview(this);
+                return _historicsPreview;
             }
         }
 

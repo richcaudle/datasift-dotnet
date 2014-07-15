@@ -988,5 +988,491 @@ namespace DataSiftTests {
                 return ((string)(this["PullJsonNewLineFormat"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""id"": ""8d38093ce3a78fbbba6f"",
+    ""progress"": 5,
+    ""status"": ""running"",
+    ""feeds"": ""twitter"",
+    ""sample"": 1,
+    ""end"": 1359936000,
+    ""created_at"": 1362409489,
+    ""start"": 1359849600,
+    ""user"": ""12919"",
+    ""parameters"": ""interaction.content,wordCount,10"",
+    ""hash"": ""93558e17de15072fa126370c37c5bd8f""
+}")]
+        public string HistoricsPreviewRunning {
+            get {
+                return ((string)(this["HistoricsPreviewRunning"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n    \"id\": \"c59ce40e865f1704b233\",\r\n    \"progress\": 100,\r\n    \"status\": \"succee" +
+            "ded\",\r\n    \"feeds\": \"twitter\",\r\n    \"sample\": 1,\r\n    \"end\": 1359936000,\r\n    \"c" +
+            "reated_at\": 1362500299,\r\n    \"start\": 1359849600,\r\n    \"user\": \"12919\",\r\n    \"pa" +
+            "rameters\": \"interaction.author.link,targetVol,hour;twitter.user.lang,freqDist,10" +
+            ";twitter.user.followers_count,numStats,hour;interaction.content,wordCount,10\",\r\n" +
+            "    \"hash\": \"93558e17de15072fa126370c37c5bd8f\",\r\n    \"data\": [\r\n        {\r\n     " +
+            "       \"target\": \"interaction.author.link\",\r\n            \"analysis\": \"targetVol\"" +
+            ",\r\n            \"output\": {\r\n                \"2013/02/03 21:00:00\": 483,\r\n       " +
+            "         \"2013/02/03 20:00:00\": 455,\r\n                \"2013/02/03 16:00:00\": 371" +
+            ",\r\n                \"2013/02/03 07:00:00\": 212,\r\n                \"2013/02/03 23:0" +
+            "0:00\": 3727,\r\n                \"2013/02/03 14:00:00\": 272,\r\n                \"2013" +
+            "/02/03 19:00:00\": 453,\r\n                \"2013/02/03 13:00:00\": 218,\r\n           " +
+            "     \"2013/02/03 15:00:00\": 328,\r\n                \"2013/02/03 08:00:00\": 181,\r\n " +
+            "               \"2013/02/03 11:00:00\": 149,\r\n                \"2013/02/03 10:00:00" +
+            "\": 158,\r\n                \"2013/02/03 12:00:00\": 183,\r\n                \"2013/02/0" +
+            "3 09:00:00\": 162,\r\n                \"2013/02/03 22:00:00\": 543,\r\n                " +
+            "\"2013/02/03 18:00:00\": 437,\r\n                \"2013/02/03 06:00:00\": 261,\r\n      " +
+            "          \"2013/02/03 17:00:00\": 396\r\n            },\r\n            \"interval\": \"h" +
+            "our\"\r\n        },\r\n        {\r\n            \"target\": \"twitter.user.lang\",\r\n       " +
+            "     \"analysis\": \"freqDist\",\r\n            \"output\": {\r\n                \"fr\": 30," +
+            "\r\n                \"pt\": 37,\r\n                \"it\": 7,\r\n                \"nl\": 10," +
+            "\r\n                \"de\": 12,\r\n                \"ru\": 8,\r\n                \"id\": 26," +
+            "\r\n                \"en\": 5450,\r\n                \"es\": 544,\r\n                \"ja\":" +
+            " 8\r\n            },\r\n            \"threshold\": 10\r\n        },\r\n        {\r\n        " +
+            "    \"target\": \"twitter.user.followers_count\",\r\n            \"analysis\": \"numStats" +
+            "\",\r\n            \"output\": {\r\n                \"2013/02/03 21:00:00\": {\r\n         " +
+            "           \"min\": 1,\r\n                    \"max\": 50239,\r\n                    \"co" +
+            "unt\": 287,\r\n                    \"sum\": 267468\r\n                },\r\n             " +
+            "   \"2013/02/03 20:00:00\": {\r\n                    \"min\": 1,\r\n                    " +
+            "\"max\": 115771,\r\n                    \"count\": 264,\r\n                    \"sum\": 46" +
+            "2205\r\n                },\r\n                \"2013/02/03 16:00:00\": {\r\n            " +
+            "        \"min\": 1,\r\n                    \"max\": 24212,\r\n                    \"count" +
+            "\": 258,\r\n                    \"sum\": 217525\r\n                },\r\n                " +
+            "\"2013/02/03 07:00:00\": {\r\n                    \"min\": 1,\r\n                    \"ma" +
+            "x\": 7295,\r\n                    \"count\": 158,\r\n                    \"sum\": 76463\r\n" +
+            "                },\r\n                \"2013/02/03 23:00:00\": {\r\n                  " +
+            "  \"min\": 1,\r\n                    \"max\": 3017366,\r\n                    \"count\": 2" +
+            "458,\r\n                    \"sum\": 6667940\r\n                },\r\n                \"2" +
+            "013/02/03 14:00:00\": {\r\n                    \"min\": 1,\r\n                    \"max\"" +
+            ": 84525,\r\n                    \"count\": 192,\r\n                    \"sum\": 238159\r\n" +
+            "                },\r\n                \"2013/02/03 19:00:00\": {\r\n                  " +
+            "  \"min\": 1,\r\n                    \"max\": 4299615,\r\n                    \"count\": 2" +
+            "90,\r\n                    \"sum\": 4621461\r\n                },\r\n                \"20" +
+            "13/02/03 13:00:00\": {\r\n                    \"min\": 1,\r\n                    \"max\":" +
+            " 1002323,\r\n                    \"count\": 168,\r\n                    \"sum\": 1410864" +
+            "\r\n                },\r\n                \"2013/02/03 15:00:00\": {\r\n                " +
+            "    \"min\": 1,\r\n                    \"max\": 4299885,\r\n                    \"count\":" +
+            " 250,\r\n                    \"sum\": 8931897\r\n                },\r\n                \"" +
+            "2013/02/03 08:00:00\": {\r\n                    \"min\": 1,\r\n                    \"max" +
+            "\": 667865,\r\n                    \"count\": 128,\r\n                    \"sum\": 929846" +
+            "\r\n                },\r\n                \"2013/02/03 11:00:00\": {\r\n                " +
+            "    \"min\": 1,\r\n                    \"max\": 15981,\r\n                    \"count\": 1" +
+            "18,\r\n                    \"sum\": 90075\r\n                },\r\n                \"2013" +
+            "/02/03 10:00:00\": {\r\n                    \"min\": 1,\r\n                    \"max\": 1" +
+            "46451,\r\n                    \"count\": 119,\r\n                    \"sum\": 227252\r\n  " +
+            "              },\r\n                \"2013/02/03 12:00:00\": {\r\n                    " +
+            "\"min\": 1,\r\n                    \"max\": 102826,\r\n                    \"count\": 131," +
+            "\r\n                    \"sum\": 296061\r\n                },\r\n                \"2013/0" +
+            "2/03 09:00:00\": {\r\n                    \"min\": 1,\r\n                    \"max\": 146" +
+            "454,\r\n                    \"count\": 125,\r\n                    \"sum\": 365938\r\n    " +
+            "            },\r\n                \"2013/02/03 22:00:00\": {\r\n                    \"m" +
+            "in\": 1,\r\n                    \"max\": 52317,\r\n                    \"count\": 350,\r\n " +
+            "                   \"sum\": 329469\r\n                },\r\n                \"2013/02/0" +
+            "3 18:00:00\": {\r\n                    \"min\": 1,\r\n                    \"max\": 429965" +
+            "3,\r\n                    \"count\": 292,\r\n                    \"sum\": 5310219\r\n     " +
+            "           },\r\n                \"2013/02/03 06:00:00\": {\r\n                    \"mi" +
+            "n\": 1,\r\n                    \"max\": 34646,\r\n                    \"count\": 196,\r\n  " +
+            "                  \"sum\": 196230\r\n                },\r\n                \"2013/02/03" +
+            " 17:00:00\": {\r\n                    \"min\": 1,\r\n                    \"max\": 198732," +
+            "\r\n                    \"count\": 270,\r\n                    \"sum\": 437504\r\n        " +
+            "        }\r\n            },\r\n            \"interval\": \"hour\"\r\n        },\r\n        {" +
+            "\r\n            \"target\": \"interaction.content\",\r\n            \"analysis\": \"wordCou" +
+            "nt\",\r\n            \"output\": {\r\n                \"blackberry\": 561,\r\n             " +
+            "   \"super\": 433,\r\n                \"disney\": 1009,\r\n                \"audi\": 352,\r" +
+            "\n                \"commercial\": 1670,\r\n                \"doritos\": 763,\r\n         " +
+            "       \"godaddy\": 439,\r\n                \"taylor\": 603,\r\n                \"bowl\": " +
+            "421,\r\n                \"swift\": 592\r\n            },\r\n            \"threshold\": 10\r" +
+            "\n        }\r\n    ]\r\n}")]
+        public string HistoricsPreviewFinished {
+            get {
+                return ((string)(this["HistoricsPreviewFinished"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n    \"id\": \"3ddb72ca02389dbf3b46\",\r\n    \"created_at\": 1364303060\r\n}")]
+        public string HistoricsPreviewCreate {
+            get {
+                return ((string)(this["HistoricsPreviewCreate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n    \"count\": 2,\r\n    \"page\": 1,\r\n    \"pages\": 1,\r\n    \"per_page\": 20,\r\n    \"so" +
+            "urces\": [\r\n        {\r\n            \"name\": \"\",\r\n            \"source_type\": \"faceb" +
+            "ook_page\",\r\n            \"status\": \"running\",\r\n            \"parameters\": [],\r\n   " +
+            "         \"auth\": [\r\n                {\r\n                    \"identity_id\": \"7b1be" +
+            "3a398e646bbb3c7a5cb9717ba45\",\r\n                    \"source_id\": \"49fa6dcb175b4a8" +
+            "ca8cbedb8d9015ed0\",\r\n                    \"status\": \"valid\",\r\n                   " +
+            " \"parameters\": {\r\n                        \"value\": \"363056350669209|09af1ce9c5d8" +
+            "d23147ec4eeb9a33aac2\"\r\n                    },\r\n                    \"expires_at\":" +
+            " 1388556000\r\n                }\r\n            ],\r\n            \"resources\": [\r\n    " +
+            "            {\r\n                    \"resource_id\": \"30bc448896de44b88604ac223cb7f" +
+            "26f\",\r\n                    \"source_id\": \"49fa6dcb175b4a8ca8cbedb8d9015ed0\",\r\n   " +
+            "                 \"status\": \"valid\",\r\n                    \"parameters\": {\r\n      " +
+            "                  \"url\": \"http://www.facebook.com/theguardian\",\r\n               " +
+            "         \"title\": \"The Guardian\",\r\n                        \"id\": 10513336322\r\n  " +
+            "                  }\r\n                },\r\n                {\r\n                    " +
+            "\"resource_id\": \"d43024171340458fb6f124967fd126c1\",\r\n                    \"source_" +
+            "id\": \"49fa6dcb175b4a8ca8cbedb8d9015ed0\",\r\n                    \"status\": \"valid\"," +
+            "\r\n                    \"parameters\": {\r\n                        \"url\": \"http://ww" +
+            "w.giffgaff.com\",\r\n                        \"title\": \"giffgaffmobile\",\r\n          " +
+            "              \"id\": 287613300716\r\n                    }\r\n                }\r\n    " +
+            "        ],\r\n            \"created_at\": 1370266044,\r\n            \"id\": \"48fa6dcb17" +
+            "5b4a8ca8cbedb8d9015ed0\"\r\n        },\r\n        {\r\n            \"name\": \"\",\r\n       " +
+            "     \"source_type\": \"facebook_page\",\r\n            \"status\": \"running\",\r\n        " +
+            "    \"parameters\": [],\r\n            \"auth\": [\r\n                {\r\n               " +
+            "     \"identity_id\": \"0047a9e7f4bb4931b65e7e9bd299ddd1\",\r\n                    \"so" +
+            "urce_id\": \"fd2e72e3a7ae40c2a6e86e96381d8165\",\r\n                    \"status\": \"va" +
+            "lid\",\r\n                    \"parameters\": {\r\n                        \"value\": \"36" +
+            "3056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2\"\r\n                    },\r\n       " +
+            "             \"expires_at\": 1388556000\r\n                }\r\n            ],\r\n      " +
+            "      \"resources\": [\r\n                {\r\n                    \"resource_id\": \"d65" +
+            "90d550db94266af6f53884dd65ca4\",\r\n                    \"source_id\": \"fd2e72e3a7ae4" +
+            "0c2a6e86e96381d8165\",\r\n                    \"status\": \"valid\",\r\n                 " +
+            "   \"parameters\": {\r\n                        \"url\": \"http://www.facebook.com/ther" +
+            "ollingstones\",\r\n                        \"title\": \"The Rolling Stones\",\r\n        " +
+            "                \"id\": 8305888286\r\n                    }\r\n                }\r\n    " +
+            "        ],\r\n            \"created_at\": 1370266045,\r\n            \"id\": \"fa2e72e3a7" +
+            "ae40c2a6e86e96381d8165\"\r\n        }\r\n    ]\r\n}")]
+        public string SourceGet {
+            get {
+                return ((string)(this["SourceGet"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""name"": """",
+    ""source_type"": ""facebook_page"",
+    ""status"": ""running"",
+    ""parameters"": [],
+    ""auth"": [
+        {
+            ""identity_id"": ""0047a9e7f4bb4931b65e7e9bd299ddd1"",
+            ""source_id"": ""fd2e72e3a7ae40c2a6e86e96381d8165"",
+            ""status"": ""valid"",
+            ""parameters"": {
+                ""value"": ""363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2""
+            },
+            ""expires_at"": 1388556000
+        }
+    ],
+    ""resources"": [
+        {
+            ""resource_id"": ""d6590d550db94266af6f53884dd65ca4"",
+            ""source_id"": ""fd2e72e3a7ae40c2a6e86e96381d8165"",
+            ""status"": ""valid"",
+            ""parameters"": {
+                ""url"": ""http://www.facebook.com/therollingstones"",
+                ""title"": ""The Rolling Stones"",
+                ""id"": 8305888286
+            }
+        }
+    ],
+    ""created_at"": 1370266044,
+    ""id"": ""fa2e72e3a7ae40c2a6e86e96381d8165""
+}")]
+        public string SourceGetById {
+            get {
+                return ((string)(this["SourceGetById"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n    \"count\": 2,\r\n    \"page\": 1,\r\n    \"pages\": 2,\r\n    \"per_page\": 1,\r\n    \"sou" +
+            "rces\": [\r\n        {\r\n            \"name\": \"\",\r\n            \"source_type\": \"facebo" +
+            "ok_page\",\r\n            \"status\": \"running\",\r\n            \"parameters\": [],\r\n    " +
+            "        \"auth\": [\r\n                {\r\n                    \"identity_id\": \"7b1be3" +
+            "a398e646bbb3c7a5cb9717ba45\",\r\n                    \"source_id\": \"49fa6dcb175b4a8c" +
+            "a8cbedb8d9015ed0\",\r\n                    \"status\": \"valid\",\r\n                    " +
+            "\"parameters\": {\r\n                        \"value\": \"363056350669209|09af1ce9c5d8d" +
+            "23147ec4eeb9a33aac2\"\r\n                    },\r\n                    \"expires_at\": " +
+            "1388556000\r\n                }\r\n            ],\r\n            \"resources\": [\r\n     " +
+            "           {\r\n                    \"resource_id\": \"30bc448896de44b88604ac223cb7f2" +
+            "6f\",\r\n                    \"source_id\": \"49fa6dcb175b4a8ca8cbedb8d9015ed0\",\r\n    " +
+            "                \"status\": \"valid\",\r\n                    \"parameters\": {\r\n       " +
+            "                 \"url\": \"http://www.facebook.com/theguardian\",\r\n                " +
+            "        \"title\": \"The Guardian\",\r\n                        \"id\": 10513336322\r\n   " +
+            "                 }\r\n                },\r\n                {\r\n                    \"" +
+            "resource_id\": \"d43024171340458fb6f124967fd126c1\",\r\n                    \"source_i" +
+            "d\": \"49fa6dcb175b4a8ca8cbedb8d9015ed0\",\r\n                    \"status\": \"valid\",\r" +
+            "\n                    \"parameters\": {\r\n                        \"url\": \"http://www" +
+            ".giffgaff.com\",\r\n                        \"title\": \"giffgaffmobile\",\r\n           " +
+            "             \"id\": 287613300716\r\n                    }\r\n                }\r\n     " +
+            "       ],\r\n            \"created_at\": 1370266044,\r\n            \"id\": \"48fa6dcb175" +
+            "b4a8ca8cbedb8d9015ed0\"\r\n        }\r\n    ]\r\n}")]
+        public string SourceGetPage {
+            get {
+                return ((string)(this["SourceGetPage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+  ""id"": ""da4f8df71a0f43698acf9240b5ad668f"",
+  ""name"": ""news_source"",
+  ""source_type"": ""facebook_page"",
+  ""created_at"": 1391707662,
+  ""status"": ""stopped"",
+  ""parameters"": {
+    ""posts_by_others"": false,
+    ""likes"": true,
+    ""comments"": true
+  },
+  ""resources"": [
+    {
+      ""parameters"": {
+        ""title"": ""The Guardian"",
+        ""url"": ""http://www.facebook.com/theguardian"",
+        ""id"": ""10513336322""
+      },
+      ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
+    },
+    {
+      ""parameters"": {
+        ""title"": ""The Sun"",
+        ""url"": ""http://www.facebook.com/thesun"",
+        ""id"": ""161385360554578""
+      },
+      ""resource_id"": ""b801b1f3a6934cf29e02d092bff9b7f1""
+    }
+  ],
+  ""auth"": [
+    {
+      ""expires_at"": 2112112110,
+      ""parameters"": {
+        ""value"": ""EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h""
+      },
+      ""identity_id"": ""d38e5598142746e19689ddee65ddca55""
+    }
+  ]
+}")]
+        public string SourceCreate {
+            get {
+                return ((string)(this["SourceCreate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""name"": """",
+    ""source_type_id"": ""facebook_page"",
+    ""status"": ""active"",
+    ""parameters"": [],
+    ""identities"": [
+        {
+            ""identity_id"": ""0047a9e7f4bb4931b65e7e9bd299ddd1"",
+            ""source_id"": ""fd2e72e3a7ae40c2a6e86e96381d8165"",
+            ""status"": ""valid"",
+            ""parameters"": {
+                ""value"": ""363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2""
+            },
+            ""expires_at"": 1388556000
+        }
+    ],
+    ""resources"": [
+        {
+            ""resource_id"": ""d6590d550db94266af6f53884dd65ca4"",
+            ""source_id"": ""fd2e72e3a7ae40c2a6e86e96381d8165"",
+            ""status"": ""valid"",
+            ""parameters"": {
+                ""url"": ""http://www.facebook.com/therollingstones"",
+                ""title"": ""The Rolling Stones"",
+                ""id"": 8305888286
+            }
+        }
+    ],
+    ""id"": ""fa2e72e3a7ae40c2a6e86e96381d8165""
+}")]
+        public string SourceStart {
+            get {
+                return ((string)(this["SourceStart"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""name"": """",
+    ""source_type_id"": ""facebook_page"",
+    ""status"": ""paused"",
+    ""parameters"": [],
+    ""identities"": [
+        {
+            ""identity_id"": ""0047a9e7f4bb4931b65e7e9bd299ddd1"",
+            ""source_id"": ""fd2e72e3a7ae40c2a6e86e96381d8165"",
+            ""status"": ""valid"",
+            ""parameters"": {
+                ""value"": ""363056350669209|09af1ce9c5d8d23147ec4eeb9a33aac2""
+            },
+            ""expires_at"": 1388556000
+        }
+    ],
+    ""resources"": [
+        {
+            ""resource_id"": ""d6590d550db94266af6f53884dd65ca4"",
+            ""source_id"": ""fd2e72e3a7ae40c2a6e86e96381d8165"",
+            ""status"": ""valid"",
+            ""parameters"": {
+                ""url"": ""http://www.facebook.com/therollingstones"",
+                ""title"": ""The Rolling Stones"",
+                ""id"": 8305888286
+            }
+        }
+    ],
+    ""id"": ""fa2e72e3a7ae40c2a6e86e96381d8165""
+}")]
+        public string SourceStop {
+            get {
+                return ((string)(this["SourceStop"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+  ""id"": ""da4f8df71a0f43698acf9240b5ad668f"",
+  ""name"": ""news_source"",
+  ""source_type"": ""facebook_page"",
+  ""created_at"": 1391707662,
+  ""status"": ""running"",
+  ""parameters"": {
+    ""posts_by_others"": true,
+    ""likes"": false,
+    ""comments"": false
+  },
+  ""resources"": [
+    {
+      ""parameters"": {
+        ""title"": ""The Guardian"",
+        ""url"": ""http://www.facebook.com/theguardian"",
+        ""id"": ""10513336322""
+      },
+      ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
+    },
+    {
+      ""parameters"": {
+        ""title"": ""The Sun"",
+        ""url"": ""http://www.facebook.com/thesun"",
+        ""id"": ""161385360554578""
+      },
+      ""resource_id"": ""b801b1f3a6934cf29e02d092bff9b7f1""
+    }
+  ],
+  ""auth"": [
+    {
+      ""expires_at"": 2112112110,
+      ""parameters"": {
+        ""value"": ""EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h""
+      },
+      ""identity_id"": ""d38e5598142746e19689ddee65ddca55""
+    }
+  ]
+}")]
+        public string SourceUpdate {
+            get {
+                return ((string)(this["SourceUpdate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""count"": 20,
+    ""page"": 1,
+    ""pages"": 1,
+    ""per_page"": 20,
+    ""log_entries"": [
+        {
+            ""id"": 835176,
+            ""event_time"": 1372133607,
+            ""success"": false,
+            ""message"": ""OAuthException(4): (#4) Application request limit reached""
+        },
+        {
+            ""id"": 835158,
+            ""event_time"": 1372133599,
+            ""success"": false,
+            ""message"": ""OAuthException(4): (#4) Application request limit reached""
+        }
+    ]
+}")]
+        public string SourceLog {
+            get {
+                return ((string)(this["SourceLog"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+    ""count"": 20,
+    ""page"": 1,
+    ""pages"": 20,
+    ""per_page"": 1,
+    ""log_entries"": [
+        {
+            ""id"": 835176,
+            ""event_time"": 1372133607,
+            ""success"": false,
+            ""message"": ""OAuthException(4): (#4) Application request limit reached""
+        }
+    ]
+}")]
+        public string SourceLogPage {
+            get {
+                return ((string)(this["SourceLogPage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n  \"id1\": \"List 1\",\r\n  \"id2\": \"List 2\"\r\n}")]
+        public string ListGet {
+            get {
+                return ((string)(this["ListGet"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n    \"id\": \"0x08fa577f_7528_44ce_9671_692f2e3fd25e\"\r\n}")]
+        public string ListCreate {
+            get {
+                return ((string)(this["ListCreate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n  \"keyword1\": true,\r\n  \"keyword2\": false,\r\n  \"keyword3\": false\r\n}")]
+        public string ListExists {
+            get {
+                return ((string)(this["ListExists"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{\r\n  \"id\": \"123456\"\r\n}")]
+        public string ListReplaceStart {
+            get {
+                return ((string)(this["ListReplaceStart"]));
+            }
+        }
     }
 }

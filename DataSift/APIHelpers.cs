@@ -115,7 +115,7 @@ namespace DataSift
             return result;
         }
 
-        public static List<Parameter> ParseParameters(dynamic parameters)
+        public static List<Parameter> ParseParameters(string endpoint, dynamic parameters)
         {
             List<Parameter> result = new List<Parameter>();
 
@@ -126,11 +126,19 @@ namespace DataSift
                 {
                     if (val.GetType().IsEnum)
                         val = GetEnumDescription(val);
-                    else if (val.GetType().IsArray)
+                    else if (
+                            !(endpoint.StartsWith("list/"))
+                            &&val.GetType().IsArray 
+                            && (val.GetType().GetElementType() == typeof(string) || val.GetType().GetElementType() == typeof(int))
+                        )
                         val = String.Join(",", val);
-                    else if (prop.PropertyType == typeof(DateTimeOffset))
+                    else if (val.GetType().IsArray)
+                        val = JsonConvert.SerializeObject(val);
+                    else if (val.GetType() == typeof(DateTimeOffset) || val.GetType().UnderlyingSystemType == typeof(DateTimeOffset))
                         val = ToUnixTime(val);
-                    else if (val.GetType().IsGenericType)
+                    else if (val.GetType() == typeof(List<HistoricsPreviewParameter>))
+                        val = String.Join<HistoricsPreviewParameter>(";", val);
+                    else if (val.GetType().IsGenericType || val.GetType() == typeof(ExpandoObject))
                         val = JsonConvert.SerializeObject(val);
 
                     result.Add(new Parameter()
@@ -164,7 +172,7 @@ namespace DataSift
             }
 
             //If we have no description attribute, just return the ToString of the enum
-            return enumerationValue.ToString();
+            return enumerationValue.ToString().ToLower();
 
         }
 

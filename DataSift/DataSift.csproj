@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSift.cs" />
+    <Compile Include="Enum\ListType.cs" />
     <Compile Include="Enum\OrderBy.cs" />
     <Compile Include="Enum\OrderDirection.cs" />
     <Compile Include="Enum\PushStatus.cs" />
@@ -91,13 +92,17 @@
     <Compile Include="Enum\UsagePeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Historics.cs" />
+    <Compile Include="Rest\HistoricsPreview.cs" />
+    <Compile Include="Rest\HistoricsPreviewParameter.cs" />
     <Compile Include="Rest\IRestAPIRequest.cs" />
+    <Compile Include="Rest\List.cs" />
     <Compile Include="Rest\PullAPIResponse.cs" />
     <Compile Include="Rest\Push.cs" />
     <Compile Include="Rest\RestAPIException.cs" />
     <Compile Include="APIHelpers.cs" />
     <Compile Include="Rest\RestAPIRequest.cs" />
     <Compile Include="Rest\RestAPIResponse.cs" />
+    <Compile Include="Rest\Source.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Streaming\" />
