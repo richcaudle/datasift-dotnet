@@ -8,6 +8,8 @@ using RestSharp;
 using DataSift.Enum;
 using System.Diagnostics.Contracts;
 using System.Text.RegularExpressions;
+using DataSift.Streaming;
+using WebSocket4Net;
 
 namespace DataSift
 {
@@ -88,6 +90,17 @@ namespace DataSift
                 if (_historicsPreview == null) _historicsPreview = new HistoricsPreview(this);
                 return _historicsPreview;
             }
+        }
+
+        #endregion
+
+        #region Streaming
+
+        public DataSiftStream Connect()
+        {
+            var stream = new DataSiftStream();
+            stream.Connect(_username, _apikey);
+            return stream;
         }
 
         #endregion

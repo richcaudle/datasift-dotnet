@@ -19,9 +19,15 @@ namespace DataSiftTest
             // Create a DataSift client
             _client = new DataSift.DataSift("username", "apikey");
 
-            DynamicLists();
+            Stream();
 
             Console.ReadKey(true);
+        }
+
+        private static void Stream()
+        {
+            Console.WriteLine("Connecting...");
+            var stream = _client.Connect();
         }
 
         private static void Core()
