@@ -13,6 +13,7 @@ namespace DataSiftTest
     class Program
     {
         private static DataSift.DataSift _client;
+        private static DataSift.Streaming.DataSiftStream _stream;
 
         static void Main(string[] args)
         {
@@ -27,7 +28,44 @@ namespace DataSiftTest
         private static void Stream()
         {
             Console.WriteLine("Connecting...");
-            var stream = _client.Connect();
+            _stream = _client.Connect();
+            _stream.OnConnect += stream_OnConnect;
+            _stream.OnMessage += _stream_OnMessage;
+            _stream.OnDataSiftMessage += _stream_OnDataSiftMessage;
+        }
+
+        static void _stream_OnDataSiftMessage(DataSiftMessageStatus status, string message)
+        {
+            Console.WriteLine("DATASIFT MESSAGE (" + status + "): " + message);
+        }
+
+        static void stream_OnConnect(object sender, EventArgs e)
+        {
+            Console.WriteLine("Connected...");
+
+            var arsenalStream = _client.Compile("interaction.content contains_any \"arsenal,afc\"");
+            Console.WriteLine("Compiled to {0}, DPU = {1}", arsenalStream.Data.hash, arsenalStream.Data.dpu);
+
+            var spursStream = _client.Compile("interaction.content contains_any \"spurs, tottenham, thfc\"");
+            Console.WriteLine("Compiled to {0}, DPU = {1}", spursStream.Data.hash, spursStream.Data.dpu);
+
+            //DataSift.Streaming.DataSiftStream.OnMessageHandler onMessage = (hash, message) =>
+            //{
+            //    Console.WriteLine("Message (" + hash + "): " + message.interaction.content);
+            //};
+
+            //_stream.Subscribe(arsenalStream.Data.hash, onMessage);
+            //_stream.Subscribe(spursStream.Data.hash, onMessage);
+
+            _stream.Subscribe("asda");
+            _stream.Subscribe(spursStream.Data.hash);
+
+            Console.WriteLine("Subscribed...");
+        }
+
+        static void _stream_OnMessage(string hash, dynamic message)
+        {
+            Console.WriteLine("GLOBAL Message (" + hash + "): " + message.interaction.content);
         }
 
         private static void Core()

@@ -96,10 +96,10 @@ namespace DataSift
 
         #region Streaming
 
-        public DataSiftStream Connect()
+        public DataSiftStream Connect(bool secure = true)
         {
             var stream = new DataSiftStream();
-            stream.Connect(_username, _apikey);
+            stream.Connect(_username, _apikey, secure);
             return stream;
         }
 

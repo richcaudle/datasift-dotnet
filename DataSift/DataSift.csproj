@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSift.cs" />
+    <Compile Include="Enum\DataSiftMessageStatus.cs" />
     <Compile Include="Enum\ListType.cs" />
     <Compile Include="Enum\OrderBy.cs" />
     <Compile Include="Enum\OrderDirection.cs" />

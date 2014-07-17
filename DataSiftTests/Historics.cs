@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataSift.Enum;
-using System.Net;
+using System.Net; 
 
 namespace DataSiftTests
 {
