@@ -10,18 +10,22 @@ using DataSift.Enum;
 
 namespace DataSift.Streaming
 {
-    public class DataSiftStream : IInteractionStream
+    public class DataSiftStream
     {
-        private Dictionary<string, OnMessageHandler> _messageHandlers = new Dictionary<string, OnMessageHandler>();
-        private Dictionary<string, OnSubscribedHandler> _subscribedHandlers  = new Dictionary<string, OnSubscribedHandler>();
-        private WebSocket _websocket;
-
-        public event OnMessageHandler OnMessage;
+        public delegate void OnConnectHandler(object sender, EventArgs e);
         public event OnConnectHandler OnConnect;
-        public event OnSubscribedHandler OnSubscribed;
+
+        public delegate void OnMessageHandler(string hash, dynamic message);
+        public event OnMessageHandler OnMessage;
+
+        public delegate void OnDataSiftMessageHandler(DataSiftMessageStatus status, string message);
         public event OnDataSiftMessageHandler OnDataSiftMessage;
 
-        public void Connect(string username, string apikey, bool secure = true)
+        private Dictionary<string, OnMessageHandler> _messageHandlers = new Dictionary<string, OnMessageHandler>();
+
+        private WebSocket _websocket;
+
+        internal void Connect(string username, string apikey, bool secure = true)
         {
             // TODO: Validate args
             // TODO : Auto reconnect, with re-subscribe to streams?
@@ -42,7 +46,7 @@ namespace DataSift.Streaming
             _websocket.Open();
         }
 
-        public void Subscribe(string hash, OnMessageHandler messageHandler = null, OnSubscribedHandler subscribedHandler = null)
+        public void Subscribe(string hash, OnMessageHandler messageHandler = null)
         {
             // TODO: Check hash format
 
@@ -52,14 +56,6 @@ namespace DataSift.Streaming
                     _messageHandlers[hash] = messageHandler;
                 else
                     _messageHandlers.Add(hash, messageHandler);
-            }
-
-            if (subscribedHandler != null)
-            {
-                if (_subscribedHandlers.ContainsKey(hash))
-                    _subscribedHandlers[hash] = subscribedHandler;
-                else
-                    _subscribedHandlers.Add(hash, subscribedHandler);
             }
             
             var message = new { action = "subscribe", hash = hash };

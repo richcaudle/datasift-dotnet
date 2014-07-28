@@ -108,7 +108,6 @@
     <Compile Include="Rest\RestAPIResponse.cs" />
     <Compile Include="Rest\Source.cs" />
     <Compile Include="Streaming\DataSiftStream.cs" />
-    <Compile Include="Streaming\IInteractionStream.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
