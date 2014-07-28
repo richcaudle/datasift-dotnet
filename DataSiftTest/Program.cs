@@ -1,5 +1,6 @@
 ﻿using DataSift.Enum;
 using DataSift.Rest;
+using DataSift.Streaming;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace DataSiftTest
         static void Main(string[] args)
         {
             // Create a DataSift client
-            _client = new DataSift.DataSift("username", "apikey");
+            _client = new DataSift.DataSift("rcaudle", "b09a645fe2f1fed748c12268fd473662");
 
             Stream();
 
@@ -32,35 +33,58 @@ namespace DataSiftTest
             _stream.OnConnect += stream_OnConnect;
             _stream.OnMessage += _stream_OnMessage;
             _stream.OnDataSiftMessage += _stream_OnDataSiftMessage;
+            _stream.OnSubscribed += _stream_OnSubscribed;
+            _stream.OnError +=_stream_OnError;
+            _stream.OnClosed += _stream_OnClosed;
+        }
+
+        static void _stream_OnClosed(object sender, EventArgs e)
+        {
+            Console.WriteLine("CLOSED!");
+        }
+
+        static void _stream_OnError(StreamAPIException e)
+        {
+            Console.WriteLine("Error: " + e.StackTrace);
+        }
+
+        static void _stream_OnSubscribed(string hash)
+        {
+            Console.WriteLine("GLOBAL Subscribed (" + hash + ")");
         }
 
         static void _stream_OnDataSiftMessage(DataSiftMessageStatus status, string message)
         {
+            
             Console.WriteLine("DATASIFT MESSAGE (" + status + "): " + message);
         }
 
-        static void stream_OnConnect(object sender, EventArgs e)
+        static void stream_OnConnect()
         {
             Console.WriteLine("Connected...");
 
-            var arsenalStream = _client.Compile("interaction.content contains_any \"arsenal,afc\"");
-            Console.WriteLine("Compiled to {0}, DPU = {1}", arsenalStream.Data.hash, arsenalStream.Data.dpu);
+            //var arsenalStream = _client.Compile("interaction.content contains_any \"arsenal,afc\"");
+            //Console.WriteLine("Compiled to {0}, DPU = {1}", arsenalStream.Data.hash, arsenalStream.Data.dpu);
 
-            var spursStream = _client.Compile("interaction.content contains_any \"spurs, tottenham, thfc\"");
-            Console.WriteLine("Compiled to {0}, DPU = {1}", spursStream.Data.hash, spursStream.Data.dpu);
+            //var spursStream = _client.Compile("interaction.content contains_any \"spurs, tottenham, thfc\"");
+            //Console.WriteLine("Compiled to {0}, DPU = {1}", spursStream.Data.hash, spursStream.Data.dpu);
 
             //DataSift.Streaming.DataSiftStream.OnMessageHandler onMessage = (hash, message) =>
             //{
             //    Console.WriteLine("Message (" + hash + "): " + message.interaction.content);
             //};
 
-            //_stream.Subscribe(arsenalStream.Data.hash, onMessage);
-            //_stream.Subscribe(spursStream.Data.hash, onMessage);
+            //DataSift.Streaming.DataSiftStream.OnSubscribedHandler onSubscribed = (hash) =>
+            //{
+            //    Console.WriteLine("Subscribed (" + hash + ")");
+            //};
 
-            _stream.Subscribe("asda");
-            _stream.Subscribe(spursStream.Data.hash);
+            ////_stream.Subscribe(arsenalStream.Data.hash, onMessage);
+            //_stream.Subscribe(spursStream.Data.hash, onMessage, onSubscribed);
+            ////_stream.Subscribe(spursStream.Data.hash);
+            
 
-            Console.WriteLine("Subscribed...");
+            //Console.WriteLine("Subscribed...");
         }
 
         static void _stream_OnMessage(string hash, dynamic message)

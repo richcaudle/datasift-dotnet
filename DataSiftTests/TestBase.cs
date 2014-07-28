@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataSift.Rest;
+using DataSift.Streaming;
 
 namespace DataSiftTests
 {
@@ -12,7 +13,7 @@ namespace DataSiftTests
         [TestInitialize]
         public void TestInitialize()
         {
-            _client = new DataSift.DataSift(Run.Default.username, Run.Default.apikey, GetRequestMock);
+            _client = new DataSift.DataSift(Run.Default.username, Run.Default.apikey, requestCreator: GetRequestMock, connectionCreator: GetStreamConnectionMock);
         }
 
         protected DataSift.DataSift Client { get { return _client; } }
@@ -20,6 +21,11 @@ namespace DataSiftTests
         public IRestAPIRequest GetRequestMock(string username, string apikey)
         {
             return new MockRestAPIRequest();
+        }
+
+        public IStreamConnection GetStreamConnectionMock(string url)
+        {
+            return new MockStreamConnection(url);
         }
 
     }

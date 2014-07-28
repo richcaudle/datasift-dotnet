@@ -9,6 +9,51 @@ namespace DataSiftTests
     [TestClass]
     public class Core : TestBase
     {
+        #region Instatiate Client
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void New_With_Null_Username_Fails()
+        {
+            new DataSift.DataSift(null, "b09z345fe2f1fed748c12268fd473662");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void New_With_Empty_Username_Fails()
+        {
+            new DataSift.DataSift("", "b09z345fe2f1fed748c12268fd473662");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void New_With_Null_Apikey_Fails()
+        {
+            new DataSift.DataSift("username", null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void New_With_Empty_Apikey_Fails()
+        {
+            new DataSift.DataSift("username", "");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void New_With_Bad_Apikey_Fails()
+        {
+            new DataSift.DataSift("username", "key");
+        }
+
+        [TestMethod]
+        public void New_With_Valid_Args_Succeeds()
+        {
+            new DataSift.DataSift("username", "b09z345fe2f1fed748c12268fd473662");
+        }
+
+        #endregion
+
         #region Validate
 
         [TestMethod]

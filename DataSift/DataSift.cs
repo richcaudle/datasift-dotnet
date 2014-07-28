@@ -17,16 +17,24 @@ namespace DataSift
     {
         private string _username;
         private string _apikey;
-        private GetRequestDelegate _getRequest;
+        private GetAPIRequestDelegate _getRequest;
+        private GetStreamConnectionDelegate _getConnection;
         private Historics _historics;
         private HistoricsPreview _historicsPreview;
         private Source _source;
         private Push _push;
         private List _list;
-        public delegate IRestAPIRequest GetRequestDelegate(string username, string apikey);
+        public delegate IRestAPIRequest GetAPIRequestDelegate(string username, string apikey);
+        public delegate IStreamConnection GetStreamConnectionDelegate(string url);
 
-        public DataSift(string username, string apikey, GetRequestDelegate requestCreator = null)
+        public DataSift(string username, string apikey, GetAPIRequestDelegate requestCreator = null, GetStreamConnectionDelegate connectionCreator = null)
         {
+            Contract.Requires<ArgumentNullException>(username != null);
+            Contract.Requires<ArgumentException>(username.Trim().Length > 0);
+            Contract.Requires<ArgumentNullException>(apikey != null);
+            Contract.Requires<ArgumentException>(apikey.Trim().Length > 0);
+            Contract.Requires<ArgumentException>(new Regex(@"[a-z0-9]{32}").IsMatch(apikey), "API key should be a 32 character string of lower-case letters and numbers");
+
             _username = username;
             _apikey = apikey;
 
@@ -34,7 +42,11 @@ namespace DataSift
                 _getRequest = GetRequestDefault;
             else
                 _getRequest = requestCreator;
+
+            _getConnection = connectionCreator;
         }
+
+        #region Mocking / Faking
 
         private IRestAPIRequest GetRequestDefault(string username, string apikey)
         {
@@ -45,6 +57,8 @@ namespace DataSift
         {
             return _getRequest(_username, _apikey);
         }
+
+        #endregion
 
         #region Properties
 
@@ -98,7 +112,7 @@ namespace DataSift
 
         public DataSiftStream Connect(bool secure = true)
         {
-            var stream = new DataSiftStream();
+            var stream = new DataSiftStream(_getConnection);
             stream.Connect(_username, _apikey, secure);
             return stream;
         }
