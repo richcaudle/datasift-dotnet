@@ -20,13 +20,13 @@ namespace DataSiftExamples
 
             Console.WriteLine("Running 'Streaming' example...");
 
-            _stream = _client.Connect();
             _stream.OnConnect += stream_OnConnect;
             _stream.OnMessage += stream_OnMessage;
             _stream.OnDataSiftMessage += stream_OnDataSiftMessage;
             _stream.OnSubscribed += stream_OnSubscribed;
             _stream.OnError += stream_OnError;
             _stream.OnClosed += stream_OnClosed;
+            _stream = _client.Connect();
 
         }
 
