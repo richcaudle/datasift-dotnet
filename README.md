@@ -1,12 +1,8 @@
-# DataSift .NET Client Library
-
-## -- Status: BETA --
+# DataSift .NET Client Library - BETA
 
 This is the official .NET library for accessing Datasift.
 
-## Requirements
-
-This lib
+Please log any library issues inside this GitHub repository.
 
 ## Installation
 
@@ -16,7 +12,7 @@ You can sign up to DataSift for free at [http://datasift.com](http://datasift.co
 
 Once you've registered you can find your username and API key on your [Dashboard](http://datasift.com/dashboard).
 
-### 2) Nuget Package
+### 2) Install Nuget Package
 
 ```
     Install-Package DataSift-DotNet -Pre
@@ -89,6 +85,12 @@ See the **DataSiftExamples** project for some simple example usage.
 ```
 
 See the **DataSiftExamples** project for some simple example usage.
+
+## Requirements
+
+This library has been tested with the following frameworks:
+
+* .NET Framework 4.5
 
 ## License
 
