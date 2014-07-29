@@ -13,13 +13,13 @@ namespace DataSiftTest
 {
     class Program
     {
-        private static DataSift.DataSift _client;
+        private static DataSift.DataSiftClient _client;
         private static DataSift.Streaming.DataSiftStream _stream;
 
         static void Main(string[] args)
         {
             // Create a DataSift client
-            _client = new DataSift.DataSift("rcaudle", "b09a645fe2f1fed748c12268fd473662");
+            _client = new DataSift.DataSiftClient("rcaudle", "b09a645fe2f1fed748c12268fd473662");
 
             Stream();
 
@@ -132,25 +132,25 @@ namespace DataSiftTest
             Console.WriteLine("Created subscription, ID = " + subscription.Data.id);
 
             _client.Historics.Start(prepare.Data.id);
-            Console.WriteLine("Started historic (otherwise there would have been an exception!)");
+            Console.WriteLine("Started historic.");
 
             var update = _client.Historics.Update(prepare.Data.id, "Updated historic query");
-            Console.WriteLine("Updated historic (otherwise there would have been an exception!)");
+            Console.WriteLine("Updated historic.");
 
             var getById = _client.Historics.Get(id: prepare.Data.id);
             Console.WriteLine("Details for updated historic: " + JsonConvert.SerializeObject(getById.Data));
 
             _client.Historics.Pause(prepare.Data.id);
-            Console.WriteLine("Paused historic (otherwise there would have been an exception!)");
+            Console.WriteLine("Paused historic.");
 
             _client.Historics.Resume(prepare.Data.id);
-            Console.WriteLine("Resumed historic (otherwise there would have been an exception!)");
+            Console.WriteLine("Resumed historic.");
 
             _client.Historics.Stop(prepare.Data.id);
-            Console.WriteLine("Stopped historic (otherwise there would have been an exception!)");
+            Console.WriteLine("Stopped historic.");
 
             _client.Historics.Delete(prepare.Data.id);
-            Console.WriteLine("Deleted historic (otherwise there would have been an exception!)");
+            Console.WriteLine("Deleted historic.");
 
             
         }
@@ -182,10 +182,10 @@ namespace DataSiftTest
             Console.WriteLine("Got data, first interaction: " + JsonConvert.SerializeObject(pull.Data[0]));
 
             _client.Push.Stop(create.Data.id);
-            Console.WriteLine("Stopped subscription (otherwise there would have been an exception!)");
+            Console.WriteLine("Stopped subscription.");
 
             _client.Push.Delete(create.Data.id);
-            Console.WriteLine("Deleted subscription (otherwise there would have been an exception!)");
+            Console.WriteLine("Deleted subscription.");
         }
 
         private static void HistoricsPreview()
@@ -245,7 +245,7 @@ namespace DataSiftTest
             Console.WriteLine("Created source: {0}", create.Data.id);
 
             _client.Source.Start(create.Data.id);
-            Console.WriteLine("Started source (otherwise there would have been an exception!)");
+            Console.WriteLine("Started source.");
 
             var update = _client.Source.Update("facebook_page", "Updated example source", create.Data.id, create.Data.parameters, create.Data.resources, create.Data.auth);
             Console.WriteLine("Updated source: {0}", update.Data.id);
@@ -254,13 +254,13 @@ namespace DataSiftTest
             Console.WriteLine("Source details: " + JsonConvert.SerializeObject(getSource.Data));
             
             _client.Source.Stop(create.Data.id);
-            Console.WriteLine("Stopped source (otherwise there would have been an exception!)");
+            Console.WriteLine("Stopped source.");
 
             var log = _client.Source.Log(create.Data.id, 1, 5);
             Console.WriteLine("Source log: " + JsonConvert.SerializeObject(log.Data.log_entries));
 
             _client.Source.Delete(create.Data.id);
-            Console.WriteLine("Deleted source (otherwise there would have been an exception!)");
+            Console.WriteLine("Deleted source.");
 
         }
 
@@ -291,7 +291,7 @@ namespace DataSiftTest
             Console.WriteLine("Committed bulk replace");
 
             _client.List.Delete(create.Data.id);
-            Console.WriteLine("Deleted list (otherwise there would have been an exception!)");
+            Console.WriteLine("Deleted list.");
 
         }
     }

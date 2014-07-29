@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataSift.Enum
 {
+    /// <summary>
+    /// All valid sort directions
+    /// </summary>
     public enum OrderDirection
     {
         [Description("asc")]

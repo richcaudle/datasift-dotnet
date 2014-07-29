@@ -18,7 +18,6 @@ namespace DataSiftTests
     {
         public RestAPIResponse Request(string endpoint, dynamic parameters = null, Method method = Method.GET)
         {
-            // TODO: Write tests for errors (force bad status code, force error message, force no error message)
 
             string response = null;
             RestAPIResponse result = new RestAPIResponse();

@@ -29,11 +29,11 @@ namespace DataSift
                 // Data response (such as from Pull requests)
                 switch(format)
                 {
-                    case "json_meta":
+                    case Constants.DATA_FORMAT_META_PLUS_INTERACTIONS:
                         return JsonConvert.DeserializeObject<ExpandoObject>(data, converter);
-                    case "json_array":
+                    case Constants.DATA_FORMAT_ARRAY_INTERACTIONS:
                         return JsonConvert.DeserializeObject<List<ExpandoObject>>(data, converter);
-                    case "json_new_line":
+                    case Constants.DATA_FORMAT_NEWLINE_INTERACTIONS:
 
                         var items = new List<ExpandoObject>();
 
@@ -44,7 +44,7 @@ namespace DataSift
                         return items;
 
                     default:
-                        throw new ArgumentException("Unrecognised serialization format for data", "format");
+                        throw new ArgumentException(Messages.UNRECOGNISED_DATA_FORMAT, "format");
                 }
 
             }
@@ -66,6 +66,8 @@ namespace DataSift
 
         public static bool HasAttr(dynamic expando, string key)
         {
+            if (expando == null) return false;
+
             return ((IDictionary<string, object>)expando).ContainsKey(key);
         }
 
@@ -77,13 +79,13 @@ namespace DataSift
             {
                 switch (header.Name)
                 {
-                    case "X-RateLimit-Limit":
+                    case Constants.HEADER_RATELIMIT_LIMIT:
                         result.Limit = int.Parse((string)header.Value);
                         break;
-                    case "X-RateLimit-Remaining":
+                    case Constants.HEADER_RATELIMIT_REMAINING:
                         result.Remaining = int.Parse((string)header.Value);
                         break;
-                    case "X-RateLimit-Cost":
+                    case Constants.HEADER_RATELIMIT_COST:
                         result.Cost = int.Parse((string)header.Value);
                         break;
                 }
@@ -100,13 +102,13 @@ namespace DataSift
             {
                 switch (header.Name)
                 {
-                    case "X-DataSift-Format":
+                    case Constants.HEADER_DATA_FORMAT:
                         result.Format = (string)header.Value;
                         break;
-                    case "X-DataSift-Cursor-Current":
+                    case Constants.HEADER_CURSOR_CURRENT:
                         result.CursorCurrent = (string)header.Value;
                         break;
-                    case "X-DataSift-Cursor-Next":
+                    case Constants.HEADER_CURSOR_NEXT:
                         result.CursorNext = (string)header.Value;
                         break;
                 }

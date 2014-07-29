@@ -57,6 +57,10 @@ namespace DataSiftTests
             }
         }
 
+        private const string VALID_SOURCE_ID = "fa2e72e3a7ae40c2a6e86e96381d8165";
+        private const string VALID_NAME = "Test source";
+        private const string VALID_TYPE = "facebook_page";
+
         #region Get
 
         [TestMethod]
@@ -122,8 +126,8 @@ namespace DataSiftTests
         [TestMethod]
         public void Get_By_Id_Complete_Succeeds()
         {
-            var response = Client.Source.Get(id: "fa2e72e3a7ae40c2a6e86e96381d8165");
-            Assert.AreEqual("fa2e72e3a7ae40c2a6e86e96381d8165", response.Data.id);
+            var response = Client.Source.Get(id: VALID_SOURCE_ID);
+            Assert.AreEqual(VALID_SOURCE_ID, response.Data.id);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
@@ -135,34 +139,34 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Create_Null_Source_Type_Fails()
         {
-            Client.Source.Create(null, "Test source", DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Create(null, VALID_NAME, DummyParameters, DummyResources, DummyAuth);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Empty_Source_Type_Fails()
         {
-            Client.Source.Create("", "Test source", DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Create("", VALID_NAME, DummyParameters, DummyResources, DummyAuth);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Create_Null_Name_Fails()
         {
-            Client.Source.Create("facebook_page", null, DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Create(VALID_TYPE, null, DummyParameters, DummyResources, DummyAuth);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Empty_Name_Fails()
         {
-            Client.Source.Create("facebook_page", "", DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Create(VALID_TYPE, "", DummyParameters, DummyResources, DummyAuth);
         }
 
         [TestMethod]
         public void Create_Correct_Args_Succeeds()
         {
-            var response = Client.Source.Create("facebook_page", "Test Source", DummyParameters, DummyResources, DummyAuth);
+            var response = Client.Source.Create(VALID_TYPE, VALID_NAME, DummyParameters, DummyResources, DummyAuth);
             Assert.AreEqual("da4f8df71a0f43698acf9240b5ad668f", response.Data.id);
             Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
         }
@@ -355,13 +359,13 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentException))]
         public void Log_Page_Is_Less_Than_One_Fails()
         {
-            Client.Source.Log(id: "fa2e72e3a7ae40c2a6e86e96381d8165", page: 0);
+            Client.Source.Log(id: VALID_SOURCE_ID, page: 0);
         }
 
         [TestMethod]
         public void Log_Page_Succeeds()
         {
-            var response = Client.Source.Log(id: "fa2e72e3a7ae40c2a6e86e96381d8165", page: 1);
+            var response = Client.Source.Log(id: VALID_SOURCE_ID, page: 1);
             Assert.AreEqual(20, response.Data.count);
             Assert.AreEqual(1, response.Data.log_entries.Count);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -371,13 +375,13 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentException))]
         public void Log_Per_Page_Is_Less_Than_One_Fails()
         {
-            Client.Source.Log(id: "fa2e72e3a7ae40c2a6e86e96381d8165", perPage: 0);
+            Client.Source.Log(id: VALID_SOURCE_ID, perPage: 0);
         }
 
         [TestMethod]
         public void Log_PerPage_Succeeds()
         {
-            var response = Client.Source.Log(id: "fa2e72e3a7ae40c2a6e86e96381d8165", page: 1, perPage: 1);
+            var response = Client.Source.Log(id: VALID_SOURCE_ID, page: 1, perPage: 1);
             Assert.AreEqual(20, response.Data.count);
             Assert.AreEqual(1, response.Data.log_entries.Count);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -386,7 +390,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Log_Correct_Args_Succeeds()
         {
-            var response = Client.Source.Log(id: "fa2e72e3a7ae40c2a6e86e96381d8165");
+            var response = Client.Source.Log(id: VALID_SOURCE_ID);
             Assert.AreEqual(20, response.Data.count);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }

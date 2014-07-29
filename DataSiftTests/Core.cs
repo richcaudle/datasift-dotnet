@@ -9,47 +9,52 @@ namespace DataSiftTests
     [TestClass]
     public class Core : TestBase
     {
+        private const string VALID_APIKEY = "b09z345fe2f1fed748c12268fd473662";
+        private const string VALID_USERNAME = "username";
+        private const string VALID_CSDL = "interaction.content contains \"music\"";
+        private const string VALID_STREAM_HASH = "08b923395b6ce8bfa4d96f57f863a1c3";
+
         #region Instatiate Client
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void New_With_Null_Username_Fails()
         {
-            new DataSift.DataSift(null, "b09z345fe2f1fed748c12268fd473662");
+            new DataSift.DataSiftClient(null, VALID_APIKEY);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void New_With_Empty_Username_Fails()
         {
-            new DataSift.DataSift("", "b09z345fe2f1fed748c12268fd473662");
+            new DataSift.DataSiftClient("", VALID_APIKEY);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void New_With_Null_Apikey_Fails()
         {
-            new DataSift.DataSift("username", null);
+            new DataSift.DataSiftClient(VALID_USERNAME, null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void New_With_Empty_Apikey_Fails()
         {
-            new DataSift.DataSift("username", "");
+            new DataSift.DataSiftClient(VALID_USERNAME, "");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void New_With_Bad_Apikey_Fails()
         {
-            new DataSift.DataSift("username", "key");
+            new DataSift.DataSiftClient(VALID_USERNAME, "key");
         }
 
         [TestMethod]
         public void New_With_Valid_Args_Succeeds()
         {
-            new DataSift.DataSift("username", "b09z345fe2f1fed748c12268fd473662");
+            new DataSift.DataSiftClient(VALID_USERNAME, VALID_APIKEY);
         }
 
         #endregion
@@ -73,7 +78,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Validate_Complete_CSDL_Succeeds()
         {
-            var response = Client.Validate("interaction.content contains \"music\"");
+            var response = Client.Validate(VALID_CSDL);
             Assert.AreEqual("0.1", response.Data.dpu);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -99,7 +104,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Compile_Complete_CSDL_Succeeds()
         {
-            var response = Client.Compile("interaction.content contains \"music\"");
+            var response = Client.Compile(VALID_CSDL);
             Assert.AreEqual("0.1", response.Data.dpu);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -148,7 +153,7 @@ namespace DataSiftTests
         [TestMethod]
         public void DPU_Complete_Hash_Succeeds()
         {
-            var response = Client.DPU("9fe133a7ee1bd2757f1e26bd78342458");
+            var response = Client.DPU(VALID_STREAM_HASH);
             Assert.AreEqual(2, response.Data.detail.contains.count);
             Assert.AreEqual(0.2, response.Data.detail.contains.dpu);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -196,21 +201,21 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentException))]
         public void Pull_Size_Less_Than_One_Fails()
         {
-            Client.Pull("08b923395b6ce8bfa4d96f57f863a1c3", size: 0);
+            Client.Pull(VALID_STREAM_HASH, size: 0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Pull_Empty_Cursor_Fails()
         {
-            Client.Pull("08b923395b6ce8bfa4d96f57f863a1c3", cursor: "");
+            Client.Pull(VALID_STREAM_HASH, cursor: "");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Pull_Bad_Format_Cursor_Fails()
         {
-            Client.Pull("08b923395b6ce8bfa4d96f57f863a1c3", cursor: "cursor");
+            Client.Pull(VALID_STREAM_HASH, cursor: "cursor");
         }
 
         [TestMethod]

@@ -12,9 +12,9 @@ namespace DataSift.Rest
 {
     public class List
     {
-        DataSift _client = null;
+        DataSiftClient _client = null;
 
-        internal List(DataSift client)
+        internal List(DataSiftClient client)
         {
             _client = client;
         }
@@ -35,7 +35,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(id) : true, "ID is not in the correct format");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.LIST_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_LIST_ID);
 
             return _client.GetRequest().Request("list/delete", new { id = id }, Method.DELETE);
         }
@@ -44,7 +44,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(id) : true, "ID is not in the correct format");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.LIST_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_LIST_ID);
             Contract.Requires<ArgumentException>(typeof(T) == typeof(string) || typeof(T) == typeof(int));
             Contract.Requires<ArgumentException>(items.Length > 0);
             Contract.Requires<ArgumentException>(items.Length <= 1000);
@@ -56,7 +56,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(id) : true, "ID is not in the correct format");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.LIST_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_LIST_ID);
             Contract.Requires<ArgumentException>(typeof(T) == typeof(string) || typeof(T) == typeof(int));
             Contract.Requires<ArgumentException>(items.Length > 0);
 
@@ -67,7 +67,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(id) : true, "ID is not in the correct format");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.LIST_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_LIST_ID);
             Contract.Requires<ArgumentException>(typeof(T) == typeof(string) || typeof(T) == typeof(int));
             Contract.Requires<ArgumentException>(items.Length > 0);
 
@@ -77,7 +77,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(listId != null);
             Contract.Requires<ArgumentException>(listId.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((listId != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(listId) : true, "List ID is not in the correct format");
+            Contract.Requires<ArgumentException>((listId != null) ? Constants.LIST_ID_FORMAT.IsMatch(listId) : true, Messages.INVALID_LIST_ID);
 
             return _client.GetRequest().Request("list/replace/start", new { list_id = listId }, Method.POST);
         }
@@ -86,7 +86,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(id) : true, "ID is not in the correct format");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.LIST_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_LIST_ID);
 
             return _client.GetRequest().Request("list/replace/abort", new { id = id }, Method.POST);
         }
@@ -95,7 +95,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(id) : true, "ID is not in the correct format");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.LIST_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_LIST_ID);
 
             return _client.GetRequest().Request("list/replace/commit", new { id = id }, Method.POST);
         }
@@ -104,7 +104,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{10}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{4}_[a-z0-9]{12}").IsMatch(id) : true, "ID is not in the correct format");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.LIST_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_LIST_ID);
             Contract.Requires<ArgumentException>(typeof(T) == typeof(string) || typeof(T) == typeof(int));
             Contract.Requires<ArgumentException>(items.Length > 0);
             Contract.Requires<ArgumentException>(items.Length <= 1000);

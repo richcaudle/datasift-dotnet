@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataSift.Enum
 {
+    /// <summary>
+    /// Valid push / subscription statuses
+    /// </summary>
     public enum PushStatus
     {
         Active,

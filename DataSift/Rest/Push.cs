@@ -12,9 +12,9 @@ namespace DataSift.Rest
 {
     public class Push
     {
-        DataSift _client = null;
+        DataSiftClient _client = null;
 
-        internal Push(DataSift client)
+        internal Push(DataSiftClient client)
         {
             _client = client;
         }
@@ -22,11 +22,11 @@ namespace DataSift.Rest
         public RestAPIResponse Get(string id = null, string hash = null, string historicsId = null, int? page = null, int? perPage = null, OrderBy? orderBy = null, OrderDirection? orderDirection = null, bool? includeFinished = null)
         {
             Contract.Requires<ArgumentException>((id != null) ? id.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
             Contract.Requires<ArgumentException>((hash != null) ? hash.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((hash != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(hash) : true, "Hash should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((hash != null) ? Constants.STREAM_HASH_FORMAT.IsMatch(hash) : true, Messages.INVALID_STREAM_HASH);
             Contract.Requires<ArgumentException>((historicsId != null) ? historicsId.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((historicsId != null) ? new Regex(@"[a-z0-9]{20}").IsMatch(historicsId) : true, "Hash should be a 20 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((historicsId != null) ? Constants.HISTORICS_ID_FORMAT.IsMatch(historicsId) : true, Messages.INVALID_HISTORICS_ID);
             Contract.Requires<ArgumentException>((page.HasValue) ? page.Value > 0 : true);
             Contract.Requires<ArgumentException>((perPage.HasValue) ? perPage.Value > 0 : true);
             
@@ -56,13 +56,13 @@ namespace DataSift.Rest
             Contract.Requires<ArgumentException>(name.Trim().Length > 0);
             Contract.Requires<ArgumentNullException>(outputType != null);
             Contract.Requires<ArgumentException>(outputType.Trim().Length > 0);
-            Contract.Requires<ArgumentException>(hash != null || historicsId != null, "You must provide either a hash or historicsId");
-            Contract.Requires<ArgumentException>(hash == null || historicsId == null, "You cannot specify both a hash AND historicsId"); 
+            Contract.Requires<ArgumentException>(hash != null || historicsId != null, Messages.PUSH_MUST_PROVIDE_HASH_OR_HISTORIC);
+            Contract.Requires<ArgumentException>(hash == null || historicsId == null, Messages.PUSH_ONLY_HASH_OR_HISTORIC);
             Contract.Requires<ArgumentException>((hash != null) ? hash.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((hash != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(hash) : true, "Hash should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((hash != null) ? Constants.STREAM_HASH_FORMAT.IsMatch(hash) : true, Messages.INVALID_STREAM_HASH);
             Contract.Requires<ArgumentException>((historicsId != null) ? historicsId.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((historicsId != null) ? new Regex(@"[a-z0-9]{20}").IsMatch(historicsId) : true, "Hash should be a 20 character string of lower-case letters and numbers");
-            Contract.Requires<ArgumentException>((end != null && start != null) ? end > start : true, "If start and end are specified, end must be after start");
+            Contract.Requires<ArgumentException>((historicsId != null) ? Constants.HISTORICS_ID_FORMAT.IsMatch(historicsId) : true, Messages.INVALID_HISTORICS_ID);
+            Contract.Requires<ArgumentException>((end != null && start != null) ? end > start : true, Messages.HISTORICS_START_MUST_BE_BEFORE_END);
 
             return _client.GetRequest().Request("push/create", new { name = name, output_type = outputType, output_params = outputParameters, hash = hash, historics_id = historicsId, 
                 initial_status = initialStatus, start = start, end = end }, Method.POST);
@@ -72,7 +72,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
             
             return _client.GetRequest().Request("push/delete", new { id = id }, Method.DELETE);
         }
@@ -81,7 +81,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
 
             return _client.GetRequest().Request("push/stop", new {id = id}, Method.PUT);
         }
@@ -90,7 +90,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
 
             return _client.GetRequest().Request("push/pause", new { id = id }, Method.PUT);
         }
@@ -99,7 +99,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
 
             return _client.GetRequest().Request("push/resume", new { id = id }, Method.PUT);
         }
@@ -107,7 +107,7 @@ namespace DataSift.Rest
         public RestAPIResponse Log(string id = null, int? page = null, int? perPage = null, OrderDirection? orderDirection = null) 
         {
             Contract.Requires<ArgumentException>((id != null) ? id.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
             Contract.Requires<ArgumentException>((page.HasValue) ? page.Value > 0 : true);
             Contract.Requires<ArgumentException>((perPage.HasValue) ? perPage.Value > 0 : true);
 
@@ -123,7 +123,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
 
             return _client.GetRequest().Request("push/update", new { id = id, name = name, output_params = outputParameters }, Method.PUT);
         }

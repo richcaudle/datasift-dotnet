@@ -8,15 +8,15 @@ namespace DataSiftTests
     [TestClass]
     public class TestBase
     {
-        private DataSift.DataSift _client;
+        private DataSift.DataSiftClient _client;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _client = new DataSift.DataSift(Run.Default.username, Run.Default.apikey, requestCreator: GetRequestMock, connectionCreator: GetStreamConnectionMock);
+            _client = new DataSift.DataSiftClient(Run.Default.username, Run.Default.apikey, requestCreator: GetRequestMock, connectionCreator: GetStreamConnectionMock);
         }
 
-        protected DataSift.DataSift Client { get { return _client; } }
+        protected DataSift.DataSiftClient Client { get { return _client; } }
 
         public IRestAPIRequest GetRequestMock(string username, string apikey)
         {

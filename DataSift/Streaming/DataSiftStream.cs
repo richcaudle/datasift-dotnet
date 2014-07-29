@@ -18,7 +18,7 @@ namespace DataSift.Streaming
         private Dictionary<string, OnSubscribedHandler> _subscribedHandlers  = new Dictionary<string, OnSubscribedHandler>();
    
         private IStreamConnection _connection;
-        private DataSift.GetStreamConnectionDelegate _getConnection;
+        private DataSiftClient.GetStreamConnectionDelegate _getConnection;
 
         private string _domain;
 
@@ -45,7 +45,7 @@ namespace DataSift.Streaming
 
         #region Public Methods
 
-        public DataSiftStream(DataSift.GetStreamConnectionDelegate connectionCreator, string domain = "stream.datasift.com")
+        public DataSiftStream(DataSiftClient.GetStreamConnectionDelegate connectionCreator, string domain = "stream.datasift.com")
         {
             _domain = domain;
 
@@ -57,11 +57,11 @@ namespace DataSift.Streaming
 
         internal void Connect(string username, string apikey, bool secure = true)
         {
-            // TODO: Auto reconnect, only do if connected once successfully
-            // TODO: Auto reconnect, with re-subscribe to streams
-            // TODO: Auto-reconnect backoff
-            // TODO: Check ping / pong works both ways 
-            // TODO: Handle errors 
+            // TODO: Auto reconnect - do on websocket error & close events?
+            // TODO: Auto reconnect - only do if connected once successfully?
+            // TODO: Auto reconnect - with re-subscribe to streams
+            // TODO: Auto-reconnect - backoff
+            // TODO: Build long-running app to check connection remains
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
              
@@ -80,7 +80,7 @@ namespace DataSift.Streaming
         {
             Contract.Requires<ArgumentNullException>(hash != null);
             Contract.Requires<ArgumentException>(hash.Trim().Length > 0);
-            Contract.Requires<ArgumentException>(new Regex(@"[a-z0-9]{32}").IsMatch(hash), "Hash should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>(Constants.STREAM_HASH_FORMAT.IsMatch(hash), Messages.INVALID_STREAM_HASH);
 
             if(messageHandler != null)
             {

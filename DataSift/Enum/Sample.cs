@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataSift.Enum
 {
+    /// <summary>
+    /// Valid sample rates when using historics
+    /// </summary>
     public enum Sample
     {
         [Description("10")]

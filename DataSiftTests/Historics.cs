@@ -8,6 +8,13 @@ namespace DataSiftTests
     [TestClass]
     public class Historics : TestBase
     {
+        private const string VALID_HISTORICS_ID = "9e97d9ac115e58fcb7ab";
+        private const string VALID_STREAM_HASH = "2459b03a13577579bca76471778a5c3d";
+        private const string VALID_NAME = "Library test";
+        private string[] VALID_SOURCES = new string[] { "twitter" };
+        private DateTimeOffset VALID_START = DateTimeOffset.Now.AddDays(-2);
+        private DateTimeOffset VALID_END = DateTimeOffset.Now.AddDays(-1);
+
         #region Get
 
         [TestMethod]
@@ -35,8 +42,8 @@ namespace DataSiftTests
         [TestMethod]
         public void Get_By_Id_Complete_Succeeds()
         {
-            var response = Client.Historics.Get(id: "9e97d9ac115e58fcb7ab");
-            Assert.AreEqual("9e97d9ac115e58fcb7ab", response.Data.id);
+            var response = Client.Historics.Get(id: VALID_HISTORICS_ID);
+            Assert.AreEqual(VALID_HISTORICS_ID, response.Data.id);
             Assert.AreEqual("twitter", response.Data.sources[0]);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -80,69 +87,69 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Prepare_Null_Name_Fails()
         {
-            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), null, new string[] { "twitter" });
+            Client.Historics.Prepare(VALID_STREAM_HASH, VALID_START, VALID_END, null, VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Prepare_Empty_Name_Fails()
         {
-            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "", new string[] { "twitter" });
+            Client.Historics.Prepare(VALID_STREAM_HASH, VALID_START, VALID_END, "", VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Prepare_Null_Hash_Fails()
         {
-            Client.Historics.Prepare(null, DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "Library test", new string[] { "twitter" });
+            Client.Historics.Prepare(null, VALID_START, VALID_END, VALID_NAME, VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Prepare_Empty_Hash_Fails()
         {
-            Client.Historics.Prepare("", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "Library test", new string[] { "twitter" });
+            Client.Historics.Prepare("", VALID_START, VALID_END, VALID_NAME, VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Prepare_Bad_Format_Hash_Fails()
         {
-            Client.Historics.Prepare("hash", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "Library test", new string[] { "twitter" });
+            Client.Historics.Prepare("hash", VALID_START, VALID_END, VALID_NAME, VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Prepare_Too_Late_End_Fails()
         {
-            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now, "Library test", new string[] { "twitter" });
+            Client.Historics.Prepare(VALID_STREAM_HASH, VALID_START, DateTimeOffset.Now, VALID_NAME, VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Prepare_Start_After_End_Fails()
         {
-            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-3), "Library test", new string[] { "twitter" });
+            Client.Historics.Prepare(VALID_STREAM_HASH, VALID_START, DateTimeOffset.Now.AddDays(-3), VALID_NAME, VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Prepare_Null_Sources_Fails()
         {
-            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "Library test", null);
+            Client.Historics.Prepare(VALID_STREAM_HASH, VALID_START, VALID_END, VALID_NAME, null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Prepare_Empty_Sources_Fails()
         {
-            Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "Library test", new string[] {});
+            Client.Historics.Prepare(VALID_STREAM_HASH, VALID_START, VALID_END, VALID_NAME, new string[] { });
         }
 
         [TestMethod]
         public void Prepare_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Prepare("2459b03a13577579bca76471778a5c3d", DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), "Library test", new string[] { "twitter" }, Sample.OneHundredPercent);
+            var response = Client.Historics.Prepare(VALID_STREAM_HASH, VALID_START, VALID_END, VALID_NAME, VALID_SOURCES, Sample.OneHundredPercent);
             Assert.AreEqual("4ef7c852a96d6352764f", response.Data.id);
             Assert.AreEqual(99, response.Data.availability.sources.twitter.status);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -177,7 +184,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Delete_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Delete("2490313575797478a5c3");
+            var response = Client.Historics.Delete(VALID_HISTORICS_ID);
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
@@ -189,34 +196,34 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentException))]
         public void Status_Too_Late_End_Fails()
         {
-            Client.Historics.Status(DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(1), new string[] { "twitter" });
+            Client.Historics.Status(VALID_START, DateTimeOffset.Now.AddDays(1), VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Status_Start_After_End_Fails()
         {
-            Client.Historics.Status(DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-3), new string[] { "twitter" });
+            Client.Historics.Status(VALID_START, DateTimeOffset.Now.AddDays(-3), VALID_SOURCES);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Status_Null_Sources_Fails()
         {
-            Client.Historics.Status(DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), null);
+            Client.Historics.Status(VALID_START, VALID_END, null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Status_Empty_Sources_Fails()
         {
-            Client.Historics.Status(DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), new string[] { });
+            Client.Historics.Status(VALID_START, VALID_END, new string[] { });
         }
 
         [TestMethod]
         public void Status_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Status(DateTimeOffset.Now.AddDays(-2), DateTimeOffset.Now.AddDays(-1), new string[] { "twitter" });
+            var response = Client.Historics.Status(VALID_START, VALID_END, VALID_SOURCES);
             Assert.AreEqual(100, response.Data[0].sources.twitter.augmentations.klout);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -229,41 +236,41 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Update_Null_Id_Fails()
         {
-            Client.Historics.Update(null, "new name");
+            Client.Historics.Update(null, VALID_NAME);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Update_Empty_Id_Fails()
         {
-            Client.Historics.Update("", "new name");
+            Client.Historics.Update("", VALID_NAME);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Update_Bad_Format_Id_Fails()
         {
-            Client.Historics.Update("id", "new name");
+            Client.Historics.Update("id", VALID_NAME);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Update_Null_Name_Fails()
         {
-            Client.Historics.Update("2490313575797478a5c3", null);
+            Client.Historics.Update(VALID_HISTORICS_ID, null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Update_Empty_Name_Fails()
         {
-            Client.Historics.Update("2490313575797478a5c3", "");
+            Client.Historics.Update(VALID_HISTORICS_ID, "");
         }
 
         [TestMethod]
         public void Update_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Update("2490313575797478a5c3", "new name");
+            var response = Client.Historics.Update(VALID_HISTORICS_ID, VALID_NAME);
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
          
@@ -295,7 +302,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Start_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Start("2490313575797478a5c3");
+            var response = Client.Historics.Start(VALID_HISTORICS_ID);
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
@@ -327,7 +334,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Stop_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Stop("2490313575797478a5c3");
+            var response = Client.Historics.Stop(VALID_HISTORICS_ID);
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
@@ -359,7 +366,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Pause_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Pause("2490313575797478a5c3");
+            var response = Client.Historics.Pause(VALID_HISTORICS_ID);
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
@@ -391,7 +398,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Resume_Correct_Args_Succeeds()
         {
-            var response = Client.Historics.Resume("2490313575797478a5c3");
+            var response = Client.Historics.Resume(VALID_HISTORICS_ID);
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 

@@ -8,6 +8,12 @@ namespace DataSiftTests
     [TestClass]
     public class Push : TestBase
     {
+        private const string VALID_PUSH_ID = "d668655cfe5f93741ddcd30bb309a8c7";
+        private const string VALID_STREAM_HASH = "13e9347e7da32f19fcdb08e297019d2e";
+        private const string VALID_HISTORICS_ID = "6cd38099f4c1e0f1ac31";
+        private const string VALID_NAME = "New subscription";
+        private const string VALID_TYPE = "pull";
+
         #region Get
 
         [TestMethod]
@@ -15,7 +21,7 @@ namespace DataSiftTests
         {
             var response = Client.Push.Get();
             Assert.AreEqual(2, response.Data.count);
-            Assert.AreEqual("d668655cfe5f93741ddcd30bb309a8c7", response.Data.subscriptions[0].id);
+            Assert.AreEqual(VALID_PUSH_ID, response.Data.subscriptions[0].id);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
@@ -36,7 +42,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Get_By_Id_Complete_Succeeds()
         {
-            var response = Client.Push.Get(id: "d468655cfe5f93741ddcd30bb309a8c7");
+            var response = Client.Push.Get(id: VALID_PUSH_ID);
             Assert.AreEqual("d468655cfe5f93741ddcd30bb309a8c7", response.Data.id);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -58,8 +64,8 @@ namespace DataSiftTests
         [TestMethod]
         public void Get_By_Hash_Complete_Succeeds()
         {
-            var response = Client.Push.Get(hash: "13e9347e7da32f19fcdb08e297019d2e");
-            Assert.AreEqual("13e9347e7da32f19fcdb08e297019d2e", response.Data.subscriptions[0].hash);
+            var response = Client.Push.Get(hash: VALID_STREAM_HASH);
+            Assert.AreEqual(VALID_STREAM_HASH, response.Data.subscriptions[0].hash);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
@@ -80,7 +86,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Get_By_HistoricsId_Complete_Succeeds()
         {
-            var response = Client.Push.Get(historicsId: "6cd38099f4c1e0f1ac31");
+            var response = Client.Push.Get(historicsId: VALID_HISTORICS_ID);
             Assert.AreEqual("3a5c2546136a037d4b2df0b8b8836f3e", response.Data.subscriptions[0].id);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -142,83 +148,83 @@ namespace DataSiftTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Create_Null_Name_Fails()
         {
-            Client.Push.Create(null, "pull");
+            Client.Push.Create(null, VALID_TYPE);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Empty_Name_Fails()
         {
-            Client.Push.Create("", "pull");
+            Client.Push.Create("", VALID_TYPE);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Create_Null_Type_Fails()
         {
-            Client.Push.Create("New subscription", null);
+            Client.Push.Create(VALID_NAME, null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Empty_Type_Fails()
         {
-            Client.Push.Create("New subscription", "");
+            Client.Push.Create(VALID_NAME, "");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_End_Before_Start_Fails()
         {
-            Client.Push.Create("New subscription", "", start: DateTimeOffset.Now, end: DateTimeOffset.Now.AddHours(-1));
+            Client.Push.Create(VALID_NAME, "", start: DateTimeOffset.Now, end: DateTimeOffset.Now.AddHours(-1));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Neither_Hash_Nor_HistoricsId_Fails()
         {
-            Client.Push.Create("New subscription", "pull");
+            Client.Push.Create(VALID_NAME, VALID_TYPE);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Both_Hash_And_HistoricsId_Fails()
         {
-            Client.Push.Create("New subscription", "pull", hash: "2459b03a13577579bca76471778a5c3d", historicsId: "3ea6e1ca364f3b327e6f");
+            Client.Push.Create(VALID_NAME, VALID_TYPE, hash: VALID_STREAM_HASH, historicsId: VALID_HISTORICS_ID);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Empty_Hash_Fails()
         {
-            Client.Push.Create("New subscription", "pull", hash: "");
+            Client.Push.Create(VALID_NAME, VALID_TYPE, hash: "");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Bad_Format_Hash_Fails()
         {
-            Client.Push.Create("New subscription", "pull", hash: "hash");
+            Client.Push.Create(VALID_NAME, VALID_TYPE, hash: "hash");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Empty_HistoricsId_Fails()
         {
-            Client.Push.Create("New subscription", "pull", historicsId: "");
+            Client.Push.Create(VALID_NAME, VALID_TYPE, historicsId: "");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Create_Bad_Format_HistoricsId_Fails()
         {
-            Client.Push.Create("New subscription", "pull", historicsId: "historics");
+            Client.Push.Create(VALID_NAME, VALID_TYPE, historicsId: "historics");
         }
 
         [TestMethod]
         public void Create_Correct_Args_Succeeds()
         {
-            var response = Client.Push.Create("New subscription", "pull", hash: "42d388f8b1db997faaf7dab487f11290", initialStatus: PushStatus.Active, start: DateTimeOffset.Now, end: DateTimeOffset.Now.AddHours(1));
+            var response = Client.Push.Create(VALID_NAME, VALID_TYPE, hash: VALID_STREAM_HASH, initialStatus: PushStatus.Active, start: DateTimeOffset.Now, end: DateTimeOffset.Now.AddHours(1));
             Assert.AreEqual("d468655cfe5f93741ddcd30bb309a8c7", response.Data.id);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -251,7 +257,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Delete_Correct_Args_Succeeds()
         {
-            var response = Client.Push.Delete("08b923395b6ce8bfa4d96f57f863a1c3");
+            var response = Client.Push.Delete(VALID_PUSH_ID);
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
         }
 
@@ -283,7 +289,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Stop_Correct_Args_Succeeds()
         {
-            var response = Client.Push.Stop("d468655cfe5f93741ddcd30bb309a8c7");
+            var response = Client.Push.Stop(VALID_PUSH_ID);
             Assert.AreEqual("d468655cfe5f93741ddcd30bb309a8c7", response.Data.id);
             Assert.AreEqual("finishing", response.Data.status);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -317,7 +323,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Pause_Correct_Args_Succeeds()
         {
-            var response = Client.Push.Pause("d468655cfe5f93741ddcd30bb309a8c7");
+            var response = Client.Push.Pause(VALID_PUSH_ID);
             Assert.AreEqual("d468655cfe5f93741ddcd30bb309a8c7", response.Data.id);
             Assert.AreEqual("paused", response.Data.status);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -351,7 +357,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Resume_Correct_Args_Succeeds()
         {
-            var response = Client.Push.Resume("d468655cfe5f93741ddcd30bb309a8c7");
+            var response = Client.Push.Resume(VALID_PUSH_ID);
             Assert.AreEqual("d468655cfe5f93741ddcd30bb309a8c7", response.Data.id);
             Assert.AreEqual("active", response.Data.status);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -386,7 +392,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Log_By_Id_Complete_Succeeds()
         {
-            var response = Client.Push.Log(id: "d468655cfe5f93741ddcd30bb309a8c7");
+            var response = Client.Push.Log(id: VALID_PUSH_ID);
             Assert.AreEqual("d468655cfe5f93741ddcd30bb309a8c7", response.Data.log_entries[0].subscription_id);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
@@ -449,7 +455,7 @@ namespace DataSiftTests
         [TestMethod]
         public void Update_Correct_Args_Succeeds()
         {
-            var response = Client.Push.Update("f4d4caee9acfd27faf88843d8d6191b1", "new name");
+            var response = Client.Push.Update(VALID_PUSH_ID, "new name");
             Assert.AreEqual("new name", response.Data.name);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }

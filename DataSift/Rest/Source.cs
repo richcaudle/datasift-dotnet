@@ -11,9 +11,9 @@ namespace DataSift.Rest
 {
     public class Source
     {
-        DataSift _client = null;
+        DataSiftClient _client = null;
 
-        internal Source(DataSift client)
+        internal Source(DataSiftClient client)
         {
             _client = client;
         }
@@ -22,7 +22,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
 
             return _client.GetRequest().Request("source/start", new { id = id }, Method.PUT);
         }
@@ -40,7 +40,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
 
             return _client.GetRequest().Request("source/stop", new { id = id }, Method.PUT);
         }
@@ -49,7 +49,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
             Contract.Requires<ArgumentException>((page.HasValue) ? page.Value > 0 : true);
             Contract.Requires<ArgumentException>((perPage.HasValue) ? perPage.Value > 0 : true);
 
@@ -60,7 +60,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
 
             Contract.Requires<ArgumentNullException>(sourceType != null);
             Contract.Requires<ArgumentException>(sourceType.Trim().Length > 0);
@@ -74,7 +74,7 @@ namespace DataSift.Rest
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
 
             return _client.GetRequest().Request("source/delete", new { id = id }, Method.DELETE);
         }
@@ -82,7 +82,7 @@ namespace DataSift.Rest
         public RestAPIResponse Get(string sourceType = null, int? page = null, int? perPage = null, string id = null)
         {
             Contract.Requires<ArgumentException>((id != null) ? id.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
             Contract.Requires<ArgumentException>((sourceType != null) ? sourceType.Trim().Length > 0 : true); 
             Contract.Requires<ArgumentException>((page.HasValue) ? page.Value > 0 : true);
             Contract.Requires<ArgumentException>((perPage.HasValue) ? perPage.Value > 0 : true);

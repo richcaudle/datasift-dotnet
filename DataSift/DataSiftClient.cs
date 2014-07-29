@@ -13,7 +13,7 @@ using WebSocket4Net;
 
 namespace DataSift
 {
-    public class DataSift
+    public class DataSiftClient
     {
         private string _username;
         private string _apikey;
@@ -27,13 +27,13 @@ namespace DataSift
         public delegate IRestAPIRequest GetAPIRequestDelegate(string username, string apikey);
         public delegate IStreamConnection GetStreamConnectionDelegate(string url);
 
-        public DataSift(string username, string apikey, GetAPIRequestDelegate requestCreator = null, GetStreamConnectionDelegate connectionCreator = null)
+        public DataSiftClient(string username, string apikey, GetAPIRequestDelegate requestCreator = null, GetStreamConnectionDelegate connectionCreator = null)
         {
             Contract.Requires<ArgumentNullException>(username != null);
             Contract.Requires<ArgumentException>(username.Trim().Length > 0);
             Contract.Requires<ArgumentNullException>(apikey != null);
             Contract.Requires<ArgumentException>(apikey.Trim().Length > 0);
-            Contract.Requires<ArgumentException>(new Regex(@"[a-z0-9]{32}").IsMatch(apikey), "API key should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>(Constants.APIKEY_FORMAT.IsMatch(apikey), Messages.INVALID_APIKEY);
 
             _username = username;
             _apikey = apikey;
@@ -146,7 +146,7 @@ namespace DataSift
         {
             Contract.Requires<ArgumentNullException>(hash != null);
             Contract.Requires<ArgumentException>(hash.Trim().Length > 0);
-            Contract.Requires<ArgumentException>(new Regex(@"[a-z0-9]{32}").IsMatch(hash), "Hash should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>(Constants.STREAM_HASH_FORMAT.IsMatch(hash), Messages.INVALID_STREAM_HASH);
 
             return GetRequest().Request("dpu", new { hash = hash });
         }
@@ -160,10 +160,10 @@ namespace DataSift
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
-            Contract.Requires<ArgumentException>((id != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(id) : true, "ID should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SUBSCRIPTION_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SUBSCRIPTION_ID);
             Contract.Requires<ArgumentException>((size.HasValue) ? size > 0: true);
             Contract.Requires<ArgumentException>((cursor != null) ? cursor.Trim().Length > 0 : true);
-            Contract.Requires<ArgumentException>((cursor != null) ? new Regex(@"[a-z0-9]{32}").IsMatch(cursor) : true, "Cursor should be a 32 character string of lower-case letters and numbers");
+            Contract.Requires<ArgumentException>((cursor != null) ? Constants.CURSOR_FORMAT.IsMatch(cursor) : true, Messages.INVALID_CURSOR);
 
             return (PullAPIResponse)GetRequest().Request("pull", new { id = id, size = size, cursor = cursor });
         }

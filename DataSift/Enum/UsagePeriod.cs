@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataSift.Enum
 {
+    /// <summary>
+    /// Valid usage periods, when using the /usage API endpoint
+    /// </summary>
     public enum UsagePeriod
     {
         Day,

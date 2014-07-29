@@ -10,6 +10,8 @@ namespace DataSiftTests
     {
         AutoResetEvent _TestTrigger;
 
+        private const string VALID_STREAM_HASH = "b09z345fe2f1fed748c12268fd473662";
+
         #region Subscribe
 
         [TestMethod]
@@ -37,11 +39,11 @@ namespace DataSiftTests
 
             stream.OnSubscribed += delegate(string hash)
             {
-                Assert.AreEqual("b09z345fe2f1fed748c12268fd473662", hash); 
+                Assert.AreEqual(VALID_STREAM_HASH, hash); 
                 this._TestTrigger.Set();
             };
 
-            stream.Subscribe("b09z345fe2f1fed748c12268fd473662"); 
+            stream.Subscribe(VALID_STREAM_HASH); 
             this._TestTrigger.WaitOne();
         }
 
@@ -53,11 +55,11 @@ namespace DataSiftTests
 
             DataSift.Streaming.DataSiftStream.OnSubscribedHandler onSubscribed = (hash) =>
             {
-                Assert.AreEqual("b09z345fe2f1fed748c12268fd473662", hash);
+                Assert.AreEqual(VALID_STREAM_HASH, hash);
                 this._TestTrigger.Set();
             };
 
-            stream.Subscribe("b09z345fe2f1fed748c12268fd473662", subscribedHandler: onSubscribed);
+            stream.Subscribe(VALID_STREAM_HASH, subscribedHandler: onSubscribed);
             this._TestTrigger.WaitOne();
         }
 
@@ -75,12 +77,12 @@ namespace DataSiftTests
 
             stream.OnMessage += delegate(string hash, dynamic message)
             {
-                Assert.AreEqual("b09z345fe2f1fed748c12268fd473662", hash);
+                Assert.AreEqual(VALID_STREAM_HASH, hash);
                 Assert.AreEqual("Test content", message.interaction.content);
                 this._TestTrigger.Set();
             };
 
-            stream.Subscribe("b09z345fe2f1fed748c12268fd473662");
+            stream.Subscribe(VALID_STREAM_HASH);
             this._TestTrigger.WaitOne();
         }
 
@@ -92,12 +94,12 @@ namespace DataSiftTests
 
             DataSift.Streaming.DataSiftStream.OnMessageHandler onMessage = (hash, message) =>
             {
-                Assert.AreEqual("b09z345fe2f1fed748c12268fd473662", hash);
+                Assert.AreEqual(VALID_STREAM_HASH, hash);
                 Assert.AreEqual("Test content", message.interaction.content);
                 this._TestTrigger.Set();
             };
 
-            stream.Subscribe("b09z345fe2f1fed748c12268fd473662", messageHandler: onMessage);
+            stream.Subscribe(VALID_STREAM_HASH, messageHandler: onMessage);
             this._TestTrigger.WaitOne();
         }
 

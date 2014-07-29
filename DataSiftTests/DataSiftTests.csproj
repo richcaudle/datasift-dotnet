@@ -101,7 +101,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Client.cs" />
     <Compile Include="List.cs" />
     <Compile Include="MockAPIResponses.Designer.cs">
       <AutoGen>True</AutoGen>
