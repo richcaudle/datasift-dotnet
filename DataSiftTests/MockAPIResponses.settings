@@ -1369,14 +1369,6 @@
         "id": "10513336322"
       },
       "resource_id": "7e8099d7f34f466e8bee01852243e16b"
-    },
-    {
-      "parameters": {
-        "title": "The Sun",
-        "url": "http://www.facebook.com/thesun",
-        "id": "161385360554578"
-      },
-      "resource_id": "b801b1f3a6934cf29e02d092bff9b7f1"
     }
   ],
   "auth": [
@@ -1474,14 +1466,6 @@
         "id": "10513336322"
       },
       "resource_id": "7e8099d7f34f466e8bee01852243e16b"
-    },
-    {
-      "parameters": {
-        "title": "The Sun",
-        "url": "http://www.facebook.com/thesun",
-        "id": "161385360554578"
-      },
-      "resource_id": "b801b1f3a6934cf29e02d092bff9b7f1"
     }
   ],
   "auth": [
@@ -1554,6 +1538,153 @@
     <Setting Name="ListReplaceStart" Type="System.String" Scope="Application">
       <Value Profile="(Default)">{
   "id": "123456"
+}</Value>
+    </Setting>
+    <Setting Name="SourceResourceAdd" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id": "da4f8df71a0f43698acf9240b5ad668f",
+  "name": "news_source",
+  "source_type": "facebook_page",
+  "created_at": 1391707662,
+  "status": "stopped",
+  "parameters": {
+    "posts_by_others": false,
+    "likes": true,
+    "comments": true
+  },
+  "resources": [
+    {
+      "parameters": {
+        "title": "The Guardian",
+        "url": "http://www.facebook.com/theguardian",
+        "id": "10513336322"
+      },
+      "resource_id": "7e8099d7f34f466e8bee01852243e16b"
+    },
+    {
+      "parameters": {
+        "title": "The Sun",
+        "url": "http://www.facebook.com/thesun",
+        "id": "161385360554578"
+      },
+      "resource_id": "b801b1f3a6934cf29e02d092bff9b7f1"
+    }
+  ],
+  "auth": [
+    {
+      "expires_at": 2112112110,
+      "parameters": {
+        "value": "EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+      },
+      "identity_id": "d38e5598142746e19689ddee65ddca55"
+    }
+  ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceResourceRemove" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id": "da4f8df71a0f43698acf9240b5ad668f",
+  "name": "news_source",
+  "source_type": "facebook_page",
+  "created_at": 1391707662,
+  "status": "stopped",
+  "parameters": {
+    "posts_by_others": false,
+    "likes": true,
+    "comments": true
+  },
+  "resources": [
+    {
+      "parameters": {
+        "title": "The Guardian",
+        "url": "http://www.facebook.com/theguardian",
+        "id": "10513336322"
+      },
+      "resource_id": "7e8099d7f34f466e8bee01852243e16b"
+    }
+  ],
+  "auth": [
+    {
+      "expires_at": 2112112110,
+      "parameters": {
+        "value": "EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+      },
+      "identity_id": "d38e5598142746e19689ddee65ddca55"
+    }
+  ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceAuthAdd" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id": "da4f8df71a0f43698acf9240b5ad668f",
+  "name": "news_source",
+  "source_type": "facebook_page",
+  "created_at": 1391707662,
+  "status": "running",
+  "parameters": {
+    "posts_by_others": true,
+    "likes": false,
+    "comments": false
+  },
+  "resources": [
+    {
+      "parameters": {
+        "title": "The Guardian",
+        "url": "http://www.facebook.com/theguardian",
+        "id": "10513336322"
+      },
+      "resource_id": "7e8099d7f34f466e8bee01852243e16b"
+    }
+  ],
+  "auth": [
+    {
+      "expires_at": 2112112110,
+      "parameters": {
+        "value": "EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+      },
+      "identity_id": "d38e5598142746e19689ddee65ddca55"
+    },
+    {
+      "expires_at": 2112112110,
+      "parameters": {
+        "value": "AZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+      },
+      "identity_id": "c801b1f3a6934cf29e02d092bff9b7f1"
+    }
+  ]
+}</Value>
+    </Setting>
+    <Setting Name="SourceAuthRemove" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{
+  "id": "da4f8df71a0f43698acf9240b5ad668f",
+  "name": "news_source",
+  "source_type": "facebook_page",
+  "created_at": 1391707662,
+  "status": "running",
+  "parameters": {
+    "posts_by_others": true,
+    "likes": false,
+    "comments": false
+  },
+  "resources": [
+    {
+      "parameters": {
+        "title": "The Guardian",
+        "url": "http://www.facebook.com/theguardian",
+        "id": "10513336322"
+      },
+      "resource_id": "7e8099d7f34f466e8bee01852243e16b"
+    }
+  ],
+  "auth": [
+    {
+      "expires_at": 2112112110,
+      "parameters": {
+        "value": "EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+      },
+      "identity_id": "d38e5598142746e19689ddee65ddca55"
+    }
+  ]
 }</Value>
     </Setting>
   </Settings>

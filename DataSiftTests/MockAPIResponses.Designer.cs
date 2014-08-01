@@ -1240,14 +1240,6 @@ namespace DataSiftTests {
         ""id"": ""10513336322""
       },
       ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
-    },
-    {
-      ""parameters"": {
-        ""title"": ""The Sun"",
-        ""url"": ""http://www.facebook.com/thesun"",
-        ""id"": ""161385360554578""
-      },
-      ""resource_id"": ""b801b1f3a6934cf29e02d092bff9b7f1""
     }
   ],
   ""auth"": [
@@ -1363,14 +1355,6 @@ namespace DataSiftTests {
         ""id"": ""10513336322""
       },
       ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
-    },
-    {
-      ""parameters"": {
-        ""title"": ""The Sun"",
-        ""url"": ""http://www.facebook.com/thesun"",
-        ""id"": ""161385360554578""
-      },
-      ""resource_id"": ""b801b1f3a6934cf29e02d092bff9b7f1""
     }
   ],
   ""auth"": [
@@ -1472,6 +1456,177 @@ namespace DataSiftTests {
         public string ListReplaceStart {
             get {
                 return ((string)(this["ListReplaceStart"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+  ""id"": ""da4f8df71a0f43698acf9240b5ad668f"",
+  ""name"": ""news_source"",
+  ""source_type"": ""facebook_page"",
+  ""created_at"": 1391707662,
+  ""status"": ""stopped"",
+  ""parameters"": {
+    ""posts_by_others"": false,
+    ""likes"": true,
+    ""comments"": true
+  },
+  ""resources"": [
+    {
+      ""parameters"": {
+        ""title"": ""The Guardian"",
+        ""url"": ""http://www.facebook.com/theguardian"",
+        ""id"": ""10513336322""
+      },
+      ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
+    },
+    {
+      ""parameters"": {
+        ""title"": ""The Sun"",
+        ""url"": ""http://www.facebook.com/thesun"",
+        ""id"": ""161385360554578""
+      },
+      ""resource_id"": ""b801b1f3a6934cf29e02d092bff9b7f1""
+    }
+  ],
+  ""auth"": [
+    {
+      ""expires_at"": 2112112110,
+      ""parameters"": {
+        ""value"": ""EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h""
+      },
+      ""identity_id"": ""d38e5598142746e19689ddee65ddca55""
+    }
+  ]
+}")]
+        public string SourceResourceAdd {
+            get {
+                return ((string)(this["SourceResourceAdd"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+  ""id"": ""da4f8df71a0f43698acf9240b5ad668f"",
+  ""name"": ""news_source"",
+  ""source_type"": ""facebook_page"",
+  ""created_at"": 1391707662,
+  ""status"": ""stopped"",
+  ""parameters"": {
+    ""posts_by_others"": false,
+    ""likes"": true,
+    ""comments"": true
+  },
+  ""resources"": [
+    {
+      ""parameters"": {
+        ""title"": ""The Guardian"",
+        ""url"": ""http://www.facebook.com/theguardian"",
+        ""id"": ""10513336322""
+      },
+      ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
+    }
+  ],
+  ""auth"": [
+    {
+      ""expires_at"": 2112112110,
+      ""parameters"": {
+        ""value"": ""EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h""
+      },
+      ""identity_id"": ""d38e5598142746e19689ddee65ddca55""
+    }
+  ]
+}")]
+        public string SourceResourceRemove {
+            get {
+                return ((string)(this["SourceResourceRemove"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+  ""id"": ""da4f8df71a0f43698acf9240b5ad668f"",
+  ""name"": ""news_source"",
+  ""source_type"": ""facebook_page"",
+  ""created_at"": 1391707662,
+  ""status"": ""running"",
+  ""parameters"": {
+    ""posts_by_others"": true,
+    ""likes"": false,
+    ""comments"": false
+  },
+  ""resources"": [
+    {
+      ""parameters"": {
+        ""title"": ""The Guardian"",
+        ""url"": ""http://www.facebook.com/theguardian"",
+        ""id"": ""10513336322""
+      },
+      ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
+    }
+  ],
+  ""auth"": [
+    {
+      ""expires_at"": 2112112110,
+      ""parameters"": {
+        ""value"": ""EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h""
+      },
+      ""identity_id"": ""d38e5598142746e19689ddee65ddca55""
+    },
+    {
+      ""expires_at"": 2112112110,
+      ""parameters"": {
+        ""value"": ""AZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h""
+      },
+      ""identity_id"": ""c801b1f3a6934cf29e02d092bff9b7f1""
+    }
+  ]
+}")]
+        public string SourceAuthAdd {
+            get {
+                return ((string)(this["SourceAuthAdd"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"{
+  ""id"": ""da4f8df71a0f43698acf9240b5ad668f"",
+  ""name"": ""news_source"",
+  ""source_type"": ""facebook_page"",
+  ""created_at"": 1391707662,
+  ""status"": ""running"",
+  ""parameters"": {
+    ""posts_by_others"": true,
+    ""likes"": false,
+    ""comments"": false
+  },
+  ""resources"": [
+    {
+      ""parameters"": {
+        ""title"": ""The Guardian"",
+        ""url"": ""http://www.facebook.com/theguardian"",
+        ""id"": ""10513336322""
+      },
+      ""resource_id"": ""7e8099d7f34f466e8bee01852243e16b""
+    }
+  ],
+  ""auth"": [
+    {
+      ""expires_at"": 2112112110,
+      ""parameters"": {
+        ""value"": ""EZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h""
+      },
+      ""identity_id"": ""d38e5598142746e19689ddee65ddca55""
+    }
+  ]
+}")]
+        public string SourceAuthRemove {
+            get {
+                return ((string)(this["SourceAuthRemove"]));
             }
         }
     }

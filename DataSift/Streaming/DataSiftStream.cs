@@ -16,7 +16,8 @@ namespace DataSift.Streaming
     {
         private Dictionary<string, OnMessageHandler> _messageHandlers = new Dictionary<string, OnMessageHandler>();
         private Dictionary<string, OnSubscribedHandler> _subscribedHandlers  = new Dictionary<string, OnSubscribedHandler>();
-   
+        private Dictionary<string, OnMessageHandler> _deleteHandlers = new Dictionary<string, OnMessageHandler>();
+
         private IStreamConnection _connection;
         private DataSiftClient.GetStreamConnectionDelegate _getConnection;
 
@@ -29,6 +30,8 @@ namespace DataSift.Streaming
 
         public delegate void OnMessageHandler(string hash, dynamic message);
         public event OnMessageHandler OnMessage;
+
+        public event OnMessageHandler OnDelete;
 
         public delegate void OnSubscribedHandler(string hash);
         public event OnSubscribedHandler OnSubscribed;
@@ -76,7 +79,7 @@ namespace DataSift.Streaming
             _connection.Open();
         }
 
-        public void Subscribe(string hash, OnMessageHandler messageHandler = null, OnSubscribedHandler subscribedHandler = null)
+        public void Subscribe(string hash, OnMessageHandler messageHandler = null, OnSubscribedHandler subscribedHandler = null, OnMessageHandler deleteHandler = null)
         {
             Contract.Requires<ArgumentNullException>(hash != null);
             Contract.Requires<ArgumentException>(hash.Trim().Length > 0);
@@ -96,6 +99,14 @@ namespace DataSift.Streaming
                     _subscribedHandlers[hash] = subscribedHandler;
                 else
                     _subscribedHandlers.Add(hash, subscribedHandler);
+            }
+
+            if (deleteHandler != null)
+            {
+                if (_deleteHandlers.ContainsKey(hash))
+                    _deleteHandlers[hash] = deleteHandler;
+                else
+                    _deleteHandlers.Add(hash, deleteHandler);
             }
             
             var message = new { action = "subscribe", hash = hash };
@@ -170,6 +181,25 @@ namespace DataSift.Streaming
             }
             else if (APIHelpers.HasAttr(message, "hash"))
             {
+                // Check for deletes
+                if (APIHelpers.HasAttr(message, "data"))
+                {
+                    if(APIHelpers.HasAttr(message.data, "deleted"))
+                    {
+                        // Fire delete at subscription level
+                        if (_deleteHandlers.ContainsKey(message.hash))
+                            _deleteHandlers[message.hash](message.hash, message.data);
+
+                        // Fire delete at connection level
+                        if (OnDelete != null)
+                            OnDelete(message.hash, message.data);
+
+                        return;
+                    }
+                }
+
+                // Otherwise normal interaction
+
                 // Fire message at subscription level
                 if (_messageHandlers.ContainsKey(message.hash))
                     _messageHandlers[message.hash](message.hash, message.data);

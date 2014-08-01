@@ -14,11 +14,12 @@ namespace DataSiftExamples
     {
         internal static void Run(string username, string apikey)
         {
-            // TODO: Insert your auth token here from https://datasift.com/source/managed/new/facebook_page
+            // TODO: Insert auth tokens here from https://datasift.com/source/managed/new/facebook_page
             var authtoken = "";
+            var authTokenToAddLater = "";
 
-            if(String.IsNullOrEmpty(authtoken))
-                throw new ArgumentException("Set the authtoken variable to a valid token");
+            if(String.IsNullOrEmpty(authtoken) || (String.IsNullOrEmpty(authTokenToAddLater))
+                throw new ArgumentException("Set the authtoken & authTokenToAddLater variables to a valid tokens");
 
             var client = new DataSiftClient(username, apikey);
 
@@ -45,10 +46,28 @@ namespace DataSiftExamples
                     }
                 };
 
+            var resourcesToAddLater = new[] {
+                    new { 
+                        parameters = new {
+                            url = "http://www.facebook.com/thesun",
+                            title = "The Sun",
+                            id = 161385360554578
+                        }
+                    }
+                };
+
             var auth = new[] {
                     new { 
                         parameters = new {
                             value = authtoken
+                        }
+                    }
+                };
+
+            var authToAddLater = new[] {
+                    new { 
+                        parameters = new {
+                            value = authTokenToAddLater
                         }
                     }
                 };
@@ -59,11 +78,23 @@ namespace DataSiftExamples
             client.Source.Start(create.Data.id);
             Console.WriteLine("\nStarted source.");
 
-            var update = client.Source.Update("facebook_page", "Updated example source", create.Data.id, create.Data.parameters, create.Data.resources, create.Data.auth);
+            var update = client.Source.Update(create.Data.id, name: "Updated example source");
             Console.WriteLine("\nUpdated source: {0}", update.Data.id);
 
             var getSource = client.Source.Get(id: create.Data.id);
             Console.WriteLine("\nSource details: " + JsonConvert.SerializeObject(getSource.Data));
+
+            var addResource = client.Source.ResourceAdd(create.Data.id, resourcesToAddLater);
+            Console.WriteLine("\nAdded resource ID: " + addResource.Data.resources[1].resource_id);
+
+            var removeResource = client.Source.ResourceRemove(create.Data.id, new string[] { addResource.Data.resources[1].resource_id });
+            Console.WriteLine("\nRemoved resource ID: " + addResource.Data.resources[1].resource_id);
+
+            var addAuth = client.Source.AuthAdd(create.Data.id, authToAddLater);
+            Console.WriteLine("\nAdded auth ID: " + addAuth.Data.auth[1].identity_id);
+
+            var removeAuth = client.Source.ResourceRemove(create.Data.id, new string[] {  addAuth.Data.auth[1].identity_id });
+            Console.WriteLine("\nRemoved auth ID: " + addAuth.Data.auth[1].identity_id);
 
             client.Source.Stop(create.Data.id);
             Console.WriteLine("\nStopped source.");

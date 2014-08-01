@@ -20,13 +20,14 @@ namespace DataSiftExamples
 
             Console.WriteLine("Running 'Streaming' example...");
 
+            _stream = _client.Connect();
             _stream.OnConnect += stream_OnConnect;
             _stream.OnMessage += stream_OnMessage;
             _stream.OnDataSiftMessage += stream_OnDataSiftMessage;
             _stream.OnSubscribed += stream_OnSubscribed;
             _stream.OnError += stream_OnError;
             _stream.OnClosed += stream_OnClosed;
-            _stream = _client.Connect();
+            _stream.OnDelete += stream_OnDelete;
 
         }
 
@@ -46,6 +47,12 @@ namespace DataSiftExamples
         {
             Console.WriteLine("New interaction received on stream " + hash);
             Console.WriteLine(JsonConvert.SerializeObject(message) + "\n");
+        }
+
+        static void stream_OnDelete(string hash, dynamic message)
+        {
+            // You must delete the interaction to stay compliant
+            Console.WriteLine("Deleted: {0}", message.interaction.id);
         }
 
         static void stream_OnDataSiftMessage(DataSift.Enum.DataSiftMessageStatus status, string message)

@@ -176,58 +176,44 @@ namespace DataSiftTests
         #region Update
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Update_Null_Source_Type_Fails()
-        {
-            Client.Source.Update(null, "Test source", "da4f8df71a0f43698acf9240b5ad668f", DummyParameters, DummyResources, DummyAuth);
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Update_Empty_Source_Type_Fails()
         {
-            Client.Source.Update("", "Test source", "da4f8df71a0f43698acf9240b5ad668f", DummyParameters, DummyResources, DummyAuth);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Update_Null_Name_Fails()
-        {
-            Client.Source.Update("facebook_page", null, "da4f8df71a0f43698acf9240b5ad668f", DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Update("da4f8df71a0f43698acf9240b5ad668f", sourceType: "");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Update_Empty_Name_Fails()
         {
-            Client.Source.Update("facebook_page", "", "da4f8df71a0f43698acf9240b5ad668f", DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Update("da4f8df71a0f43698acf9240b5ad668f", name: "");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Update_Null_Id_Fails()
         {
-            Client.Source.Update("facebook_page", "Test source", null, DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Update(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Update_Empty_Id_Fails()
         {
-            Client.Source.Update("facebook_page", "Test source", "", DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Update("");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Update_Bad_Format_Id_Fails()
         {
-            Client.Source.Update("facebook_page", "Test source", "update", DummyParameters, DummyResources, DummyAuth);
+            Client.Source.Update("update");
         }
 
         [TestMethod]
         public void Update_Correct_Args_Succeeds()
         {
-            var response = Client.Source.Update("facebook_page", "news_source", "da4f8df71a0f43698acf9240b5ad668f", DummyParameters, DummyResources, DummyAuth);
+            var response = Client.Source.Update("da4f8df71a0f43698acf9240b5ad668f", "facebook_page", "news_source", DummyParameters, DummyResources, DummyAuth);
             Assert.AreEqual("da4f8df71a0f43698acf9240b5ad668f", response.Data.id);
             Assert.AreEqual(HttpStatusCode.Accepted, response.StatusCode);
         }
@@ -396,6 +382,187 @@ namespace DataSiftTests
         }
 
         #endregion
+
+        #region Resource Add
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ResourceAdd_Null_Id_Fails()
+        {
+            Client.Source.ResourceAdd(null, DummyResources);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ResourceAdd_Empty_Id_Fails()
+        {
+            Client.Source.ResourceAdd("", DummyResources);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ResourceAdd_Bad_Format_Id_Fails()
+        {
+            Client.Source.ResourceAdd("source", DummyResources);
+        }
+
+        [TestMethod]
+        public void ResourceAdd_Succeeds()
+        {
+            var resource = new[] {
+                    new { 
+                        parameters = new {
+                            url = "http://www.facebook.com/theguardian",
+                            title = "The Guardian",
+                            id = 10513336322
+                        }
+                    }
+                };
+
+
+            var response = Client.Source.ResourceAdd(VALID_SOURCE_ID, resource);
+            Assert.AreEqual("b801b1f3a6934cf29e02d092bff9b7f1", response.Data.resources[1].resource_id);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+
+        #endregion
+
+        #region Resource Remove
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ResourceRemove_Null_Id_Fails()
+        {
+            Client.Source.ResourceRemove(null, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ResourceRemove_Empty_Id_Fails()
+        {
+            Client.Source.ResourceRemove("", null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ResourceRemove_Bad_Format_Id_Fails()
+        {
+            Client.Source.ResourceRemove("source", null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ResourceRemove_Null_ResourceIds_Fails()
+        {
+            Client.Source.ResourceRemove(VALID_SOURCE_ID, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ResourceRemove_Empty_ResourceIds_Fails()
+        {
+            Client.Source.ResourceRemove(VALID_SOURCE_ID, new string[]{});
+        }
+
+        [TestMethod]
+        public void ResourceRemove_Succeeds()
+        {
+            var response = Client.Source.ResourceRemove(VALID_SOURCE_ID, new string[] { "b801b1f3a6934cf29e02d092bff9b7f1" });
+            Assert.AreEqual(1, response.Data.resources.Count);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        #endregion
+
+        #region Auth Add
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AuthAdd_Null_Id_Fails()
+        {
+            Client.Source.AuthAdd(null, DummyAuth);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void AuthAdd_Empty_Id_Fails()
+        {
+            Client.Source.AuthAdd("", DummyAuth);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void AuthAdd_Bad_Format_Id_Fails()
+        {
+            Client.Source.AuthAdd("source", DummyAuth);
+        }
+
+        [TestMethod]
+        public void AuthAdd_Succeeds()
+        {
+            var auth = new[] {
+                    new { 
+                        parameters = new {
+                            value = "AZBXlFZBUgBYmjHkxc2pPmzLeJJYmAvQkwZCRdm0A1NAjidHy1h"
+                        }
+                    }
+                };
+
+            var response = Client.Source.AuthAdd(VALID_SOURCE_ID, auth);
+            Assert.AreEqual("c801b1f3a6934cf29e02d092bff9b7f1", response.Data.auth[1].identity_id);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+         
+        #endregion
+
+        #region Auth Remove
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AuthRemove_Null_Id_Fails()
+        {
+            Client.Source.AuthRemove(null, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void AuthRemove_Empty_Id_Fails()
+        {
+            Client.Source.AuthRemove("", null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void AuthRemove_Bad_Format_Id_Fails()
+        {
+            Client.Source.AuthRemove("source", null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AuthRemove_Null_AuthIds_Fails()
+        {
+            Client.Source.AuthRemove(VALID_SOURCE_ID, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void AuthRemove_Empty_AuthIds_Fails()
+        {
+            Client.Source.AuthRemove(VALID_SOURCE_ID, new string[] {});
+        }
+
+        [TestMethod]
+        public void AuthRemove_Succeeds()
+        {
+            var response = Client.Source.AuthRemove(VALID_SOURCE_ID, new string[] { "c801b1f3a6934cf29e02d092bff9b7f1" });
+            Assert.AreEqual(1, response.Data.auth.Count);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        #endregion
+
 
     }
 }

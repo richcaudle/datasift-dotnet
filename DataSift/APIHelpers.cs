@@ -129,7 +129,7 @@ namespace DataSift
                     if (val.GetType().IsEnum)
                         val = GetEnumDescription(val);
                     else if (
-                            !(endpoint.StartsWith("list/"))
+                            !(endpoint.StartsWith("list/") || endpoint.StartsWith("source/"))
                             &&val.GetType().IsArray 
                             && (val.GetType().GetElementType() == typeof(string) || val.GetType().GetElementType() == typeof(int))
                         )

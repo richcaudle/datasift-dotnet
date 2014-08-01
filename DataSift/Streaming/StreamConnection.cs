@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WebSocket4Net;
@@ -18,7 +19,9 @@ namespace DataSift.Streaming
 
         internal StreamConnection(string url)
         {
-            _websocket = new WebSocket(url);
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+
+            _websocket = new WebSocket(url, userAgent: "DataSift/v1 Dotnet/v" + version.ToString());
             _websocket.EnableAutoSendPing = true;
             _websocket.Opened += _websocket_Opened;
             _websocket.Closed += _websocket_Closed;

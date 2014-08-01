@@ -25,8 +25,8 @@ namespace DataSift.Rest
             _client = new RestClient("https://api.datasift.com/v1");
             _client.Authenticator = new HttpBasicAuthenticator(username, apikey);
 
-            // TODO: Get version from external file
-            _client.UserAgent = "DataSift/v1 Dotnet/v0.1";
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            _client.UserAgent = "DataSift/v1 Dotnet/v" + version.ToString();
         }
 
         public RestAPIResponse Request(string endpoint, dynamic parameters = null, RestSharp.Method method = Method.GET)

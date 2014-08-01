@@ -56,16 +56,14 @@ namespace DataSift.Rest
             return _client.GetRequest().Request("source/log", new { id = id, page = page, per_page = perPage });
         }
 
-        public RestAPIResponse Update(string sourceType, string name, string id, dynamic parameters, dynamic resources, dynamic auth)
+        public RestAPIResponse Update(string id, string sourceType = null, string name = null, dynamic parameters = null, dynamic resources = null, dynamic auth = null)
         {
             Contract.Requires<ArgumentNullException>(id != null);
             Contract.Requires<ArgumentException>(id.Trim().Length > 0);
             Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
 
-            Contract.Requires<ArgumentNullException>(sourceType != null);
-            Contract.Requires<ArgumentException>(sourceType.Trim().Length > 0);
-            Contract.Requires<ArgumentNullException>(name != null);
-            Contract.Requires<ArgumentException>(name.Trim().Length > 0);
+            Contract.Requires<ArgumentException>((sourceType != null) ? sourceType.Trim().Length > 0 : true);
+            Contract.Requires<ArgumentException>((name != null) ? name.Trim().Length > 0 : true);
 
             return _client.GetRequest().Request("source/update", new { source_type = sourceType, name = name, id = id, parameters = parameters, resources = resources, auth = auth });
         }
@@ -88,6 +86,48 @@ namespace DataSift.Rest
             Contract.Requires<ArgumentException>((perPage.HasValue) ? perPage.Value > 0 : true);
 
             return _client.GetRequest().Request("source/get", new { source_type = sourceType, page = page, per_page = perPage, id = id });
+        }
+
+        public RestAPIResponse ResourceAdd(string id, dynamic resources, bool? validate = null)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>((id != null) ? id.Trim().Length > 0 : true);
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
+
+            return _client.GetRequest().Request("source/resource/add", new { id = id, resources = resources, validate = validate });
+        }
+
+        public RestAPIResponse ResourceRemove(string id, string[] resourceIds)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>((id != null) ? id.Trim().Length > 0 : true);
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
+
+            Contract.Requires<ArgumentNullException>(resourceIds != null);
+            Contract.Requires<ArgumentException>(resourceIds.Length > 0);
+
+            return _client.GetRequest().Request("source/resource/remove", new { id = id, resource_ids = resourceIds });
+        }
+
+        public RestAPIResponse AuthAdd(string id, dynamic auth, bool? validate = null)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>((id != null) ? id.Trim().Length > 0 : true);
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
+
+            return _client.GetRequest().Request("source/auth/add", new { id = id, auth = auth, validate = validate });
+        }
+
+        public RestAPIResponse AuthRemove(string id, string[] authIds)
+        {
+            Contract.Requires<ArgumentNullException>(id != null);
+            Contract.Requires<ArgumentException>((id != null) ? id.Trim().Length > 0 : true);
+            Contract.Requires<ArgumentException>((id != null) ? Constants.SOURCE_ID_FORMAT.IsMatch(id) : true, Messages.INVALID_SOURCE_ID);
+
+            Contract.Requires<ArgumentNullException>(authIds != null);
+            Contract.Requires<ArgumentException>(authIds.Length > 0);
+
+            return _client.GetRequest().Request("source/auth/remove", new { id = id, auth_ids = authIds });
         }
 
     }

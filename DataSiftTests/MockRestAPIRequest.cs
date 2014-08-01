@@ -233,6 +233,26 @@ namespace DataSiftTests
                     result.StatusCode = HttpStatusCode.OK;
                     break;
 
+                case "source/resource/add":
+                    response = MockAPIResponses.Default.SourceResourceAdd;
+                    result.StatusCode = HttpStatusCode.OK;
+                    break;
+
+                case "source/resource/remove":
+                    response = MockAPIResponses.Default.SourceResourceRemove;
+                    result.StatusCode = HttpStatusCode.OK;
+                    break;
+
+                case "source/auth/add":
+                    response = MockAPIResponses.Default.SourceAuthAdd;
+                    result.StatusCode = HttpStatusCode.OK;
+                    break;
+
+                case "source/auth/remove":
+                    response = MockAPIResponses.Default.SourceAuthRemove;
+                    result.StatusCode = HttpStatusCode.OK;
+                    break;
+
                 case "list/get":
                     response = MockAPIResponses.Default.ListGet;
                     result.StatusCode = HttpStatusCode.OK;
