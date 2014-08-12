@@ -82,7 +82,7 @@ namespace QuickStart
             }
         }
 
-        static void stream_OnClosed(object sender, EventArgs e)
+        static void stream_OnClosed()
         {
             Console.WriteLine("Connection has been closed.");
         }

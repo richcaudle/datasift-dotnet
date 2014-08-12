@@ -18,7 +18,7 @@ namespace DataSiftExamples
             var authtoken = "";
             var authTokenToAddLater = "";
 
-            if(String.IsNullOrEmpty(authtoken) || (String.IsNullOrEmpty(authTokenToAddLater))
+            if(String.IsNullOrEmpty(authtoken) || (String.IsNullOrEmpty(authTokenToAddLater)))
                 throw new ArgumentException("Set the authtoken & authTokenToAddLater variables to a valid tokens");
 
             var client = new DataSiftClient(username, apikey);

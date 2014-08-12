@@ -18,17 +18,32 @@ namespace DataSiftTests
         public event EventHandler<WebSocket4Net.MessageReceivedEventArgs> MessageReceived;
         public event EventHandler<SuperSocket.ClientEngine.ErrorEventArgs> Error;
 
+        public DateTime LastActiveTime
+        {
+            get { return DateTime.Now;  }
+        }
+
         public MockStreamConnection(string url) {
             Timer timer = new Timer(1000);
             timer.Elapsed += timer_Elapsed;
             timer.Start();
         }
 
+        /// <summary>
+        /// Generates a fake interaction every second for testing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             dynamic fakeInteraction = new { data = new { interaction = new { content = "Test content"} }, hash = "b09z345fe2f1fed748c12268fd473662" };
             MessageReceived(this, new WebSocket4Net.MessageReceivedEventArgs(JsonConvert.SerializeObject(fakeInteraction)));
         }
+
+        public void Reconnect()
+        {}
+
+        public void Close() { }
 
         public void Open()
         {

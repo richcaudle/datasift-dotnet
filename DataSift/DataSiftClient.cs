@@ -10,6 +10,7 @@ using System.Diagnostics.Contracts;
 using System.Text.RegularExpressions;
 using DataSift.Streaming;
 using WebSocket4Net;
+using System.Diagnostics;
 
 namespace DataSift
 {
@@ -110,9 +111,9 @@ namespace DataSift
 
         #region Streaming
 
-        public DataSiftStream Connect(bool secure = true)
+        public DataSiftStream Connect(bool secure = true, string domain = "stream.datasift.com", bool autoReconnect = true)
         {
-            var stream = new DataSiftStream(_getConnection);
+            var stream = new DataSiftStream(_getConnection, domain, autoReconnect);
             stream.Connect(_username, _apikey, secure);
             return stream;
         }

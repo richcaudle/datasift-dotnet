@@ -14,7 +14,16 @@ namespace DataSift.Streaming
         event EventHandler<MessageReceivedEventArgs> MessageReceived;
         event EventHandler<SuperSocket.ClientEngine.ErrorEventArgs> Error;
 
+        DateTime LastActiveTime
+        {
+            get;
+        }
+
         void Open();
+
+        void Close();
+
+        void Reconnect();
 
         void Send(string message);
     }

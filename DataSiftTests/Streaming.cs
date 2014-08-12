@@ -31,6 +31,14 @@ namespace DataSiftTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Subscribe_With_Invalid_Hash_Fails()
+        {
+            var stream = Client.Connect();
+            stream.Subscribe("hash");
+        }
+
+        [TestMethod]
         public void Subscribe_Global_With_Valid_Hash_Succeeds()
         {
             var stream = Client.Connect(); 
@@ -61,6 +69,34 @@ namespace DataSiftTests
 
             stream.Subscribe(VALID_STREAM_HASH, subscribedHandler: onSubscribed);
             this._TestTrigger.WaitOne();
+        }
+
+        #endregion
+
+        #region Unsubscribe
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Unsubscribe_With_Null_Hash_Fails()
+        {
+            var stream = Client.Connect();
+            stream.Unsubscribe(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Unsubscribe_With_Empty_Hash_Fails()
+        {
+            var stream = Client.Connect();
+            stream.Unsubscribe("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Unsubscribe_With_Invalid_Hash_Fails()
+        {
+            var stream = Client.Connect();
+            stream.Unsubscribe("hash");
         }
 
         #endregion

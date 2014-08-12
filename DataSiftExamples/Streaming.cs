@@ -38,7 +38,6 @@ namespace DataSiftExamples
             // Compile and subscribe to a stream
             var compiled = _client.Compile("interaction.content contains \"football\"");
             Console.WriteLine("Compiled stream to {0}, DPU = {1}", compiled.Data.hash, compiled.Data.dpu);
-
             _stream.Subscribe(compiled.Data.hash);
         }
 
@@ -81,7 +80,7 @@ namespace DataSiftExamples
             Console.WriteLine("An error has occurred on the connection: " + ex.StackTrace);
         }
 
-        static void stream_OnClosed(object sender, EventArgs e)
+        static void stream_OnClosed()
         {
             Console.WriteLine("Connection has been closed.");
         }

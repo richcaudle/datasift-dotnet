@@ -16,18 +16,21 @@ namespace DataSift.Streaming
         public event EventHandler<SuperSocket.ClientEngine.ErrorEventArgs> Error;
 
         private WebSocket _websocket = null;
+        private string _url;
+        private string _userAgent;
+
+        public DateTime LastActiveTime { get { return _websocket.LastActiveTime; } }
 
         internal StreamConnection(string url)
         {
             var version = Assembly.GetExecutingAssembly().GetName().Version;
+            _userAgent = "DataSift/v1 Dotnet/v" + version.ToString();
+            _url = url;
 
-            _websocket = new WebSocket(url, userAgent: "DataSift/v1 Dotnet/v" + version.ToString());
-            _websocket.EnableAutoSendPing = true;
-            _websocket.Opened += _websocket_Opened;
-            _websocket.Closed += _websocket_Closed;
-            _websocket.Error += _websocket_Error;
-            _websocket.MessageReceived += _websocket_MessageReceived;
+            Setup();
+
         }
+
 
         void _websocket_MessageReceived(object sender, MessageReceivedEventArgs e)
         {
@@ -39,7 +42,7 @@ namespace DataSift.Streaming
         {
             if (Error != null)
                 Error(sender, e);
-        }
+        } 
 
         void _websocket_Closed(object sender, EventArgs e)
         {
@@ -53,6 +56,31 @@ namespace DataSift.Streaming
                 Opened(sender,e);
         }
 
+        private void Setup()
+        {
+            _websocket = new WebSocket(_url, userAgent: _userAgent);
+            _websocket.EnableAutoSendPing = true;
+            _websocket.AutoSendPingInterval = 30;
+            _websocket.Opened += _websocket_Opened;
+            _websocket.Closed += _websocket_Closed;
+            _websocket.Error += _websocket_Error;
+            _websocket.MessageReceived += _websocket_MessageReceived;
+        }
+
+        public void Reconnect()
+        {
+            Close();
+            Setup();
+            Open();
+        }
+
+        public void Close()
+        {
+            if (_websocket.State == WebSocketState.Open)
+            {
+                _websocket.Close();
+            }
+        }
 
         public void Open()
         {
